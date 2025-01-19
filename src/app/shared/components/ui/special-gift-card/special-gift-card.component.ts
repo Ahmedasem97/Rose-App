@@ -1,0 +1,15 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-special-gift-card',
+  standalone: true,
+  imports: [],
+  templateUrl: './special-gift-card.component.html',
+  styleUrl: './special-gift-card.component.scss',
+})
+export class SpecialGiftCardComponent {
+  @Input() imgSrc: string = '';
+  @Input() label: string = '';
+  @Input() title: string = '';
+  @Input() btnText: string = '';
+}
