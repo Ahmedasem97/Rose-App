@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { initFlowbite } from 'flowbite';
+
 import { NavbarComponent } from "./core/layout/navbar/navbar.component";
 
 @Component({
@@ -10,10 +10,8 @@ import { NavbarComponent } from "./core/layout/navbar/navbar.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
+export class AppComponent  {
   title = 'rose';
 
-  ngOnInit(): void {
-    initFlowbite();
-  }
+ 
 }
