@@ -1,4 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+// ======================== [ Imports ] ============================
+
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+// ======================== [ All Fonts ] =============================
+@font-face {
+  font-family: Inter;
+  src: url(assets/fonts/Inter_28pt-Regular.woff2);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url(assets/fonts/Inter_28pt-Medium.woff2);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url(assets/fonts/Inter_28pt-SemiBold.woff2);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url(assets/fonts/Inter_28pt-Bold.woff2);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url(assets/fonts/Inter_28pt-ExtraBold.woff2);
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url(assets/fonts/Inter_28pt-Black.woff2);
+  font-weight: 900;
+}
+
+// ======================== [ Variables ] ================================
+
+:root {
+  --primary-color: #f82ba9;
+  --primary-color-rgb: 248, 43, 169;
+  --light-background-color: #feedf7;
+  --light-background-color-rgb: 254, 237, 247;
+  --accent-color: #160e4b;
+  --description-color: #757f95;
+  --white-color: #ffffff;
+  --primary-icon-bg-color: var(--primary-color);
+  --secondary-icon-bg-color: #8c52ff;
+  --cards-border-radius: 20px;
+  --subject-line-height: 2px;
+  --subject-line-width: 161px;
+  --subject-line-color: var(--primary-color);
+}
+
+// ======================== [ Global Rules ] ====================
+
+body {
+  font-family: Inter, Helvetica, sans-serif;
+}
