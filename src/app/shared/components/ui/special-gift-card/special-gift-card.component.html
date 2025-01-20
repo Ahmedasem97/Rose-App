@@ -1,7 +1,22 @@
-<div class="special-gift-card">
-  <div [class]="'special-gift-card__wrapper bg-[url(' + imgSrc + ')]'">
-    <p class="m-0 mb-2">{{ label }}</p>
-    <p class="m-0 mb-3">{{ title }}</p>
-    <a href="">{{ btnText }}</a>
+<div class="special-gift-card rounded-[12px]">
+  <div
+    [class]="
+      'special-gift-card__wrapper bg-cover bg-no-repeat text-end bg-[url(\'' +
+      imgSrc +
+      '\')] flex justify-end items-center'
+    "
+    [style.backgroundImage]="'url(' + imgSrc + ')'"
+  >
+    <div class="special-gift-card__wrapper__contet m-[8px]">
+      <p class="m-0 mb-2 text-primary" [style]="'color:' + labelColor + ';'">
+        {{ label }}
+      </p>
+      <p class="m-0 mb-3 text-accent font-[600]">{{ title }}</p>
+      <a
+        href=""
+        class="bg-primary text-white rounded-[20px] p-[8px] border-0"
+        >{{ btnText }}</a
+      >
+    </div>
   </div>
 </div>

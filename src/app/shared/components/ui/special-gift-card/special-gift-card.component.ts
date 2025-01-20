@@ -12,4 +12,5 @@ export class SpecialGiftCardComponent {
   @Input() label: string = '';
   @Input() title: string = '';
   @Input() btnText: string = '';
+  @Input() labelColor = 'var(--primary-color)';
 }
