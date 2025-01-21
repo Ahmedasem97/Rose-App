@@ -7,7 +7,7 @@ import { NavbarAuthComponent } from "./core/layout/navbar-auth/navbar-auth.compo
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent],
+  imports: [RouterOutlet, NavbarComponent ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
