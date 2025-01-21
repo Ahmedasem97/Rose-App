@@ -5,11 +5,15 @@
 >
   <!-- Carousel wrapper -->
   <div class="relative h-full overflow-hidden rounded-lg">
-    @for (item of specialGiftsSliderList; track $index) { }
-    <div class="hidden duration-700 ease-in-out h-full" data-carousel-item>
+    @for (item of specialGiftsSliderList; track $index) {
+    <div
+      [id]="'carousel-item-' + $index"
+      [class]="($first ? ' ' : 'hidden') + ' duration-700 ease-in-out h-full'"
+      data-carousel-item
+    >
       <div
         class="slide__content bg-cover bg-center bg-no-repeat h-full flex flex-col items-start justify-center"
-        [style.backgroundImage]="'url(/special-gift-slider_1.png)'"
+        [style.backgroundImage]="'url(' + item.imageSrc + ')'"
       >
         <div
           class="container w-[381px] relative left-[56px] flex flex-col items-start"
@@ -17,25 +21,24 @@
           <p
             class="uppercase font-[700] text-primary text-[20px] leading-[24.6px] tracking-[3.73px] mb-[24px]"
           >
-            Best Gift Shop
+            {{ item.label }}
           </p>
           <p
             class="text-accent font-[700] text-[45px] leading-[50.33px] mb-[16px]"
           >
-            Choose Perfect <span class="text-primary">Gifts</span> From Us
+            {{ item.title }}
           </p>
           <p
             class="text-accent font-[400] text-[16px] leading-[27.96px] mb-[24px]"
           >
-            Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis.
-            Rerum optio dolores et.
+            {{ item.description }}
           </p>
           <a
             href=""
             class="h-[40px] w-[123px] flex items-center gap-[4.666px] bg-primary text-white rounded-[9px] py-[6.52px] px-[13.98px] border-0 shadow-[0px_0px_37.28px_4.66px_#0000000D] text-[14.91px] leading-[26.84px] font-[500]"
-            ><span class="text-[14.91px] leading-[26.84px] font-[500]"
-              >Shop Now</span
-            >
+            ><span class="text-[14.91px] leading-[26.84px] font-[500]">{{
+              item.btnText
+            }}</span>
             <img
               src="/right-arrow.svg"
               class="w-[13px] h-[15px]"
@@ -45,6 +48,7 @@
         </div>
       </div>
     </div>
+    }
   </div>
   <!-- Slider indicators -->
   <div

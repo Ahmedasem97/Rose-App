@@ -12,7 +12,7 @@ import { specialGiftsMockData } from '../../../../mock/special-gifts.mock';
 })
 export class SpecialGiftSliderComponent {
   constructor(private flowbiteService: FlowbiteService) {}
-  specialGiftsSliderList = specialGiftsMockData.slice(0, 3);
+  specialGiftsSliderList = specialGiftsMockData.slice(0, 4);
   sliderIndicators = Array.from(
     { length: this.specialGiftsSliderList.length },
     (_, i) => i

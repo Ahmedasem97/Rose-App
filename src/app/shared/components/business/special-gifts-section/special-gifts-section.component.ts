@@ -16,6 +16,6 @@ import { SpecialGiftSliderComponent } from '../special-gift-slider/special-gift-
   styleUrl: './special-gifts-section.component.scss',
 })
 export class SpecialGiftsSectionComponent {
-  specialGiftsBannerList = specialGiftsMockData.slice(3, 4);
-  specialGiftsCardsList = specialGiftsMockData.slice(4);
+  specialGiftsBannerList = specialGiftsMockData.slice(4, 5);
+  specialGiftsCardsList = specialGiftsMockData.slice(5);
 }
