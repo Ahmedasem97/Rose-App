@@ -6,7 +6,7 @@ export const specialGiftsMockData: SpecialGifts[] = [
     label: 'Best Gift Shop',
     labelColor: '',
     btnText: 'Shop Now',
-    title: 'Choose Perfect <span class="text-primary">Gifts</span>From Us',
+    title: 'Choose Perfect Gifts From Us',
     description:
       'Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis. Rerum optio dolores et.',
   },
@@ -15,7 +15,7 @@ export const specialGiftsMockData: SpecialGifts[] = [
     label: 'Best Gift Shop',
     labelColor: '',
     btnText: 'Shop Now',
-    title: 'Choose Perfect <span class="text-primary">Gifts</span>From Us',
+    title: 'Choose Perfect Gifts From Us',
     description:
       'Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis. Rerum optio dolores et.',
   },
@@ -24,7 +24,7 @@ export const specialGiftsMockData: SpecialGifts[] = [
     label: 'Best Gift Shop',
     labelColor: '',
     btnText: 'Shop Now',
-    title: 'Choose Perfect <span class="text-primary">Gifts</span>From Us',
+    title: 'Choose Perfect Gifts From Us',
     description:
       'Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis. Rerum optio dolores et.',
   },
@@ -48,7 +48,7 @@ export const specialGiftsMockData: SpecialGifts[] = [
     imageSrc: '/special-gift-card_2.png',
     label: 'Occasion Gifts',
     labelColor: '',
-    btnText: '',
+    btnText: 'Discover Now',
     title: 'Best Occasion Gifts Collections',
   },
   {

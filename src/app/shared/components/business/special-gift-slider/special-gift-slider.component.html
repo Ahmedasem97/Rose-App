@@ -5,80 +5,34 @@
 >
   <!-- Carousel wrapper -->
   <div class="relative h-full overflow-hidden rounded-lg">
-    <!-- Item 1 -->
+    @for (item of specialGiftsSliderList; track $index) {
     <div class="hidden duration-700 ease-in-out h-full" data-carousel-item>
       <div
         class="slide__content bg-cover bg-center bg-no-repeat h-full"
-        style="background-image: url(/special-gift-slider_1.png)"
+        [style.backgroundImage]="item.imageSrc"
       >
         <div class="container mx-auto px-4 py-8 text-center">
-          <h2 class="text-3xl font-bold text-white">Best Gift Shop</h2>
-          <p>Choose Perfect Gifts From Us</p>
-          <p class="mt-4 text-white">
-            Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis.
-            Rerum optio dolores et.
-          </p>
+          <h2 class="text-3xl font-bold text-white">{{ item.label }}</h2>
+          <p>{{ item.title }}</p>
+          <p class="mt-4 text-white">{{ item.description }}</p>
         </div>
       </div>
     </div>
-    <!-- Item 2 -->
-    <div class="hidden duration-700 ease-in-out h-full" data-carousel-item>
-      <div
-        class="slide__content bg-cover bg-center bg-no-repeat h-full"
-        style="background-image: url(/special-gift-slider_1.png)"
-      >
-        <div class="container mx-auto px-4 py-8 text-center">
-          <h2 class="text-3xl font-bold text-white">Best Gift Shop</h2>
-          <p>Choose Perfect Gifts From Us</p>
-          <p class="mt-4 text-white">
-            Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis.
-            Rerum optio dolores et.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!-- Item 3 -->
-    <div class="hidden duration-700 ease-in-out h-full" data-carousel-item>
-      <div
-        class="slide__content bg-cover bg-center bg-no-repeat h-full"
-        style="background-image: url(/special-gift-slider_1.png)"
-      >
-        <div class="container mx-auto px-4 py-8 text-center">
-          <h2 class="text-3xl font-bold text-white">Best Gift Shop</h2>
-          <p>Choose Perfect Gifts From Us</p>
-          <p class="mt-4 text-white">
-            Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis.
-            Rerum optio dolores et.
-          </p>
-        </div>
-      </div>
-    </div>
+    }
   </div>
   <!-- Slider indicators -->
   <div
     class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse"
   >
+    @for(number of sliderIndicators; track $index){
     <button
       type="button"
       class="w-3 h-3 rounded-full"
       aria-current="true"
-      aria-label="Slide 1"
+      [attr.aria-label]="'Slide ' + (number + 1)"
       data-carousel-slide-to="0"
     ></button>
-    <button
-      type="button"
-      class="w-3 h-3 rounded-full"
-      aria-current="false"
-      aria-label="Slide 2"
-      data-carousel-slide-to="1"
-    ></button>
-    <button
-      type="button"
-      class="w-3 h-3 rounded-full"
-      aria-current="false"
-      aria-label="Slide 3"
-      data-carousel-slide-to="2"
-    ></button>
+    }
   </div>
   <!-- Slider controls -->
   <button

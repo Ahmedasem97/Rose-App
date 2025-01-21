@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FlowbiteService } from '../../../../core/services/flowbite.service';
 import { initFlowbite } from 'flowbite';
+import { specialGiftsMockData } from '../../../../mock/special-gifts.mock';
 
 @Component({
   selector: 'app-special-gift-slider',
@@ -11,7 +12,11 @@ import { initFlowbite } from 'flowbite';
 })
 export class SpecialGiftSliderComponent {
   constructor(private flowbiteService: FlowbiteService) {}
-
+  specialGiftsSliderList = specialGiftsMockData.slice(0, 3);
+  sliderIndicators = Array.from(
+    { length: this.specialGiftsSliderList.length },
+    (_, i) => i
+  );
   loadFlowbite() {
     this.flowbiteService.loadFlowbite((flowbite) => {
       console.log('Flowbite loaded', flowbite);
