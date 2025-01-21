@@ -9,13 +9,18 @@
     <div
       class="special-gift-card__wrapper__contet mx-[8px] flex flex-col items-end gap-2"
     >
-      <p class="m-0 mb-2 text-primary" [style]="'color:' + labelColor + ';'">
+      <p
+        class="m-0 mb-2 text-primary font-[400] text-[16px] leading-[19.36px]"
+        [style]="'color:' + labelColor + ';'"
+      >
         {{ label }}
       </p>
-      <p class="m-0 mb-3 text-accent font-[600]">{{ title }}</p>
+      <p class="m-0 mb-3 text-accent font-[600] text-[20px] leading-[24.2px]">
+        {{ title }}
+      </p>
       <a
         href=""
-        class="gap-2 bg-primary text-white rounded-[20px] p-[8px] border-0"
+        class="gap-2 bg-primary text-white rounded-[20px] p-[8px] border-0 font-[400] text-[14px] leading-[16.94px]"
         >{{ btnText }}</a
       >
     </div>
