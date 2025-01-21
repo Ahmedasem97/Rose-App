@@ -2,7 +2,7 @@ import { SpecialGifts } from '../core/interfaces/special-gifts.interface';
 
 export const specialGiftsMockData: SpecialGifts[] = [
   {
-    imageSrc: '/special-gift-slider_1',
+    imageSrc: '/special-gift-slider_1.png',
     label: 'Best Gift Shop',
     labelColor: '',
     btnText: 'Shop Now',
@@ -11,7 +11,7 @@ export const specialGiftsMockData: SpecialGifts[] = [
       'Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis. Rerum optio dolores et.',
   },
   {
-    imageSrc: '/special-gift-slider_1',
+    imageSrc: '/special-gift-slider_1.png',
     label: 'Best Gift Shop',
     labelColor: '',
     btnText: 'Shop Now',
@@ -20,7 +20,7 @@ export const specialGiftsMockData: SpecialGifts[] = [
       'Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis. Rerum optio dolores et.',
   },
   {
-    imageSrc: '/special-gift-slider_1',
+    imageSrc: '/special-gift-slider_1.png',
     label: 'Best Gift Shop',
     labelColor: '',
     btnText: 'Shop Now',
