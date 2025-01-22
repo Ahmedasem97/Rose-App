@@ -1,4 +1,4 @@
-import { AllProductsRes, PopularProduct, ProductsRes } from './../../../../core/interfaces/products';
+import { PopularProduct, ProductsRes } from './../../../../core/interfaces/products';
 import { Component, input, InputSignal, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { CategoriesRes, Category } from '../../../../core/interfaces/categories';
 import { ProductsService } from '../../../services/products.service';
@@ -14,16 +14,17 @@ import { Subject, takeUntil } from 'rxjs';
 export class PopularItemComponent implements OnInit, OnDestroy{
   categoryApiFromHome: InputSignal<CategoriesRes> = input.required()
 
-  constructor(private _ProductsService:ProductsService){}
+  constructor(
+    private _ProductsService:ProductsService,
+  ){}
   
   categoryDisplay:WritableSignal<Category[]> = signal([])
   productsDisplay:WritableSignal<PopularProduct[]> = signal([])
   $destroy = new Subject()
-
+  selectedActiveCategory:WritableSignal<number> = signal(-1)
 
   ngOnInit(): void {
-    const categories = this.categoryApiFromHome().categories || [];
-    this.categoryDisplay.set(categories);
+    this.categoryDisplay.set(this.categoryApiFromHome().categories || []);
       
       this.getPopularProductApi()
   }
@@ -38,6 +39,11 @@ export class PopularItemComponent implements OnInit, OnDestroy{
         this.productsDisplay.set(res.products)
       }
     })
+  }
+
+  getKeyword (key:string , index:number):void {
+    this.getPopularProductApi(key)
+    this.selectedActiveCategory.set(index)
   }
 
   ngOnDestroy(): void {
