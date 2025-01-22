@@ -12,6 +12,7 @@ export class SpecialGiftCardComponent {
   @Input() imgSrc: string = '';
   @Input() label: string = '';
   @Input() title: string | HTMLElement = '';
+  @Input() titleClasses?: string = '';
   @Input() btnText: string = '';
   @Input() labelColor = 'var(--primary-color)';
 }
