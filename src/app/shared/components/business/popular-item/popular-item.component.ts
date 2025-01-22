@@ -1,8 +1,8 @@
-import { AllProductsRes } from './../../../../core/interfaces/products';
-import { Component, input, InputSignal, OnInit, signal, WritableSignal } from '@angular/core';
+import { AllProductsRes, PopularProduct, ProductsRes } from './../../../../core/interfaces/products';
+import { Component, input, InputSignal, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { CategoriesRes, Category } from '../../../../core/interfaces/categories';
 import { ProductsService } from '../../../services/products.service';
-import { Product } from '../../../../core/interfaces/products';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-popular-item',
@@ -11,29 +11,37 @@ import { Product } from '../../../../core/interfaces/products';
   templateUrl: './popular-item.component.html',
   styleUrl: './popular-item.component.scss'
 })
-export class PopularItemComponent implements OnInit{
+export class PopularItemComponent implements OnInit, OnDestroy{
   categoryApiFromHome: InputSignal<CategoriesRes> = input.required()
 
   constructor(private _ProductsService:ProductsService){}
   
   categoryDisplay:WritableSignal<Category[]> = signal([])
-  productsDisplay:WritableSignal<Product[]> = signal([])
+  productsDisplay:WritableSignal<PopularProduct[]> = signal([])
+  $destroy = new Subject()
+
 
   ngOnInit(): void {
-      this.categoryDisplay.set(this.categoryApiFromHome().categories)
+    const categories = this.categoryApiFromHome().categories || [];
+    this.categoryDisplay.set(categories);
       
-      this.getPopularApi()
+      this.getPopularProductApi()
   }
   
-  getPopularApi (keyword:string = ""):void {
-    this._ProductsService.getPopularProducts(keyword).subscribe({
-      next: (res:AllProductsRes) => {
-        console.log(res);
+  getPopularProductApi (keyword:string = ""):void {
+    this._ProductsService.getAllProducts(keyword)
+    .pipe(
+      takeUntil(this.$destroy)
+    )
+    .subscribe({
+      next: (res:ProductsRes) => {
         this.productsDisplay.set(res.products)
       }
     })
   }
 
-
+  ngOnDestroy(): void {
+      this.$destroy.next("destroy")
+  }
 
 }

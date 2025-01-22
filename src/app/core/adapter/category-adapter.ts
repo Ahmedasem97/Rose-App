@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AllCategoriesRes, CategoriesRes, Category } from '../interfaces/categories';
+import { CategoriesAbstract } from '../abstract/categories.abstract';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryAdapter {
+export class CategoryAdapter{
 
   constructor() { }
 

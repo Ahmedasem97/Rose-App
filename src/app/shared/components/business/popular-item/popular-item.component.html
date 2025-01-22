@@ -2,14 +2,14 @@
     <div class="popular__items__header [@media(min-width:688px)]:flex justify-between pb-10">
         <h1 class="font-bold text-3xl text-accent relative [@media(min-width:688px)]:mx-0 mx-auto w-fit mb-6 [@media(min-width:688px)]:mb-0 text-center">Popular Items</h1>
         <ul class="flex gap-4 justify-center sm:gap-6">
-            @for (cat of categoryApiFromHome().categories.slice(0 , 4); track $index) {
+            @for (cat of categoryDisplay().slice(0, 4); track $index) {
                 <li class="text-accent cursor-pointer">{{cat.name}}</li>
             }
         </ul>
     </div>
     <div class="popular__items__products flex justify-center flex-wrap ">
         @for (product of productsDisplay(); track $index) {
-            <div class="item px-3 mb-6 w-[302px] ">
+            <div class="item w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-3 mb-6 ">
                 <div class="inner__item  bg-slate-500 ">
                     <div class="item__img h-full mb-4 bg-light-prim-background rounded-[var(--cards-border-radius)] relative overflow-hidden">
                         <img class="w-full h-[272px] object-cover" [src]="product.imgCover" alt="">

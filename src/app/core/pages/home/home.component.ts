@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
       this._CategoriesService.getAllCategories().pipe(takeUntil(this.$destroy)).subscribe({
         next: res => {
-          console.log(res);
           this.categoryApi.set(res)
         }
       })

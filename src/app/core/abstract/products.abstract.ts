@@ -1,6 +1,6 @@
 import { Observable } from "rxjs";
-import { CategoriesRes } from "../interfaces/categories";
+import { ProductsRes } from "../interfaces/products";
 
 export abstract class ProductsAbstract {
-    abstract popularItemProducts():Observable<any> 
+    abstract getAllProducts (cat:string):Observable<ProductsRes>;
 }
