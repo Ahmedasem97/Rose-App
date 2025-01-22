@@ -7,15 +7,17 @@
     [style.backgroundImage]="'url(' + imgSrc + ')'"
   >
     <div
-      class="special-gift-card__wrapper__contet mx-[8px] flex flex-col items-end gap-2"
+      class="special-gift-card__wrapper__contet mr-[16px] w-[188px] flex flex-col items-end gap-2"
     >
       <p
-        class="m-0 mb-2 text-primary font-[400] text-[16px] leading-[19.36px]"
+        class="m-0 mb-[14px] text-primary font-[400] text-[16px] leading-[19.36px]"
         [style]="'color:' + labelColor + ';'"
       >
         {{ label }}
       </p>
-      <p class="m-0 mb-3 text-accent font-[600] text-[20px] leading-[24.2px]">
+      <p
+        class="m-0 mb-[14px] text-accent font-[600] text-[20px] leading-[24.2px]"
+      >
         {{ title }}
       </p>
       <app-primary-btn
