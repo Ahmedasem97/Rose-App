@@ -11,7 +11,7 @@ import { PrimaryBtnComponent } from '../primary-btn/primary-btn.component';
 export class SpecialGiftBannerComponent {
   @Input() imgSrc: string = '';
   @Input() label: string = '';
-  @Input() title: string = '';
+  @Input() title: string | HTMLElement = '';
   @Input() btnText: string = '';
   @Input() labelColor = 'var(--primary-color)';
 }
