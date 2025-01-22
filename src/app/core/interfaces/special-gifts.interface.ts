@@ -1,6 +1,6 @@
 export interface SpecialGifts {
   imageSrc: string;
-  title: string;
+  title: string | HTMLElement;
   btnText: string;
   label: string;
   labelColor: string;

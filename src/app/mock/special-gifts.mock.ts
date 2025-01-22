@@ -6,7 +6,7 @@ export const specialGiftsMockData: SpecialGifts[] = [
     label: 'Best Gift Shop',
     labelColor: '',
     btnText: 'Shop Now',
-    title: 'Choose Perfect Gifts From Us',
+    title: 'Choose Perfect <span class="text-primary">Gifts</span> From Us',
     description:
       'Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis. Rerum optio dolores et.',
   },
@@ -15,7 +15,7 @@ export const specialGiftsMockData: SpecialGifts[] = [
     label: 'Best Gift Shop',
     labelColor: '',
     btnText: 'Shop Now',
-    title: 'Choose Perfect Gifts From Us',
+    title: 'Choose Perfect <span class="text-primary">Gifts</span> From Us',
     description:
       'Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis. Rerum optio dolores et.',
   },
@@ -24,7 +24,7 @@ export const specialGiftsMockData: SpecialGifts[] = [
     label: 'Best Gift Shop',
     labelColor: '',
     btnText: 'Shop Now',
-    title: 'Choose Perfect Gifts From Us',
+    title: 'Choose Perfect <span class="text-primary">Gifts</span> From Us',
     description:
       'Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis. Rerum optio dolores et.',
   },
@@ -33,7 +33,7 @@ export const specialGiftsMockData: SpecialGifts[] = [
     label: 'Best Gift Shop',
     labelColor: '',
     btnText: 'Shop Now',
-    title: 'Choose Perfect Gifts From Us',
+    title: 'Choose Perfect <span class="text-primary">Gifts</span> From Us',
     description:
       'Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis. Rerum optio dolores et.',
   },
