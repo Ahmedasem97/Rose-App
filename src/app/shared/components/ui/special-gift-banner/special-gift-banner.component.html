@@ -19,18 +19,12 @@
       >
         {{ title }}
       </p>
-      <a
-        href=""
-        class="h-[40px] flex items-center gap-[4.666px] bg-primary text-white rounded-[9px] py-[6.52px] px-[13.98px] border-0 shadow-[0px_0px_37.28px_4.66px_#0000000D] text-[14.91px] leading-[26.84px] font-[500]"
-        ><span class="text-[14.91px] leading-[26.84px] font-[500]">{{
-          btnText
-        }}</span>
-        <img
-          src="/right-arrow.svg"
-          class="w-[13px] h-[15px]"
-          alt="right arrow"
-          srcset=""
-      /></a>
+      <app-primary-btn
+        btnClasses="h-[40px] gap-[4.666px] rounded-[9px] py-[6.52px] px-[13.98px] shadow-[0px_0px_37.28px_4.66px_#0000000D]"
+        [btnText]="btnText"
+        btnTextClasses="text-[14.91px] leading-[26.84px] font-[500]"
+        btnIcon="/right-arrow.svg"
+      ></app-primary-btn>
     </div>
   </div>
 </div>

@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { PrimaryBtnComponent } from '../primary-btn/primary-btn.component';
 
 @Component({
   selector: 'app-special-gift-banner',
   standalone: true,
-  imports: [],
+  imports: [PrimaryBtnComponent],
   templateUrl: './special-gift-banner.component.html',
   styleUrl: './special-gift-banner.component.scss',
 })
