@@ -1,13 +1,17 @@
-<div class="test mt-32 flex flex-wrap justify-center items-center">
+<div
+  class="mt-32 max-xl:mx-2 flex flex-col sm:flex-row flex-wrap justify-center min-[340px]:items-center"
+>
   <app-special-gift-banner
-    class="md:mr-[25px] mb-[24px] min-[768px]:mb-0 mr-0"
+    class="max-[340px]:w-[100%] md:mr-[25px] max-md:mb-[24px] min-md:mb-0 mr-0"
     [label]="specialGiftsBannerList[0].label"
     [title]="specialGiftsBannerList[0].title"
     [btnText]="specialGiftsBannerList[0].btnText"
     [imgSrc]="specialGiftsBannerList[0].imageSrc"
   ></app-special-gift-banner>
   <!-- md:w-[441px] lg:h-[441px] md:h-[440px] sm:h-[440px] md:min-w-screen-md sm-min-w-screen-sm -->
-  <app-special-gift-slider class="md:flex-grow"></app-special-gift-slider>
+  <app-special-gift-slider
+    class="max-md:w-[100%] min-[340px]:flex-grow"
+  ></app-special-gift-slider>
 </div>
 
 <ul class="mt-3 flex flex-col max-md:mx-2 sm:flex-row flex-wrap justify-center">
