@@ -34,9 +34,7 @@ export class PopularItemComponent implements OnInit, OnDestroy{
       takeUntil(this.$destroy)
     )
     .subscribe({
-      next: (res:ProductsRes) => {
-        console.log(res);
-        
+      next: (res:ProductsRes) => {        
         this.productsDisplay.set(res.products)
       }
     })
