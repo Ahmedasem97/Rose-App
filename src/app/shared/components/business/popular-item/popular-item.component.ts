@@ -1,5 +1,5 @@
 import { PopularProduct, ProductsRes } from './../../../../core/interfaces/products';
-import { Component, input, InputSignal, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, input, InputSignal, OnDestroy, OnInit, signal, WritableSignal, inject } from '@angular/core';
 import { CategoriesRes, Category } from '../../../../core/interfaces/categories';
 import { ProductsService } from '../../../services/products.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -14,9 +14,8 @@ import { Subject, takeUntil } from 'rxjs';
 export class PopularItemComponent implements OnInit, OnDestroy{
   categoryApiFromHome: InputSignal<CategoriesRes> = input.required()
 
-  constructor(
-    private _ProductsService:ProductsService,
-  ){}
+  private _ProductsService = inject(ProductsService)
+  constructor(){}
   
   categoryDisplay:WritableSignal<Category[]> = signal([])
   productsDisplay:WritableSignal<PopularProduct[]> = signal([])
