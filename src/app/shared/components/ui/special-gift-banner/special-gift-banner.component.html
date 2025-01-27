@@ -1,0 +1,32 @@
+<div
+  class="w-[100%] max-w-[301px] special-gift-banner max-sm:rounded-[20px] rounded-[14px]"
+>
+  <div
+    [class]="
+      'special-gift-banner__wrapper h-full rounded-[20px] md:rounded-[14px] bg-cover bg-no-repeat text-start flex items-center md:items-end'
+    "
+    [style.backgroundImage]="'url(' + imgSrc + ')'"
+  >
+    <div
+      class="special-gift-banner__wrapper__contet w-[248px] ml-[16px] mr-[37px] mb-0 md:mb-[24px] gap-[11.18px] flex flex-col items-start"
+    >
+      <p
+        class="m-0 text-primary text-[16.77px] leading-[30.2px] font-[700] mb-[11.18px] tracking-[4.66px] uppercase"
+        [style]="'color:' + labelColor + ';'"
+      >
+        {{ label }}
+      </p>
+      <p
+        class="min-sm:w-[164px] md:w-auto m-0 mb-[11.18px] pb-[0.55px] text-[20px] md:text-[26.09px] leading-[31.31px] text-accent font-[600]"
+      >
+        {{ title }}
+      </p>
+      <app-primary-btn
+        btnClasses="gap-[4.666px] rounded-[4.07px] p-[8px] md:rounded-[9px] md:p-[6.52px_13.98px] shadow-[0px_0px_37.28px_4.66px_#0000000D]"
+        [btnText]="btnText"
+        btnTextClasses="text-[12px] md:text-[14.91px] leading-[14.52px] md:leading-[26.84px] font-[500]"
+        btnIcon="/right-arrow.svg"
+      ></app-primary-btn>
+    </div>
+  </div>
+</div>

@@ -2,13 +2,14 @@ import { Component, OnDestroy, OnInit, signal, WritableSignal } from '@angular/c
 import { PopularItemComponent } from "../../../shared/components/business/popular-item/popular-item.component";
 import { CategoriesService } from '../../../shared/services/categories.service';
 import { Subject, takeUntil } from 'rxjs';
-
+import { SpecialGiftsSectionComponent } from "../../../shared/components/ui/special-gifts-section/special-gifts-section.component";
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [PopularItemComponent],
+  imports: [RouterOutlet, PopularItemComponent, SpecialGiftsSectionComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit, OnDestroy{
   constructor(private _CategoriesService:CategoriesService ){}
