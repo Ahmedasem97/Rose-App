@@ -9,12 +9,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent implements OnInit{
-  constructor(private flowbiteService: FlowbiteService) {}
+export class NavbarComponent {
 
-  ngOnInit(): void {
-    this.flowbiteService.loadFlowbite(flowbite => {
-     
-    });
-  }
+
 }
