@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FlowbiteService } from '../../services/flowbite.service';
+
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({

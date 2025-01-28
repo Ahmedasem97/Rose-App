@@ -13,9 +13,9 @@ module.exports = {
         'footer-button': '#F82BA9',
       }
     },
-    container: {
-      center: true
-    },
+        container: {
+          center: true
+        },
    
     colors: {
       'footer-text': '#160E4B',
