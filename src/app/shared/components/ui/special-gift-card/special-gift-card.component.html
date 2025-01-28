@@ -1,0 +1,35 @@
+<!-- w-[411px] -->
+<!-- sm:w-[330px] -->
+<div class="max-w-full special-gift-card max-sm:rounded-[20px] rounded-[12px]">
+  <!-- bg-[url(\'' +imgSrc +'\')] -->
+  <div
+    [class]="
+      'special-gift-card__wrapper bg-cover bg-no-repeat text-end flex max-sm:justify-center justify-end items-center'
+    "
+    [style.backgroundImage]="'url(' + imgSrc + ')'"
+  >
+    <div
+      class="special-gift-card__wrapper__contet max-sm:m-0 m-auto mr-[16px] w-[188px] flex flex-col max-sm:items-center items-end gap-2"
+    >
+      <p
+        class="m-0 mb-[14px] text-primary font-[400] text-[16px] leading-[19.36px]"
+        [style]="'color:' + labelColor + ';'"
+      >
+        {{ label }}
+      </p>
+      <p
+        [class]="
+          'm-0 mb-[14px] text-accent font-[600] text-[20px] leading-[24.2px] max-sm:text-center ' +
+          titleClasses
+        "
+      >
+        {{ title }}
+      </p>
+      <app-primary-btn
+        btnClasses="gap-2 max-sm:rounded-[10px] rounded-[20px] p-[8px]"
+        [btnText]="btnText"
+        btnTextClasses="text-center font-[400] max-sm:text-[12px] text-[14px] max-sm:leading-[14.52px] leading-[16.94px]"
+      ></app-primary-btn>
+    </div>
+  </div>
+</div>

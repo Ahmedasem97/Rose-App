@@ -1,0 +1,11 @@
+[aria-label^="Slide"] {
+  background-color: var(--primary-color);
+  border-radius: 46.6px;
+  width: 7px;
+  height: 7px;
+}
+
+[aria-current="true"] {
+  background-color: var(--primary-color);
+  width: 19px;
+}
