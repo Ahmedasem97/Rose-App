@@ -16,7 +16,7 @@ module.exports = {
       "light-prim-background": "var(--light-background-color)",
       "light-prim-background-rgb": "var(--light-background-color-rgb)",
       accent: "var(--accent-color)",
-      descText: "var(--description-color)",
+      activelink: "var(--description-color)",
       white: "var(--white-color)",
       price: "var(--price-color)",
       "primary-icon-bg": "var(--primary-icon-bg-color)",
