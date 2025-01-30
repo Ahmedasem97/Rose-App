@@ -5,11 +5,22 @@ module.exports = {
     "./node_modules/flowbite/**/*.js", // add this line
   ],
   theme: {
-    container: {
-      center: true
+    extend: {
+      backgroundImage: {
+        'footer-bg': "url('/bg-footer.png')",
+      },
+      backgroundColor:{
+        'footer-button': '#F82BA9',
+      }
     },
-    extend: {},
+        container: {
+          center: true
+        },
+   
     colors: {
+      'footer-text': '#160E4B',
+      'footer-text1': '#F82BA9',
+      'footer-text2': '#757F95',
       primary: "var(--primary-color)",
       "primary-color-alpha": "var(--primary-color-alpha)",
       "primary-rgb": "var(--primary-color-rgb)",

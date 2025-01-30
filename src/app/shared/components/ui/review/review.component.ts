@@ -11,19 +11,8 @@ import { reviewMockData } from '../../../../core/interfaces/review';
   templateUrl: './review.component.html',
   styleUrl: './review.component.scss'
 })
-export class ReviewComponent implements OnInit{
-  reviewApi:WritableSignal<reviewMockData[]> = signal([])
-
-
-  private ReviewMockDataService = inject(ReviewMockDataService)
-
-
-  
-  ngOnInit(): void {
-      this.reviewApi.set(this.ReviewMockDataService.reviewMD) 
-  }
-
-
+export class ReviewComponent implements OnInit {
+  reviewApi: WritableSignal<reviewMockData[]> = signal([])
 
   reviewSection: OwlOptions = {
     loop: false,
@@ -46,10 +35,22 @@ export class ReviewComponent implements OnInit{
       1280: {
         items: 4
       },
-      
+
     },
     nav: false
   }
+
+  private ReviewMockDataService = inject(ReviewMockDataService)
+
+
+
+  ngOnInit(): void {
+    this.reviewApi.set(this.ReviewMockDataService.reviewMD)
+  }
+
+
+
+
 
 
 

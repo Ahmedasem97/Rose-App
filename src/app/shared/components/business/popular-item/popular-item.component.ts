@@ -3,11 +3,12 @@ import { Component, input, InputSignal, OnDestroy, OnInit, signal, WritableSigna
 import { CategoriesRes, Category } from '../../../../core/interfaces/categories';
 import { ProductsService } from '../../../services/products.service';
 import { Subject, takeUntil } from 'rxjs';
+import { ProductCardComponent } from "../product-card/product-card.component";
 
 @Component({
   selector: 'app-popular-item',
   standalone: true,
-  imports: [],
+  imports: [ProductCardComponent],
   templateUrl: './popular-item.component.html',
   styleUrl: './popular-item.component.scss'
 })
