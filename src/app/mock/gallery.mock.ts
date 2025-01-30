@@ -1,0 +1,20 @@
+import { galleryItems } from '../core/interfaces/gallery.interface';
+
+export const galleryMockData: galleryItems[] = [
+  {
+    imageSrc: '/gallery_1.png',
+  },
+  {
+    imageSrc: '/gallery_2.png',
+  },
+  {
+    imageSrc: '/gallery_3.png',
+  },
+  {
+    imageSrc: '/gallery_4.png',
+    lgColSpan: '2',
+  },
+  {
+    imageSrc: '/gallery_5.png',
+  },
+];

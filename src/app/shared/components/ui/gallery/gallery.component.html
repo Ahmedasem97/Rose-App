@@ -1,0 +1,26 @@
+<section class="gallery-section">
+  <ul
+    class="grid grid-cols-1 justify-items-center items-center sm:grid-cols-2 sm:justify-start sm:items-stretch lg:grid-cols-3 gallery-section__items gap-y-4 sm:gap-y-6 sm:gap-x-6"
+  >
+    @for (item of galleryItemsList; track $index) {
+
+    <div
+      class="h-[411px] w-full gallery-section__items__item-wrapper rounded-[40px]"
+      [class]="
+        'md:col-span-' +
+        (item.mdColSpan || 1) +
+        ' lg:col-span-' +
+        (item.lgColSpan || 1) +
+        ' xl:col-span-' +
+        (item.xlColSpan || 1)
+      "
+    >
+      <div
+        class="w-full h-full bg-cover bg-center rounded-[40px]"
+        [style.backgroundImage]="'url(' + item.imageSrc + ')'"
+      ></div>
+    </div>
+
+    }
+  </ul>
+</section>
