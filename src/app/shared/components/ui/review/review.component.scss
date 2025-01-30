@@ -1,0 +1,36 @@
+.review {
+    background-image: url("../../../../../../public/Birthday\ background.png");
+
+
+}
+
+::ng-deep {
+
+    // .review .owl-item.active {
+    //     width: 25% !important;
+    // }
+    owl-carousel-o {
+        width: 100%;
+    }
+
+    .owl-theme .owl-nav.disabled+.owl-dots {
+        width: fit-content;
+        margin: 40px auto;
+    }
+
+    .owl-theme .owl-dots .owl-dot.active span {
+        width: 36px;
+        height: 16px;
+    }
+
+    .owl-theme .owl-dots .owl-dot span {
+        background-color: var(--white-color);
+        width: 16px;
+        height: 16px;
+    }
+
+    .owl-theme .owl-dots .owl-dot.active span,
+    .owl-theme .owl-dots .owl-dot:hover span {
+        background-color: var(--white-color);
+    }
+}

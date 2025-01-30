@@ -4,10 +4,11 @@ import { CategoriesService } from '../../../shared/services/categories.service';
 import { Subject, takeUntil } from 'rxjs';
 import { SpecialGiftsSectionComponent } from "../../../shared/components/ui/special-gifts-section/special-gifts-section.component";
 import { RouterOutlet } from '@angular/router';
+import { ReviewComponent } from "../../../shared/components/ui/review/review.component";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, PopularItemComponent, SpecialGiftsSectionComponent],
+  imports: [RouterOutlet, PopularItemComponent, SpecialGiftsSectionComponent, ReviewComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
