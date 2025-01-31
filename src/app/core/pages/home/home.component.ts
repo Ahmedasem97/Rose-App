@@ -14,12 +14,14 @@ import { GalleryComponent } from '../../../shared/components/ui/gallery/gallery.
 @Component({
   selector: 'app-home',
   standalone: true,
+
   imports: [
     RouterOutlet,
     PopularItemComponent,
     SpecialGiftsSectionComponent,
     GalleryComponent,
   ],
+
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
