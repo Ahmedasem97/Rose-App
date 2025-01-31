@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TrustedInterface } from '../../../../core/interfaces/trusted';
 
 @Component({
   selector: 'app-trusted',
@@ -9,7 +10,7 @@ import { Component } from '@angular/core';
 })
 export class TrustedComponent {
 
-  companyImg = [
+  companyImg:TrustedInterface[] = [
     { src: "/company_1.png", name: "coconut."},
     { src: "/company_2.png", name: "ginyard"},
     { src: "/company_3.png", name: "ingoude"},
