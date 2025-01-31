@@ -67,5 +67,9 @@ export class PestSeller1Component  {
     this.selectedActiveCategory.set(index)
   }
 
+  ngOnDestroy(): void {
+    this.$destroy.next("destroy")
+}
+
     
 }
