@@ -11,6 +11,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { SpecialGiftsSectionComponent } from '../../../shared/components/ui/special-gifts-section/special-gifts-section.component';
 import { RouterOutlet } from '@angular/router';
 import { GalleryComponent } from '../../../shared/components/ui/gallery/gallery.component';
+import { TrustedComponent } from '../../../shared/components/ui/trusted/trusted.component';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -20,6 +21,7 @@ import { GalleryComponent } from '../../../shared/components/ui/gallery/gallery.
     PopularItemComponent,
     SpecialGiftsSectionComponent,
     GalleryComponent,
+    TrustedComponent
   ],
 
   templateUrl: './home.component.html',
