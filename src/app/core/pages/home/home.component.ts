@@ -3,13 +3,12 @@ import { PopularItemComponent } from "../../../shared/components/business/popula
 import { CategoriesService } from '../../../shared/services/categories.service';
 import { Subject, takeUntil } from 'rxjs';
 import { SpecialGiftsSectionComponent } from "../../../shared/components/ui/special-gifts-section/special-gifts-section.component";
-import { RouterOutlet } from '@angular/router';
-import { PestSellerComponent } from "../../layout/pest-seller/pest-seller.component";
+import { PestSeller1Component } from "../../../shared/components/business/pest-seller1/pest-seller1.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [PopularItemComponent, SpecialGiftsSectionComponent, PestSellerComponent],
+  imports: [PopularItemComponent, SpecialGiftsSectionComponent, PestSeller1Component],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

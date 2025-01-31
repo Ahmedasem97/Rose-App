@@ -1,0 +1,49 @@
+<div class="w-full">
+
+    <div class=" flex flex-wrap">
+        <div class=" max-sm:w-full w-1/4 mt-5 "><p class="text-lg font-bold text-primary uppercase tracking-widest">Premium Gifts</p>
+            <h1 class="text-accent text-3xl font-bold mt-4">Pest <span class="text-primary">Seller <br>
+                gifts</span>  and products</h1>
+            <p class="text-descText text-base mt-4">Recusandae tempora aut laborum <br>
+                 molestias veniam. A commodi sequi <br>
+                  accusantium ullam cupiditate. Neque <br>
+                   quidem qui et autem dolor dicta <br>
+                    necessitatibus ut ad.</p>
+            <div class="mt-7">   
+                <button type="button" class="text-white bg-primary hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Explore More  <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+        <div class="max-sm:w-full w-3/4  ">
+            <owl-carousel-o [options]="customOptions">
+          
+              @for (product of productsDisplay(); track $index) {
+
+                  <ng-template carouselSlide >
+                      <div class="px-6">
+                       <app-product-card class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-3 mb-6" [productApi]="product"></app-product-card>
+                        
+                      </div>
+                    </ng-template>
+          
+              }
+              
+              @empty {
+                  <div>
+                      <p class="text-4xl">No Products in this category :</p>
+                  </div>
+              }
+          
+          
+            </owl-carousel-o>
+
+
+        </div>
+        
+
+    </div>
+
+
+    
+  
+
+</div>
