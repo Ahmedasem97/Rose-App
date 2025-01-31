@@ -19,5 +19,7 @@ export class SpecialGiftSliderComponent {
     (_, i) => i
   );
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.specialGiftsSliderList);
+  }
 }
