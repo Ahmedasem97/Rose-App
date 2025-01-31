@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { galleryMockData } from '../../../../mock/gallery.mock';
+import { GalleryMockData } from '../../../../mock/gallery.mock';
 import { SectionTagComponent } from '../section-tag/section-tag.component';
 import { SectionTitleComponent } from '../section-title/section-title.component';
+import { GalleryItems } from '../../../../core/interfaces/gallery.interface';
 
 @Component({
   selector: 'app-gallery',
@@ -11,5 +12,5 @@ import { SectionTitleComponent } from '../section-title/section-title.component'
   styleUrl: './gallery.component.scss',
 })
 export class GalleryComponent {
-  galleryItemsList = galleryMockData;
+  galleryItemsList: GalleryItems[] = GalleryMockData;
 }

@@ -1,6 +1,6 @@
-import { galleryItems } from '../core/interfaces/gallery.interface';
+import { GalleryItems } from '../core/interfaces/gallery.interface';
 
-export const galleryMockData: galleryItems[] = [
+export const GalleryMockData: GalleryItems[] = [
   {
     imageSrc: '/gallery_1.png',
   },
