@@ -1,0 +1,25 @@
+.about-us__start-side__left {
+  &__figure-container {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      right: 12.57px;
+      border: 2.57px solid var(--primary-color);
+      transform: rotate(3.09deg) translateY(-14.23px);
+      width: 100%;
+      height: calc(100% + 15px);
+      border-radius: 32px 77px 77px 77px;
+      z-index: -1;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .about-us__start-side__left__figure-container::before {
+    border-radius: 50px 120px 120px 120px;
+  }
+}
+
+// rounded-tl-[32.16px] rounded-tr-[77.19px] rounded-bl-[77.19px] rounded-br-[77.19px]
