@@ -28,6 +28,24 @@
         btnIconClasses="ml-[5px] h-4 w-[14px]"
       ></app-primary-btn>
     </div>
-    <div class="about-us__end-side__bottom max-w-[343px] flex flex-col"></div>
+    <div class="about-us__end-side__bottom max-w-[343px] flex flex-col">
+      <ul>
+        @for (featureText of featuresList; track $index) {
+        <li class="flex flex-wrap items-center mb-2">
+          <div
+            class="flex items-center justify-center list-item-icon pt-[11px] px-[13px] pb-3 rounded-[21px] w-[42px] h-[42px] overflow-hidden bg-[var(--secondary-icon-bg-color)]"
+          >
+            <img
+              src="/check-mark.png"
+              class="w-5 rounded-[21px]"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <span class="ml-2">{{ featureText }}</span>
+        </li>
+        }
+      </ul>
+    </div>
   </div>
 </section>
