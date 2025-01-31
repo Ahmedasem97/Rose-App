@@ -8,13 +8,13 @@ import { Subject, takeUntil } from 'rxjs';
 import { PopularItemComponent } from '../popular-item/popular-item.component';
 
 @Component({
-  selector: 'app-pest-seller1',
+  selector: 'app-Best-seller1',
   standalone: true,
   imports: [ProductCardComponent,CarouselModule ],
   templateUrl: './pest-seller1.component.html',
   styleUrl: './pest-seller1.component.scss'
 })
-export class PestSeller1Component  {
+export class BestSeller1Component  {
 
   private _ProductsService = inject(ProductsService)
 
