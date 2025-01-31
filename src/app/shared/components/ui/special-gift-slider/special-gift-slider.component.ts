@@ -12,20 +12,15 @@ import { PrimaryBtnComponent } from '../primary-btn/primary-btn.component';
   styleUrl: './special-gift-slider.component.scss',
 })
 export class SpecialGiftSliderComponent {
-  constructor(private flowbiteService: FlowbiteService) {}
+  constructor() {}
   specialGiftsSliderList = specialGiftsMockData.slice(0, 4);
   sliderIndicators = Array.from(
     { length: this.specialGiftsSliderList.length },
     (_, i) => i
   );
-  loadFlowbite() {
-    this.flowbiteService.loadFlowbite((flowbite) => {
-      console.log('Flowbite loaded', flowbite);
-    });
-  }
+ 
 
   ngOnInit(): void {
-    initFlowbite();
-    this.loadFlowbite();
+    
   }
 }

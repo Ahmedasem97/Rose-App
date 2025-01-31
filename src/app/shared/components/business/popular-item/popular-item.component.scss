@@ -1,0 +1,33 @@
+
+
+.popular__active {
+    color: var(--active-color);
+    text-decoration-line: underline;
+    text-underline-offset: 15%;
+    text-decoration-thickness: 13.5%;
+    text-underline-position: from-font;
+}
+
+.popular__items__header {
+
+    h1::before {
+        content: "";
+        background-color: #FEEDF7;
+        width: 136px;
+        height: 17px;
+        top: 22px;
+        border-radius: 0px 20px 20px 0px;
+        position: absolute;
+        z-index: -1;
+    }
+    
+    h1::after {
+        content: "";
+        width: 53px;
+        height: 2px;
+        top: 37px;
+        left: 0;
+        background-color: #F82BA9;
+        position: absolute;
+    }
+}
