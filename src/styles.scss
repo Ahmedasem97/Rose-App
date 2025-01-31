@@ -54,6 +54,7 @@
   --light-background-color-rgb: 254, 237, 247;
   --accent-color: #160e4b;
   --description-color: #757f95;
+  --policy-color: #797979;
   --white-color: #ffffff;
   --price-color: #F05454;
   --active-color: #F82BA9;
@@ -69,4 +70,26 @@
 
 body {
   font-family: Inter, Helvetica, sans-serif;
+}
+
+.owl-prev , .owl-next{
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  position: absolute;
+  background-color: #F82BA9 !important;
+  text-align: center;
+  top: 35%;
+
+}
+.owl-prev{
+  left: 20px;
+}
+.owl-next{
+  right: 20px;
+}
+.owl-prev i , .owl-next i{
+  top: 35%;
+  
+  transform: translate(0, 35%);
 }
