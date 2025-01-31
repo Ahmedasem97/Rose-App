@@ -1,8 +1,9 @@
 import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { ReviewCardComponent } from "../../business/review-card/review-card.component";
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
-import { ReviewMockDataService } from '../../../../core/mock data/review-mock-data.service';
+// import { ReviewMockDataService } from '../../../../core/mock data/review.service';
 import { reviewMockData } from '../../../../core/interfaces/review';
+import { ReviewService } from '../../../../core/mock data/review.service';
 
 @Component({
   selector: 'app-review',
@@ -21,7 +22,7 @@ export class ReviewComponent implements OnInit {
     pullDrag: false,
     dots: true,
     navSpeed: 700,
-    navText: ['', ''],
+    navText: ['<i class="fa-solid fa-chevron-left"></i>', '<i class="fa-solid fa-chevron-right"></i>'],
     responsive: {
       0: {
         items: 1
@@ -37,15 +38,15 @@ export class ReviewComponent implements OnInit {
       },
 
     },
-    nav: false
+    nav: true
   }
 
-  private ReviewMockDataService = inject(ReviewMockDataService)
+  private _reviewService = inject(ReviewService)
 
 
 
   ngOnInit(): void {
-    this.reviewApi.set(this.ReviewMockDataService.reviewMD)
+    this.reviewApi.set(this._reviewService.getStaticData())
   }
 
 
