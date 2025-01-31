@@ -6,16 +6,13 @@
 
 ::ng-deep {
 
-    // .review .owl-item.active {
-    //     width: 25% !important;
-    // }
     owl-carousel-o {
         width: 100%;
     }
 
-    .owl-theme .owl-nav.disabled+.owl-dots {
+    .owl-dots {
         width: fit-content;
-        margin: 40px auto;
+        margin: 40px auto 0px;
     }
 
     .owl-theme .owl-dots .owl-dot.active span {
