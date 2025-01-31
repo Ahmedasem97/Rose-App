@@ -12,7 +12,7 @@ import { PrimaryBtnComponent } from '../primary-btn/primary-btn.component';
   styleUrl: './special-gift-slider.component.scss',
 })
 export class SpecialGiftSliderComponent {
-  specialGiftsSliderList = specialGiftsMockData.slice(0, 4);
+  specialGiftsSliderList = specialGiftsMockData.slice(0, 3);
   constructor() {}
   sliderIndicators = Array.from(
     { length: this.specialGiftsSliderList.length },

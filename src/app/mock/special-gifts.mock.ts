@@ -28,15 +28,6 @@ export const specialGiftsMockData: SpecialGifts[] = [
     description:
       'Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis. Rerum optio dolores et.',
   },
-  {
-    imageSrc: '/special-gift-slider_1.png',
-    label: 'Best Gift Shop',
-    labelColor: '',
-    btnText: 'Shop Now',
-    title: 'Choose Perfect <span class="text-primary">Gifts</span> From Us',
-    description:
-      'Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis. Rerum optio dolores et.',
-  },
   // -------------------- End Of Slider ---------------
   {
     imageSrc: '/special-gift-left-side.png',
