@@ -12,15 +12,12 @@ import { PrimaryBtnComponent } from '../primary-btn/primary-btn.component';
   styleUrl: './special-gift-slider.component.scss',
 })
 export class SpecialGiftSliderComponent {
-  constructor() {}
   specialGiftsSliderList = specialGiftsMockData.slice(0, 4);
+  constructor() {}
   sliderIndicators = Array.from(
     { length: this.specialGiftsSliderList.length },
     (_, i) => i
   );
- 
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 }
