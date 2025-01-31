@@ -10,11 +10,11 @@ import { Component } from '@angular/core';
 export class TrustedComponent {
 
   companyImg = [
-    "/company_1.png",
-    "/company_2.png",
-    "/company_3.png",
-    "/company_4.png",
-    "/company_5.png",
-    "/company_6.png",
+    { src: "/company_1.png", name: "coconut."},
+    { src: "/company_2.png", name: "ginyard"},
+    { src: "/company_3.png", name: "ingoude"},
+    { src: "/company_4.png", name: "velvet"},
+    { src: "/company_5.png", name: "ingoude"},
+    { src: "/company_6.png", name: "habus"},
   ]
 }
