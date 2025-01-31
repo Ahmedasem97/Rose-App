@@ -1,0 +1,28 @@
+.title_text {
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: var(--light-background-color);
+    height: 17px;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: calc(100% - 100px);
+    top: 21px;
+    z-index: -1;
+    left: 0;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: var(--primary-color);
+    height: 2px;
+    width: calc(100% - 277px);
+    top: 36px;
+    left: 0;
+  }
+}
