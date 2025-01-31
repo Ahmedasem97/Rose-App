@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { policyRules } from '../../../../mock/policy-rules';
 
 @Component({
   selector: 'app-policy',
@@ -9,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export class PolicyComponent {
 
+
+  policyRule=policyRules
 }

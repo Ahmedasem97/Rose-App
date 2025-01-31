@@ -5,10 +5,12 @@ import { Subject, takeUntil } from 'rxjs';
 import { SpecialGiftsSectionComponent } from "../../../shared/components/ui/special-gifts-section/special-gifts-section.component";
 import {  BestSeller1Component } from "../../../shared/components/business/pest-seller1/pest-seller1.component";
 
+
+
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [PopularItemComponent, SpecialGiftsSectionComponent,  BestSeller1Component],
+  imports: [PopularItemComponent, SpecialGiftsSectionComponent, BestSeller1Component],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

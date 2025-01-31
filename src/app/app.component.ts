@@ -22,8 +22,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this._flowbiteService.loadFlowbite(flowbite => {
-      // Your custom code here
-      console.log('Flowbite loaded', flowbite);
+      
     });
   }
 }

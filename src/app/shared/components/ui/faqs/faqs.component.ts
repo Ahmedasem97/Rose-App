@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faqsRules } from '../../../../mock/faqs-rules';
 
 @Component({
   selector: 'app-faqs',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './faqs.component.scss'
 })
 export class FAQSComponent {
+
+  faqsrule=faqsRules
 
 }
