@@ -17,4 +17,6 @@ export class TrustedComponent {
     { src: "/company_5.png", name: "ingoude"},
     { src: "/company_6.png", name: "habus"},
   ]
+
+  
 }
