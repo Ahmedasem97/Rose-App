@@ -1,8 +1,19 @@
 <div class="w-full">
 
-    <div class="grid grid-cols-4">
-        <div><h1>Premium Gifts</h1></div>
-        <div class="col-span-3 bg-footer-text1">
+    <div class="grid grid-cols-4 ">
+        <div class="max-sm:grid-cols-12 mt-5 "><p class="text-lg font-bold text-primary uppercase tracking-widest">Premium Gifts</p>
+            <h1 class="text-accent text-3xl font-bold mt-4">Pest <span class="text-primary">Seller <br>
+                gifts</span>  and products</h1>
+            <p class="text-descText text-base mt-4">Recusandae tempora aut laborum <br>
+                 molestias veniam. A commodi sequi <br>
+                  accusantium ullam cupiditate. Neque <br>
+                   quidem qui et autem dolor dicta <br>
+                    necessitatibus ut ad.</p>
+            <div class="mt-7">   
+                <button type="button" class="text-white bg-primary hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Explore More  <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+        <div class="col-span-3 max-sm:grid-cols-12">
             <owl-carousel-o [options]="customOptions">
           
               @for (product of productsDisplay(); track $index) {

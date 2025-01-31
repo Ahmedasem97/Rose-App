@@ -22,9 +22,15 @@ export class PestSellerComponent implements OnInit, OnDestroy {
     pullDrag: true,
     dots: false,
     navSpeed: 700,
-    navText: ['', ''],
+    navText: ['<i class="fa-solid fa-chevron-left"></i>', '<i class="fa-solid fa-chevron-right"></i>'],
     responsive: {
     
+      0: {
+        items: 1
+      },
+      765: {
+        items: 3
+      },
       940: {
         items: 3
       }

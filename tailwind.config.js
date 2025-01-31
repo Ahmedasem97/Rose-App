@@ -22,6 +22,7 @@ module.exports = {
       'footer-text1': '#F82BA9',
       'footer-text2': '#757F95',
       primary: "var(--primary-color)",
+      policy:"var(--policy-color)",
       "primary-color-alpha": "var(--primary-color-alpha)",
       "primary-rgb": "var(--primary-color-rgb)",
       "light-prim-background": "var(--light-background-color)",
