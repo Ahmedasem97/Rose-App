@@ -13,7 +13,11 @@ import { GalleryComponent } from '../../../shared/components/ui/gallery/gallery.
 import { CategoriesComponent } from "../../../shared/components/ui/categories/categories.component";
 import { TrustedComponent } from '../../../shared/components/ui/trusted/trusted.component';
 import {  BestSeller1Component } from "../../../shared/components/business/pest-seller1/pest-seller1.component";
+<<<<<<< HEAD
 import { ReviewComponent } from "../../../shared/components/ui/review/review.component";
+=======
+import { FeaturesComponent } from "../../../shared/components/ui/features/features.component";
+>>>>>>> feature/free-delivery
 
 @Component({
   selector: 'app-home',
@@ -25,7 +29,11 @@ import { ReviewComponent } from "../../../shared/components/ui/review/review.com
     CategoriesComponent,
     TrustedComponent,
     BestSeller1Component,
+<<<<<<< HEAD
     ReviewComponent
+=======
+    FeaturesComponent
+>>>>>>> feature/free-delivery
 ],
 
   templateUrl: './home.component.html',
