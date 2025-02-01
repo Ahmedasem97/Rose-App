@@ -1,5 +1,5 @@
 .review {
-    background-image: url("../../../../../../public/Birthday\ background.png");
+    background-image: url("/Birthday\ background.png");
 
 
 }
@@ -44,9 +44,7 @@
             height: 38px;
             border-radius: 50% !important;
             background-color: var(--primary-color) !important;
-            display: flex !important;
-            justify-content: center;
-            align-items: center;
+
         }
     }
     

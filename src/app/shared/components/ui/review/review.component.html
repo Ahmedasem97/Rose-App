@@ -5,7 +5,9 @@
             <ng-container>
                 @for (card of reviewApi(); track $index) {
                 <ng-template carouselSlide>
-                    <app-review-card class="w-full px-3 block" [reviewApi]="card"></app-review-card>
+                    <div class="w-full px-3 block">
+                        <app-review-card  [reviewApi]="card"></app-review-card>
+                    </div>
                 </ng-template>
                 }
             </ng-container>

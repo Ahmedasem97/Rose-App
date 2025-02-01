@@ -1,9 +1,8 @@
 import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { ReviewCardComponent } from "../../business/review-card/review-card.component";
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
-// import { ReviewMockDataService } from '../../../../core/mock data/review.service';
 import { reviewMockData } from '../../../../core/interfaces/review';
-import { ReviewService } from '../../../../core/mock data/review.service';
+import { ReviewService } from '../../../services/review.service';
 
 @Component({
   selector: 'app-review',
