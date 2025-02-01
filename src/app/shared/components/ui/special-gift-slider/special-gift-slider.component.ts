@@ -13,11 +13,16 @@ import { PrimaryBtnComponent } from '../primary-btn/primary-btn.component';
 })
 export class SpecialGiftSliderComponent {
   specialGiftsSliderList = specialGiftsMockData.slice(0, 3);
-  constructor() {}
+  constructor(private flowbiteService: FlowbiteService) {}
   sliderIndicators = Array.from(
     { length: this.specialGiftsSliderList.length },
     (_, i) => i
   );
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.flowbiteService.loadFlowbite((flowbite) => {
+      initFlowbite();
+      console.log('Flowbite loaded', flowbite);
+    });
+  }
 }
