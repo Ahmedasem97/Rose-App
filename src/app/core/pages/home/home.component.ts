@@ -10,10 +10,10 @@ import { CategoriesService } from '../../../shared/services/categories.service';
 import { Subject, takeUntil } from 'rxjs';
 import { SpecialGiftsSectionComponent } from '../../../shared/components/ui/special-gifts-section/special-gifts-section.component';
 import { GalleryComponent } from '../../../shared/components/ui/gallery/gallery.component';
-import { CategoriesComponent } from "../../../shared/components/ui/categories/categories.component";
+import { CategoriesComponent } from '../../../shared/components/ui/categories/categories.component';
 import { TrustedComponent } from '../../../shared/components/ui/trusted/trusted.component';
-import {  BestSeller1Component } from "../../../shared/components/business/pest-seller1/pest-seller1.component";
-
+import { BestSeller1Component } from '../../../shared/components/business/pest-seller1/pest-seller1.component';
+import { AboutUsComponent } from '../../../shared/components/ui/about-us/about-us.component';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -21,10 +21,11 @@ import {  BestSeller1Component } from "../../../shared/components/business/pest-
     PopularItemComponent,
     SpecialGiftsSectionComponent,
     GalleryComponent,
+    AboutUsComponent,
     CategoriesComponent,
     TrustedComponent,
-    BestSeller1Component
-],
+    BestSeller1Component,
+  ],
 
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -49,5 +50,4 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.$destroy.next('subscribeDestroy');
   }
-
 }

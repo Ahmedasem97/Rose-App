@@ -1,5 +1,8 @@
 <p
-  class="uppercase text-center text-primary m-0 font-bold text-[17px] leading-7 tracking-[4px]"
+  [class]="
+    'uppercase text-center text-primary m-0 font-bold text-[17px] leading-7 tracking-[4px] ' +
+    tagClasses
+  "
 >
   {{ tagName }}
 </p>

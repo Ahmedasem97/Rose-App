@@ -3,8 +3,10 @@
 <!-- sm:w-[500px] -->
 <!-- md:w-[600px]  -->
 <!-- sm:w-[600px] md:w-[100%] -->
+
+@if(specialGiftsSliderList.length > 0){
 <div
-  id="default-carousel"
+  id="special-gifts-carousel"
   class="relative h-[217px] sm:h-[440px] md:h-[440px] lg:rounded-[20px] lg:h-[441px]"
   data-carousel="slide"
 >
@@ -12,7 +14,7 @@
   <div class="relative h-full overflow-hidden max-sm:rounded-[20px] rounded-lg">
     @for (item of specialGiftsSliderList; track $index) {
     <div
-      [id]="'carousel-item-' + ($index + 1)"
+      [id]="'sg_carousel-item-' + ($index + 1)"
       [class]="'duration-700 ease-in-out h-full'"
       data-carousel-item
     >
@@ -100,3 +102,4 @@
     </span>
   </button>
 </div>
+}@else{ }

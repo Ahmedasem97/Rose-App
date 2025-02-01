@@ -1,39 +1,41 @@
-<div
-  class="mt-[24px] max-xl:mx-2 flex flex-col sm:flex-row flex-wrap justify-center min-[340px]:items-center"
->
-  <app-special-gift-banner
-    class="max-[340px]:w-[100%] md:mr-[25px] max-md:mb-[24px] min-md:mb-0 mr-0"
-    [label]="specialGiftsBannerList[0].label"
-    [title]="specialGiftsBannerList[0].title"
-    [btnText]="specialGiftsBannerList[0].btnText"
-    [imgSrc]="specialGiftsBannerList[0].imageSrc"
-  ></app-special-gift-banner>
-  <!-- md:w-[441px] lg:h-[441px] md:h-[440px] sm:h-[440px] md:min-w-screen-md sm-min-w-screen-sm -->
-  <app-special-gift-slider
-    class="max-md:w-[100%] min-[340px]:flex-grow"
-  ></app-special-gift-slider>
-</div>
-
-<ul
-  class="mt-[24px] flex flex-col max-md:mx-2 sm:flex-row flex-wrap justify-center"
->
-  @for (card of specialGiftsCardsList; track $index) {
-
-  <li
-    [class]="
-      'w-[100%] min-[370px]:w-auto mt-2 md:mt-0 mr-0 flex-grow-0 min-[370px]:flex-grow' +
-      ($last ? '' : ' sm:mr-[12px] ') +
-      ($last ? '' : ' md:mr-[24px] ')
-    "
+<section class="mb-6 md:mb-20">
+  <div
+    class="mt-[24px] max-xl:mx-2 flex flex-col sm:flex-row flex-wrap justify-center min-[340px]:items-center"
   >
-    <app-special-gift-card
-      [label]="card.label"
-      [title]="card.title"
-      [labelColor]="card.labelColor"
-      [btnText]="card.btnText"
-      [imgSrc]="card.imageSrc"
-      [titleClasses]="$last ? 'max-sm:text-white' : ''"
-    ></app-special-gift-card>
-  </li>
-  }
-</ul>
+    <app-special-gift-banner
+      class="max-[340px]:w-[100%] md:mr-[25px] max-md:mb-[24px] min-md:mb-0 mr-0"
+      [label]="specialGiftsBannerList[0].label"
+      [title]="specialGiftsBannerList[0].title"
+      [btnText]="specialGiftsBannerList[0].btnText"
+      [imgSrc]="specialGiftsBannerList[0].imageSrc"
+    ></app-special-gift-banner>
+    <!-- md:w-[441px] lg:h-[441px] md:h-[440px] sm:h-[440px] md:min-w-screen-md sm-min-w-screen-sm -->
+    <app-special-gift-slider
+      class="max-md:w-[100%] min-[340px]:flex-grow"
+    ></app-special-gift-slider>
+  </div>
+
+  <ul
+    class="mt-[24px] flex flex-col max-md:mx-2 sm:flex-row flex-wrap justify-center"
+  >
+    @for (card of specialGiftsCardsList; track $index) {
+
+    <li
+      [class]="
+        'w-[100%] min-[370px]:w-auto mt-2 md:mt-0 mr-0 flex-grow-0 min-[370px]:flex-grow' +
+        ($last ? '' : ' sm:mr-[12px] ') +
+        ($last ? '' : ' md:mr-[24px] ')
+      "
+    >
+      <app-special-gift-card
+        [label]="card.label"
+        [title]="card.title"
+        [labelColor]="card.labelColor"
+        [btnText]="card.btnText"
+        [imgSrc]="card.imageSrc"
+        [titleClasses]="$last ? 'max-sm:text-white' : ''"
+      ></app-special-gift-card>
+    </li>
+    }
+  </ul>
+</section>
