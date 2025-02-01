@@ -1,0 +1,53 @@
+.review {
+    background-image: url("../../../../../../public/Birthday\ background.png");
+
+
+}
+
+::ng-deep {
+
+    owl-carousel-o {
+        width: 100%;
+    }
+
+    .owl-dots {
+        width: fit-content;
+        margin: 40px auto 0px;
+    }
+
+    .owl-theme .owl-dots .owl-dot.active span {
+        width: 36px;
+        height: 16px;
+    }
+
+    .owl-theme .owl-dots .owl-dot span {
+        background-color: var(--white-color);
+        width: 16px;
+        height: 16px;
+    }
+
+    .owl-theme .owl-dots .owl-dot.active span,
+    .owl-theme .owl-dots .owl-dot:hover span {
+        background-color: var(--white-color);
+    }
+
+    .owl-nav {
+        position: absolute;
+        top: 50%;
+        transform: translate(0px, -50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        
+        .owl-next, .owl-prev {
+            width: 38px;
+            height: 38px;
+            border-radius: 50% !important;
+            background-color: var(--primary-color) !important;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    
+}
