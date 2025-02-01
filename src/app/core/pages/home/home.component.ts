@@ -13,6 +13,7 @@ import { GalleryComponent } from '../../../shared/components/ui/gallery/gallery.
 import { CategoriesComponent } from "../../../shared/components/ui/categories/categories.component";
 import { TrustedComponent } from '../../../shared/components/ui/trusted/trusted.component';
 import {  BestSeller1Component } from "../../../shared/components/business/pest-seller1/pest-seller1.component";
+import { FeaturesComponent } from "../../../shared/components/ui/features/features.component";
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,8 @@ import {  BestSeller1Component } from "../../../shared/components/business/pest-
     GalleryComponent,
     CategoriesComponent,
     TrustedComponent,
-    BestSeller1Component
+    BestSeller1Component,
+    FeaturesComponent
 ],
 
   templateUrl: './home.component.html',
