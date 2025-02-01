@@ -11,6 +11,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { SpecialGiftsSectionComponent } from '../../../shared/components/ui/special-gifts-section/special-gifts-section.component';
 import { GalleryComponent } from '../../../shared/components/ui/gallery/gallery.component';
 import { CategoriesComponent } from "../../../shared/components/ui/categories/categories.component";
+import { TrustedComponent } from '../../../shared/components/ui/trusted/trusted.component';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -19,7 +20,8 @@ import { CategoriesComponent } from "../../../shared/components/ui/categories/ca
     PopularItemComponent,
     SpecialGiftsSectionComponent,
     GalleryComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    TrustedComponent
 ],
 
   templateUrl: './home.component.html',
