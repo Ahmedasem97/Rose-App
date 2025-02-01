@@ -12,16 +12,18 @@ import { SpecialGiftsSectionComponent } from '../../../shared/components/ui/spec
 import { GalleryComponent } from '../../../shared/components/ui/gallery/gallery.component';
 import { CategoriesComponent } from "../../../shared/components/ui/categories/categories.component";
 import { TrustedComponent } from '../../../shared/components/ui/trusted/trusted.component';
+import {  BestSeller1Component } from "../../../shared/components/business/pest-seller1/pest-seller1.component";
+
 @Component({
   selector: 'app-home',
   standalone: true,
-
   imports: [
     PopularItemComponent,
     SpecialGiftsSectionComponent,
     GalleryComponent,
     CategoriesComponent,
-    TrustedComponent
+    TrustedComponent,
+    BestSeller1Component
 ],
 
   templateUrl: './home.component.html',
@@ -47,4 +49,5 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.$destroy.next('subscribeDestroy');
   }
+
 }
