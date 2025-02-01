@@ -1,0 +1,11 @@
+<div class="card p-4 mt-5 h-[122px]">
+    <div  [className]="innerDivClasses()">
+        <div class="image" [className]="classes()">
+            <img [src]="getcategoryApi().image" [alt]="getcategoryApi().name">
+        </div>
+        <div class="ml-4">
+            <h1 class="font-semibold text-xl">{{getcategoryApi().name}}</h1>
+            <span class="text-activelink">{{getcategoryApi().productsCount}} item</span>
+        </div>
+    </div>
+</div>
