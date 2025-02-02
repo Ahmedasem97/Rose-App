@@ -1,8 +1,8 @@
 <section class="features p-10 mb-6 md:mb-20 bg-light-prim-background rounded-[var(--cards-border-radius)]">
-    <div class="flex flex-wrap justify-between">
+    <div class="flex flex-wrap justify-center items-center">
         @for (card of featureData; track $index) {
-            <div class="card">
-                <div class="flex items-center">
+            <div class="card w-full sm:w-1/2 lg:w-1/4 py-5 lg:py-0">
+                <div class="inner__card flex flex-col items-center text-center sm:text-start sm:flex-row justify-center sm:justify-start">
                     <div class="image bg-primary rounded-full w-16 h-16 flex justify-center items-center">
                         <img [src]="card.image" [alt]="card.title">
                     </div>
