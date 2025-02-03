@@ -1,0 +1,18 @@
+.input-container {
+  &__custom-input {
+    box-shadow: 0px 1px 10px 0px #0000001a;
+    padding: 8px;
+    padding-left: 16px;
+    margin-bottom: 24px;
+    width: 100%;
+    border: 0;
+    border-radius: var(--cards-border-radius);
+    background-color: var(--white-color);
+  }
+  ::placeholder {
+    color: var(--policy-color);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 36px;
+  }
+}

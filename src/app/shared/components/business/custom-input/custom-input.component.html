@@ -1,0 +1,29 @@
+<div class="input-container">
+  @if (label()) {
+  <label>{{ label() }}</label>
+  }
+  <input
+    [type]="inputType()"
+    [placeholder]="inputPlaceholder()"
+    (blur)="onTouched()"
+    (change)="onChange($event)"
+    [disabled]="disabled"
+    class="input-container__custom-input"
+    [class.invalid]="formControl.invalid && formControl.touched"
+  />
+
+  <!-- Show validation errors -->
+
+  <div class="error">
+    @if(formControl.touched){ @if(formControl.errors?.['required']){
+    <small>Please enter</small>
+    } @if(formControl.errors?.['email']){
+    <small>Invalid email format</small>
+    }@if(formControl.errors?.['minlength']){
+    <small
+      >Minimum length is
+      {{ formControl.errors?.['minlength']?.requiredLength }} characters</small
+    >
+    } }
+  </div>
+</div>
