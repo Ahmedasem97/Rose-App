@@ -12,15 +12,13 @@
     class="input-container__custom-input"
     [class.is-invalid]="formControl.invalid && formControl.touched"
     [class.is-valid]="formControl.valid && formControl.touched"
-    [ngClass]="{
-      focused: formControl.touched,
-      disabled: disabled
-    }"
+    [class.focused]="formControl.valid && formControl.touched"
+    [class.disabled]="disabled"
   />
 
   <!-- Show validation errors -->
 
-  <div class="error">
+  <!-- <div class="error">
     @if(formControl.touched){ @if(formControl.errors?.['required']){
     <small class="invalid-feedback">Please enter</small>
     } @if(formControl.errors?.['email']){
@@ -31,5 +29,5 @@
       {{ formControl.errors?.['minlength']?.requiredLength }} characters</small
     >
     } }
-  </div>
+  </div> -->
 </div>
