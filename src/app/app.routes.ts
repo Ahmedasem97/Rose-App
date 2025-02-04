@@ -18,13 +18,6 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'login',
-        loadComponent: () =>
-          import('./core/pages/login/login.component').then(
-            (c) => c.LoginComponent
-          ),
-      },
-      {
         path: 'policy',
         loadComponent: () =>
           import('./shared/components/ui/policy/policy.component').then(
