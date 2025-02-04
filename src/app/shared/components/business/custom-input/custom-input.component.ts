@@ -7,15 +7,21 @@ import {
 } from '@angular/forms';
 import { InputTypes } from '../../../../core/interfaces/custom-input.interface';
 import { CommonModule } from '@angular/common';
+import { InputValidationFeedbackComponent } from '../../ui/input-validation-feedback/input-validation-feedback.component';
 @Component({
   selector: 'app-custom-input',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    InputValidationFeedbackComponent,
+  ],
   templateUrl: './custom-input.component.html',
   styleUrl: './custom-input.component.scss',
 })
 export class CustomInputComponent implements ControlValueAccessor {
   label = input<string | undefined>();
+  inputName = input.required<string>();
   inputType = input.required<InputTypes>();
   inputPlaceholder = input.required<string | undefined>();
 
