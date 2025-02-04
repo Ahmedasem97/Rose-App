@@ -2,6 +2,7 @@
   @if (label()) {
   <label>{{ label() }}</label>
   }
+
   <input
     [type]="inputType()"
     [placeholder]="inputPlaceholder()"
@@ -9,18 +10,23 @@
     (change)="onChange($event)"
     [disabled]="disabled"
     class="input-container__custom-input"
-    [class.invalid]="formControl.invalid && formControl.touched"
+    [class.is-invalid]="formControl.invalid && formControl.touched"
+    [class.is-valid]="formControl.valid && formControl.touched"
+    [ngClass]="{
+      focused: formControl.touched,
+      disabled: disabled
+    }"
   />
 
   <!-- Show validation errors -->
 
   <div class="error">
     @if(formControl.touched){ @if(formControl.errors?.['required']){
-    <small>Please enter</small>
+    <small class="invalid-feedback">Please enter</small>
     } @if(formControl.errors?.['email']){
-    <small>Invalid email format</small>
+    <small class="invalid-feedback">Invalid email format</small>
     }@if(formControl.errors?.['minlength']){
-    <small
+    <small class="invalid-feedback"
       >Minimum length is
       {{ formControl.errors?.['minlength']?.requiredLength }} characters</small
     >

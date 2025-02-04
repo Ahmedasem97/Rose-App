@@ -6,10 +6,11 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { InputTypes } from '../../../../core/interfaces/custom-input.interface';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-custom-input',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './custom-input.component.html',
   styleUrl: './custom-input.component.scss',
 })
