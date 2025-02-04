@@ -27,7 +27,7 @@ export class CustomInputComponent implements ControlValueAccessor {
 
   value: string = '';
   disabled: boolean = false;
-  onChangeCallback = (value: any) => {};
+  onChangeCallback = (value: string) => {};
   onTouchedCallback = () => {};
 
   constructor(@Self() public ngControl: NgControl) {
@@ -54,10 +54,11 @@ export class CustomInputComponent implements ControlValueAccessor {
     this.disabled = isDisabled;
   }
 
-  onChange(event: any): void {
-    let val = event.target.value;
-    // console.log(val);
-    this.onChangeCallback(val); // Notify parent forms about the new value
+  onChange(event: Event): void {
+    let element = event.target as HTMLInputElement;
+    let value = element.value;
+    console.log(value);
+    this.onChangeCallback(value); // Notify parent forms about the new value
   }
 
   onTouched(): void {

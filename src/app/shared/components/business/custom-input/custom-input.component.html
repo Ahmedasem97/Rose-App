@@ -6,7 +6,7 @@
     [type]="inputType()"
     [placeholder]="inputPlaceholder()"
     (blur)="onTouched()"
-    (change)="onChange($event)"
+    (input)="onChange($event)"
     [disabled]="disabled"
     class="input-container__custom-input"
     [class.is-invalid]="formControl.invalid && formControl.touched"
