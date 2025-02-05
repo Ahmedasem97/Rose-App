@@ -6,6 +6,7 @@ import { FooterComponent } from "./core/layout/footer/footer.component";
 import { FlowbiteService } from './core/services/flowbite.service';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
