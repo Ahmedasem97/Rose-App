@@ -15,4 +15,9 @@ export class InputValidationFeedbackComponent {
   // This [errorMessage] to receiev errors like Password & Re-Password mismatch error [Errors related to 2 or more fields]
   // Please don't use it with single input validation
   errorMessage = input<string | undefined>();
+
+  get fieldErrorList(): any[] {
+    console.log(Object.keys(this.fieldObj()?.errors ?? {}));
+    return Object.keys(this.fieldObj()?.errors ?? {});
+  }
 }

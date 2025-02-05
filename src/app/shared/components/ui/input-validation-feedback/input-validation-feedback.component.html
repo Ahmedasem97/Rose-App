@@ -1,25 +1,50 @@
 <ul class="error flex flex-col ml-1">
-  @if(fieldObj()?.touched){ @if(fieldObj()?.errors?.['required']){
+  @if(fieldObj()?.touched){
+
+  <!-- Start of For LOOP  -->
+  @for (errorTitle of fieldErrorList; track $index) {
+
+  <!-- If Required, show the folowing error message -->
+  @if(errorTitle === 'required'){
   <li class="mb-1 text-[#dc3545] text-[80%]">Please enter {{ fieldName() }}</li>
-  } @if(fieldObj()?.errors?.['email']){
+  }
+
+  <!-- If Email pattern is wrong, show the folowing error message -->
+  @if(errorTitle === 'email'){
   <li class="mb-1 text-[#dc3545] text-[80%]">Invalid email format</li>
-  } @if(fieldObj()?.errors?.['minlength']){
+  }
+
+  <!-- If minlength, show the folowing error message -->
+  @if(errorTitle === 'minlength'){
   <li class="mb-1 text-[#dc3545] text-[80%]">
     Minimum length is
     {{ fieldObj()?.errors?.['minlength']?.requiredLength }} characters
   </li>
-  } @if(fieldObj()?.errors?.['maxlength']){
+  }
+
+  <!-- If maxlength, show the folowing error message -->
+  @if(errorTitle === 'maxlength'){
   <li class="mb-1 text-[#dc3545] text-[80%]">
-    max length is
+    Max length is
     {{ fieldObj()?.errors?.['maxlength']?.requiredLength }} characters
   </li>
-  }@if(fieldObj()?.errors?.['pattern']){
+  }
+  <!-- If pattern of input is wrong, show the folowing error message -->
+  @if(errorTitle === 'pattern'){
   <li class="mb-1 text-[#dc3545] text-[80%]">
     The {{ fieldName() }} pattern is incorrect
   </li>
-  } @if(errorMessage()){
+  }
+  <!--  -->
+  }
+  <!-- End of For LOOP  -->
+
+  <!-- Handle other custom validation errors -->
+  @if(errorMessage()){
   <li class="mb-1 text-[#dc3545] text-[80%]">
     {{ errorMessage() }}
   </li>
-  } }
+  }
+  <!--  -->
+  }
 </ul>
