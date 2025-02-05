@@ -16,8 +16,7 @@ export class InputValidationFeedbackComponent {
   // Please don't use it with single input validation
   errorMessage = input<string | undefined>();
 
-  get fieldErrorList(): any[] {
-    console.log(Object.keys(this.fieldObj()?.errors ?? {}));
+  get fieldErrorList(): string[] {
     return Object.keys(this.fieldObj()?.errors ?? {});
   }
 }
