@@ -29,6 +29,9 @@ export class CateogryComponent implements OnInit, OnDestroy{
   sidesize=sidebarSizes
 
 
+    
+
+
 
     productsDisplay:WritableSignal<PopularProduct[]> = signal([])
     $destroy = new Subject()
