@@ -48,7 +48,7 @@
 
 :root {
   --primary-color: #f82ba9;
-  --primary-color-alpha: #F82BA9B2;
+  --primary-color-alpha: #f82ba9b2;
   --primary-color-rgb: 248, 43, 169;
   --light-background-color: #feedf7;
   --light-background-color-rgb: 254, 237, 247;
@@ -56,8 +56,8 @@
   --description-color: #757f95;
   --policy-color: #797979;
   --white-color: #ffffff;
-  --price-color: #F05454;
-  --active-color: #F82BA9;
+  --price-color: #f05454;
+  --active-color: #f82ba9;
   --primary-icon-bg-color: var(--primary-color);
   --secondary-icon-bg-color: #8c52ff;
   --cards-border-radius: 20px;
@@ -72,27 +72,29 @@ body {
   font-family: Inter, Helvetica, sans-serif;
 }
 
-.owl-prev , .owl-next{
+.owl-prev,
+.owl-next {
   width: 38px !important;
   height: 38px !important;
   border-radius: 50% !important;
   position: absolute;
-  background-color: #F82BA9 !important;
+  background-color: #f82ba9 !important;
   text-align: center;
   top: 35%;
-
 }
-.owl-prev{
+.owl-prev {
   left: 20px;
 }
-.owl-next{
+.owl-next {
   right: 20px;
 }
-.owl-prev i , .owl-next i{
+.owl-prev i,
+.owl-next i {
   top: 35%;
-  
+
   transform: translate(0, 35%);
 }
+
 .rate-blue{
   background: #606DDD;
 }
@@ -112,3 +114,4 @@ body {
   box-shadow: 0px 1px 10px 0px #0000000D;
 
 }
+

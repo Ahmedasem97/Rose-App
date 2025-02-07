@@ -15,7 +15,7 @@ export class PrimaryBtnComponent {
   @Input() btnTextClasses: string = '';
   @Output() handleBtnClick: EventEmitter<any> = new EventEmitter<any>();
 
-  onClick(event?: any) {
-    this.handleBtnClick.emit(event);
+  onClick() {
+    this.handleBtnClick.emit();
   }
 }
