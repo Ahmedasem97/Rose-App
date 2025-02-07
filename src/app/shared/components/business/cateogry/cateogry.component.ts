@@ -18,7 +18,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 })
 export class CateogryComponent implements OnInit, OnDestroy{
 
-  private _ProductsService = inject(ProductsService)
+  private _productsService = inject(ProductsService)
   p: number = 1;
  
   
@@ -42,7 +42,7 @@ export class CateogryComponent implements OnInit, OnDestroy{
     }
     
     getPopularProductApi (keyword:string = ""):void {
-      this._ProductsService.getAllProducts(keyword)
+      this._productsService.getAllProducts(keyword)
       .pipe(
         takeUntil(this.$destroy)
       )
