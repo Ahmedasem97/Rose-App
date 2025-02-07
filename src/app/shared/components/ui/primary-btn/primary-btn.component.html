@@ -1,6 +1,9 @@
 <a
-  (click)="onClick($event)"
-  [class]="'flex items-center bg-primary text-white border-0 ' + btnClasses"
+  (click)="onClick()"
+  [class]="
+    'cursor-pointer flex items-center bg-primary text-white border-0 ' +
+    btnClasses
+  "
   ><span [class]="btnTextClasses">{{ btnText }}</span>
   @if (btnIcon) {
   <img
