@@ -1,0 +1,21 @@
+<div class="input-container mb-6">
+  @if (label()) {
+  <label>{{ label() }}</label>
+  }
+  <input
+    [type]="inputType()"
+    [placeholder]="inputPlaceholder()"
+    (blur)="onTouched()"
+    (input)="onChange($event)"
+    [disabled]="disabled"
+    class="input-container__custom-input"
+    [class.is-invalid]="formControl.invalid && formControl.touched"
+    [class.is-valid]="formControl.valid && formControl.touched"
+    [class.focused]="formControl.valid && formControl.touched"
+    [class.disabled]="disabled"
+  />
+  <app-input-validation-feedback
+    [fieldObj]="formControl"
+    fieldName="{{ inputName() }}"
+  />
+</div>
