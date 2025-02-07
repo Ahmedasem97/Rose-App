@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'auth-modal',
+  selector: 'app-modal',
   standalone: true,
   imports: [],
   templateUrl: './modal.component.html',
