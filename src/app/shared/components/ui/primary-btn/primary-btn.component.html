@@ -1,14 +1,15 @@
 <a
-  (click)="onClick($event)"
-  href=""
-  [class]="'flex items-center bg-primary text-white border-0 ' + btnClasses"
+  (click)="onClick()"
+  [class]="
+    'cursor-pointer flex items-center bg-primary text-white border-0 ' +
+    btnClasses
+  "
   ><span [class]="btnTextClasses">{{ btnText }}</span>
   @if (btnIcon) {
   <img
     [src]="btnIcon"
     [class]="'w-[13px] h-[15px] ' + btnIconClasses"
     alt="right arrow"
-    srcset=""
   />
   }
 </a>
