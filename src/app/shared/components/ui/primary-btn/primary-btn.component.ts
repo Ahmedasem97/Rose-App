@@ -14,6 +14,7 @@ export class PrimaryBtnComponent {
   btnClasses = input<string>();
   isDisabled = input<boolean>();
   isLoading = input<boolean>();
+  loadingMsg = input<boolean>();
   btnTextClasses = input<string>();
   handleBtnClick = output();
   onClick() {

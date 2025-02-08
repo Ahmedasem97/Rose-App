@@ -1,15 +1,24 @@
 <a
   (click)="onClick()"
   [class]="
-    'cursor-pointer flex items-center bg-primary text-white border-0 ' +
-    btnClasses
+    'cursor-pointer flex items-center border-0 ' +
+    ' ' +
+    (isDisabled() ? 'bg-footer-text2 text-primary' : 'bg-primary text-white') +
+    ' ' +
+    btnClasses()
   "
-  ><span [class]="btnTextClasses()">{{ btnText() }}</span>
+>
+  @if(!isLoading()){
+  <span [class]="btnTextClasses()">{{ btnText() }}</span>
   @if (btnIcon()) {
   <img
     [src]="btnIcon()"
-    [class]="'w-[13px] h-[15px] ' + btnIconClasses"
+    [class]="'w-[13px] h-[15px] ' + btnIconClasses()"
     alt="right arrow"
   />
+  } }@else{
+  <!-- TODO: Display Loading -->
+  <span [class]="'text-primary'">{{ loadingMsg() + "..." }}</span>
+
   }
 </a>
