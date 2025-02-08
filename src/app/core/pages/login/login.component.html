@@ -1,4 +1,4 @@
-<form class="row g-3 my-[190px]" [formGroup]="loginForm">
+<form class="row g-3" [formGroup]="loginForm">
   <app-custom-input
     [inputPlaceholder]="'Email'"
     [inputType]="'email'"
@@ -11,5 +11,9 @@
     inputName="Password"
     formControlName="password"
   ></app-custom-input>
-  <button (click)="submit()">Submit</button>
+  <app-primary-btn
+    (handleBtnClick)="submit()"
+    btnText="btnText"
+    [btnClasses]="'d'"
+  />
 </form>
