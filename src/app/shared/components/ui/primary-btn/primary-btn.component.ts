@@ -1,9 +1,10 @@
 import { Component, input, output } from '@angular/core';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-primary-btn',
   standalone: true,
-  imports: [],
+  imports: [LoaderComponent],
   templateUrl: './primary-btn.component.html',
   styleUrl: './primary-btn.component.scss',
 })

@@ -17,8 +17,8 @@
     alt="right arrow"
   />
   } }@else{
-  <!-- TODO: Display Loading -->
-  <span [class]="'text-primary'">{{ loadingMsg() + "..." }}</span>
 
+  <span [class]="'text-primary'">{{ loadingMsg() + "..." }}</span>
+  <app-loader width="48px" height="48px" color="var(--primary-color)" />
   }
 </a>
