@@ -12,8 +12,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class ForgetPasswordComponent {
 
-  forgetPassword: FormGroup = new FormGroup({
-    email: new FormControl(null, [Validators.required, Validators.email]),
+  forgetPasswordForm: FormGroup = new FormGroup({
+    email: new FormControl(null, [Validators.required]),
   })
 
 
