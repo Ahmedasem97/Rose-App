@@ -7,28 +7,49 @@ import { SsrCookieService } from 'ngx-cookie-service-ssr';
 })
 export class CookieManagerService {
   private readonly _platform = inject(PLATFORM_ID);
-  private readonly _SsrCookieService = inject(SsrCookieService);
+  private readonly _ssrCookieService = inject(SsrCookieService);
 
+  /**
+   * @param name : the cookie name
+   * @summary Check if the given cookie name exists or not
+   * @returns true if cookie available otherwise false
+   * */
   isCookieExists(name: string): boolean {
-    return this._SsrCookieService.check(name);
+    return this._ssrCookieService.check(name);
   }
 
-  setCookie(name: string, value: string, expires: number) {
+  /**
+   * @param name : the cookie name
+   * @param value : the cookie value to be set
+   * @param expires : the cookie expiration
+   * @summary Add new cookie
+   * */
+  setCookie(name: string, value: string, expires?: number | Date) {
     if (isPlatformBrowser(this._platform)) {
-      this._SsrCookieService.set(name, value, expires);
+      this._ssrCookieService.set(name, value, expires);
     }
   }
 
+  /**
+   * @param name : the cookie name
+   * @summary Retrieve the cookie value based on the given cookie name
+   * @returns the cookie value if cookie available otherwise null
+   * */
   getCookie(name: string): string | null {
     if (isPlatformBrowser(this._platform) && this.isCookieExists(name)) {
-      return this._SsrCookieService.get(name);
+      return this._ssrCookieService.get(name);
     }
     return null;
   }
 
+  /**
+   * @param name : the cookie name
+   * @summary Delete the given cookie
+   * @returns Deletes the cookie
+   * */
   deleteCookie(name: string) {
     if (isPlatformBrowser(this._platform)) {
-      this._SsrCookieService.delete(name);
+      this._ssrCookieService.delete(name);
     }
   }
 }
