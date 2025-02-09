@@ -1,0 +1,10 @@
+<section class="verify__code">
+    <h1 class="text-3xl mb-8">Verify Code</h1>
+    <form [formGroup]="verifyCodeForm">
+        <app-custom-input formControlName="resetCode" [inputName]="'Email'" [inputType]="'email'" inputPlaceholder="Enter Code" ></app-custom-input>
+    </form>
+    <p class="text-right mb-8">Didn’t receive a code? <span class="text-primary underline">Resend</span></p>
+    <div>
+        <app-primary-btn [btnText]="'Recover Password'" [btnClasses]="'rounded-[30px] flex justify-center items-center h-[50px]'" />
+    </div>
+</section>
