@@ -17,27 +17,35 @@ export const routes: Routes = [
             (c) => c.HomeComponent
           ),
       },
-      {
-        path: 'policy',
-        loadComponent: () =>
-          import('./shared/components/ui/policy/policy.component').then(
-            (c) => c.PolicyComponent
-          ),
-      },
-      {
-        path: 'delivery',
-        loadComponent: () =>
-          import('./shared/components/ui/delivery/delivery.component').then(
-            (c) => c.DeliveryComponent
-          ),
-      },
-      {
-        path: 'faqs',
-        loadComponent: () =>
-          import('./shared/components/ui/faqs/faqs.component').then(
-            (c) => c.FAQSComponent
-          ),
-      },
+      
     ],
+  },
+  {
+    path: 'policy',
+    loadComponent: () =>
+      import('./shared/components/ui/policy/policy.component').then(
+        (c) => c.PolicyComponent
+      ),
+  },
+  {
+    path: 'delivery',
+    loadComponent: () =>
+      import('./shared/components/ui/delivery/delivery.component').then(
+        (c) => c.DeliveryComponent
+      ),
+  },
+  {
+    path: 'faqs',
+    loadComponent: () =>
+      import('./shared/components/ui/faqs/faqs.component').then(
+        (c) => c.FAQSComponent
+      ),
+  },
+  {
+    path: 'allcateogry',
+    loadComponent: () =>
+      import('./shared/components/business/cateogry/cateogry.component').then(
+        (c) => c.CateogryComponent
+      ),
   },
 ];

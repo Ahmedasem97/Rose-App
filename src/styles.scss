@@ -80,7 +80,7 @@ body {
   position: absolute;
   background-color: #f82ba9 !important;
   text-align: center;
-  top: 35%;
+  top: 50%;
 }
 .owl-prev {
   left: 20px;
@@ -90,7 +90,7 @@ body {
 }
 .owl-prev i,
 .owl-next i {
-  top: 35%;
+  top: 50% !important;
 
   transform: translate(0, 35%);
 }

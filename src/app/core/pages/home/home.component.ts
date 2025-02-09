@@ -29,7 +29,7 @@ import { CateogryComponent } from "../../../shared/components/business/cateogry/
     BestSeller1Component,
     ReviewComponent,
     FeaturesComponent,
-    CateogryComponent
+    
 ],
 
   templateUrl: './home.component.html',
