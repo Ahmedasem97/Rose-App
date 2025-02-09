@@ -20,13 +20,25 @@ import { InputValidationFeedbackComponent } from '../../ui/input-validation-feed
   styleUrl: './custom-input.component.scss',
 })
 export class CustomInputComponent implements ControlValueAccessor {
+  // Label
   label = input<string | undefined>();
+  // Input attributes
   inputName = input.required<string>();
   inputType = input.required<InputTypes>();
-  inputPlaceholder = input.required<string | undefined>();
+  inputValue = input<string>();
+  inputPlaceholder = input<string | undefined>();
+  inputId = input<string>(); // for label effect
+  // Variables for styles
+  labelClasses = input<string>();
+  inputGroupClasses = input<string>();
+  inputClasses = input<string>();
 
+  // Variables for logic
+  checked: boolean = false;
   value: string = '';
   disabled: boolean = false;
+
+  // Callback functions to track input
   onChangeCallback = (value: string) => {};
   onTouchedCallback = () => {};
 
@@ -39,6 +51,7 @@ export class CustomInputComponent implements ControlValueAccessor {
   }
 
   writeValue(value: string): void {
+    console.log(value);
     this.value = value || '';
   }
 
@@ -57,11 +70,26 @@ export class CustomInputComponent implements ControlValueAccessor {
   onChange(event: Event): void {
     let element = event.target as HTMLInputElement;
     let value = element.value;
-    console.log(value);
     this.onChangeCallback(value); // Notify parent forms about the new value
   }
 
   onTouched(): void {
     this.onTouchedCallback(); // Notify parent forms that the input was touched
+  }
+
+  toggleCheckbox() {
+    this.checked = !this.checked;
+    let value = this.checked ? 'Yes' : '';
+    this.onChangeCallback(value); // Notify parent forms about the new value
+  }
+
+  switchRadio(event: Event) {
+    // this.checked = !this.checked;
+    let element = event.target as HTMLInputElement;
+    let value = element.value;
+    console.log(element);
+    console.log(value);
+    // console.log(this.checked);
+    this.onChangeCallback(value); // Notify parent forms about the new value
   }
 }

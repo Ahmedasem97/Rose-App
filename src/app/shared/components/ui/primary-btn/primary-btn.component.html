@@ -1,11 +1,15 @@
 <a
   (click)="onClick()"
   [class]="
-    'cursor-pointer flex items-center border-0 ' +
+    'flex items-center border-0 ' +
     ' ' +
-    (isDisabled() ? 'bg-gray-300 text-primary' : 'bg-primary text-white') +
+    (isDisabled()
+      ? 'bg-gray-300 text-primary'
+      : 'bg-primary text-white cursor-pointer') +
     ' ' +
-    btnClasses()
+    (btnClasses()
+      ? btnClasses()
+      : ' rounded-[30px] px-[31px] text-center justify-center h-[50px]')
   "
 >
   @if(!isLoading()){

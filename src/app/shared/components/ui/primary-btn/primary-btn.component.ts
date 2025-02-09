@@ -19,6 +19,8 @@ export class PrimaryBtnComponent {
   btnTextClasses = input<string>();
   handleBtnClick = output();
   onClick() {
-    this.handleBtnClick.emit();
+    if (!this.isDisabled()) {
+      this.handleBtnClick.emit();
+    }
   }
 }
