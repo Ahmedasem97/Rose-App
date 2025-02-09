@@ -17,6 +17,13 @@ export const routes: Routes = [
             (c) => c.HomeComponent
           ),
       },
+        {
+          path: 'allcateogry',
+          loadComponent: () =>
+            import('./shared/components/business/cateogry/cateogry.component').then(
+              (c) => c.CateogryComponent
+            ),
+        },
       
     ],
   },
@@ -40,12 +47,5 @@ export const routes: Routes = [
       import('./shared/components/ui/faqs/faqs.component').then(
         (c) => c.FAQSComponent
       ),
-  },
-  {
-    path: 'allcateogry',
-    loadComponent: () =>
-      import('./shared/components/business/cateogry/cateogry.component').then(
-        (c) => c.CateogryComponent
-      ),
-  },
+  }
 ];
