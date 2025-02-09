@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { PrimaryBtnComponent } from "../primary-btn/primary-btn.component";
-import { CustomInputComponent } from "../../business/custom-input/custom-input.component";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { PrimaryBtnComponent } from '../../../shared/components/ui/primary-btn/primary-btn.component';
+import { CustomInputComponent } from '../../../shared/components/business/custom-input/custom-input.component';
 
 @Component({
   selector: 'app-forget-password',
