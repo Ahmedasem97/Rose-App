@@ -46,7 +46,6 @@ export class BestSeller1Component  {
   selectedActiveCategory:WritableSignal<number> = signal(-1)
 
   ngOnInit(): void {
-     
       this.getPopularProductApi()
   }
   
