@@ -1,19 +1,51 @@
 .input-container {
-  &__custom-input {
-    box-shadow: 0px 1px 10px 0px #0000001a;
-    padding: 8px;
-    padding-left: 16px;
-    margin-bottom: 24px;
-    width: 100%;
-    border: 0;
-    height: 52px;
-    border-radius: 20px;
-    background-color: var(--white-color);
+  &__input-custom-group {
+    &__custom-input {
+      box-shadow: 0px 1px 10px 0px #0000001a;
+      padding: 8px;
+      padding-left: 16px;
+      margin-bottom: 24px;
+      width: 100%;
+      border: 0;
+      height: 52px;
+      border-radius: 20px;
+      background-color: var(--white-color);
 
-    &:focus {
-      border-color: #f82ba9;
-      outline: none;
-      box-shadow: 0 0 0 0.25rem rgba(248, 43, 169, 0.25);
+      &:focus {
+        border-color: #f82ba9;
+        outline: none;
+        box-shadow: 0 0 0 0.25rem rgba(248, 43, 169, 0.25);
+      }
+    }
+
+    &__custom-input-checkbox {
+      width: 15px;
+      height: 15px;
+      border-radius: 5px;
+
+      &:checked {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+
+      &:focus {
+        --tw-ring-color: var(--primary-color);
+      }
+    }
+
+    &__custom-input-radio {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+
+      &:checked {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+
+      &:focus {
+        --tw-ring-color: var(--primary-color);
+      }
     }
   }
 
