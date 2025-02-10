@@ -1,4 +1,4 @@
-export const baseUrl = 'https://exam.elevateegy.com/api/v1/';
+export const baseUrl = 'https://flower.elevateegy.com/api/v1/';
 
 
 // Forms Pattern
