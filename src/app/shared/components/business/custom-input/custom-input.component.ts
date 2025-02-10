@@ -51,7 +51,6 @@ export class CustomInputComponent implements ControlValueAccessor {
   }
 
   writeValue(value: string): void {
-    console.log(value);
     this.value = value || '';
   }
 
@@ -70,26 +69,22 @@ export class CustomInputComponent implements ControlValueAccessor {
   onChange(event: Event): void {
     let element = event.target as HTMLInputElement;
     let value = element.value;
-    this.onChangeCallback(value); // Notify parent forms about the new value
+    this.onChangeCallback(value);
   }
 
   onTouched(): void {
-    this.onTouchedCallback(); // Notify parent forms that the input was touched
+    this.onTouchedCallback();
   }
 
   toggleCheckbox() {
     this.checked = !this.checked;
     let value = this.checked ? 'Yes' : '';
-    this.onChangeCallback(value); // Notify parent forms about the new value
+    this.onChangeCallback(value);
   }
 
   switchRadio(event: Event) {
-    // this.checked = !this.checked;
     let element = event.target as HTMLInputElement;
     let value = element.value;
-    console.log(element);
-    console.log(value);
-    // console.log(this.checked);
-    this.onChangeCallback(value); // Notify parent forms about the new value
+    this.onChangeCallback(value);
   }
 }
