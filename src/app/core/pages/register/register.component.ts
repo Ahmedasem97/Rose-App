@@ -18,10 +18,10 @@ import { FormUtilsService } from '../../../shared/services/form-utils.service';
 })
 export class RegisterComponent {
   // Initialize the variables
-  isAuthPage: boolean = false;
+
   isSubmitted: boolean = false;
   registerForm!: FormGroup;
-
+  private _isAuthPage: boolean = false;
   // Inject services
   private readonly _authLibService = inject(AuthLibService);
   private readonly _FormUtilsService = inject(FormUtilsService);
@@ -50,6 +50,8 @@ export class RegisterComponent {
     this._FormUtilsService.disableField(this.registerForm, 'rePassword');
   }
 
+  passwordMatchValidator() {}
+
   /**
    * @summary Check if the [ Password ] input entered without validation error, if so then enable the [ Re-Password ] input otherwise disable the [ Re-Password ] input
    */
@@ -66,7 +68,7 @@ export class RegisterComponent {
    * @summary Control how the navigation will performed
    */
   runNavigator() {
-    if (this.isAuthPage) {
+    if (this._isAuthPage) {
       this._router.navigate(['/auth/login']);
     } else {
       //TODO Switch The Component
@@ -100,7 +102,7 @@ export class RegisterComponent {
   }
 
   ngOnInit(): void {
-    this.isAuthPage = this._router.url.includes('auth');
+    this._isAuthPage = this._router.url.includes('auth');
     this.initRegisterForm();
   }
 }
