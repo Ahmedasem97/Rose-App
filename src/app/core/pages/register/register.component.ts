@@ -18,7 +18,6 @@ import { FormUtilsService } from '../../../shared/services/form-utils.service';
 })
 export class RegisterComponent {
   // Initialize the variables
-
   isSubmitted: boolean = false;
   registerForm!: FormGroup;
   private _isAuthPage: boolean = false;
