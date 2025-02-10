@@ -14,12 +14,12 @@ import { LogoutResponse } from "../interfaces/logout-response";
 
 
 export abstract class AuthApi {
-    abstract login(data: LoginUserData): Observable<LoginResponse>;
-    abstract register(data: RegisterUserData): Observable<RegisterResponse>;
-    abstract forgetPassword(data: ForgetPasswordUserData): Observable<ForgetPasswordApiRes>;
-    abstract verifyResetCode(data: VerifyCodeUserData): Observable<VerifyCodeResponse>;
-    abstract ResetPassword(data: ResetPasswordUserData): Observable<ResetPasswordResponse>;
-    abstract logOut(): Observable<LogoutResponse>;
+    abstract login(baseUrl: string, data: LoginUserData): Observable<LoginResponse>;
+    abstract register(baseUrl: string, data: RegisterUserData): Observable<RegisterResponse>;
+    abstract forgetPassword(baseUrl: string, data: ForgetPasswordUserData): Observable<ForgetPasswordApiRes>;
+    abstract verifyResetCode(baseUrl: string, data: VerifyCodeUserData): Observable<VerifyCodeResponse>;
+    abstract ResetPassword(baseUrl: string, data: ResetPasswordUserData): Observable<ResetPasswordResponse>;
+    abstract logOut(baseUrl: string): Observable<LogoutResponse>;
 
 
 
