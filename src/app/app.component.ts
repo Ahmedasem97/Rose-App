@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./core/layout/navbar/navbar.component";
 import { FooterComponent } from "./core/layout/footer/footer.component";
 import { FlowbiteService } from './core/services/flowbite.service';
+import { NavbarAuthComponent } from "./core/layout/navbar-auth/navbar-auth.component";
 
 
 
