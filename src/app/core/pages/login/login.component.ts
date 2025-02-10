@@ -21,11 +21,8 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-  // Inputs
-  navigationType = input.required<NavigationTypes>();
-  navigateTo = input.required<string>();
-
   // Initialize the variables
+  isAuthPage: boolean = false;
   isSubmitted: boolean = false;
   loginForm!: FormGroup;
 
@@ -48,13 +45,10 @@ export class LoginComponent implements OnInit {
   }
 
   runNavigator() {
-    switch (this.navigationType()) {
-      case 'page':
-        this._router.navigate([this.navigateTo]);
-        break;
-      case 'switchComponent':
-        //TODO: Switch Componenets
-        break;
+    if (this.isAuthPage) {
+      this._router.navigate(['/auth/register']);
+    } else {
+      //TODO Switch The Component
     }
   }
 
@@ -97,6 +91,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isAuthPage = this._router.url.includes('auth');
     this.initLoginForm();
   }
 }
