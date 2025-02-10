@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, input, OnInit } from '@angular/core';
 import { CustomInputComponent } from '../../../shared/components/business/custom-input/custom-input.component';
 import {
   FormControl,
@@ -10,6 +10,8 @@ import { PrimaryBtnComponent } from '../../../shared/components/ui/primary-btn/p
 import { TokenManagerService } from '../../../shared/services/token-manager.service';
 import { AuthLibService } from 'auth-lib';
 import { baseUrl } from '../../environment/environment';
+import { NavigationTypes } from '../../interfaces/navigation-types';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,12 +21,18 @@ import { baseUrl } from '../../environment/environment';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
+  // Inputs
+  navigationType = input.required<NavigationTypes>();
+  navigateTo = input.required<string>();
+
+  // initialize the variables
   isSubmitted: boolean = false;
-  canNavigate: boolean = false;
   loginForm!: FormGroup;
 
+  // inject services
   private readonly _tokenManagerService = inject(TokenManagerService);
   private readonly _authLibService = inject(AuthLibService);
+  private readonly _router = inject(Router);
 
   initLoginForm() {
     this.loginForm = new FormGroup({
@@ -39,8 +47,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.initLoginForm();
+  runNavigator() {
+    switch (this.navigationType()) {
+      case 'page':
+        this._router.navigate([this.navigateTo]);
+        break;
+      case 'switchComponent':
+        //TODO: Switch Componenets
+        break;
+    }
   }
 
   submit() {
@@ -69,10 +84,9 @@ export class LoginComponent implements OnInit {
           rememberMeOption
             ? this._tokenManagerService.setToken(res.token, 180)
             : this._tokenManagerService.setToken(res.token);
-          this.canNavigate = true;
         }
         // this._Toaster.showToaster(severity, title, message);
-        // this.canNavigate && this._Router.navigate(['/main/dashboard']);
+        this.runNavigator();
       },
 
       error: (errObj) => {
@@ -80,6 +94,9 @@ export class LoginComponent implements OnInit {
         console.log(errObj);
       },
     });
-    console.log(this.loginForm);
+  }
+
+  ngOnInit(): void {
+    this.initLoginForm();
   }
 }
