@@ -25,11 +25,11 @@ export class LoginComponent implements OnInit {
   navigationType = input.required<NavigationTypes>();
   navigateTo = input.required<string>();
 
-  // initialize the variables
+  // Initialize the variables
   isSubmitted: boolean = false;
   loginForm!: FormGroup;
 
-  // inject services
+  // Inject services
   private readonly _tokenManagerService = inject(TokenManagerService);
   private readonly _authLibService = inject(AuthLibService);
   private readonly _router = inject(Router);
