@@ -15,7 +15,7 @@ import { TrustedComponent } from '../../../shared/components/ui/trusted/trusted.
 import {  BestSeller1Component } from "../../../shared/components/business/pest-seller1/pest-seller1.component";
 import { ReviewComponent } from "../../../shared/components/ui/review/review.component";
 import { FeaturesComponent } from "../../../shared/components/ui/features/features.component";
-import { CateogryComponent } from "../../../shared/components/business/cateogry/cateogry.component";
+
 
 @Component({
   selector: 'app-home',
@@ -29,7 +29,7 @@ import { CateogryComponent } from "../../../shared/components/business/cateogry/
     BestSeller1Component,
     ReviewComponent,
     FeaturesComponent,
-    CateogryComponent
+    
 ],
 
   templateUrl: './home.component.html',

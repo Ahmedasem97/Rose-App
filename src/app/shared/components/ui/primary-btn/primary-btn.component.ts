@@ -1,21 +1,26 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-primary-btn',
   standalone: true,
-  imports: [],
+  imports: [LoaderComponent],
   templateUrl: './primary-btn.component.html',
   styleUrl: './primary-btn.component.scss',
 })
 export class PrimaryBtnComponent {
-  @Input() btnText: string = '';
-  @Input() btnIcon: string = '';
-  @Input() btnIconClasses: string = '';
-  @Input() btnClasses: string = '';
-  @Input() btnTextClasses: string = '';
-  @Output() handleBtnClick: EventEmitter<any> = new EventEmitter<any>();
-
+  btnText = input.required<string>();
+  btnIcon = input<string>();
+  btnIconClasses = input<string>();
+  btnClasses = input<string>();
+  isDisabled = input<boolean>();
+  isLoading = input<boolean>();
+  loadingMsg = input<boolean>();
+  btnTextClasses = input<string>();
+  handleBtnClick = output();
   onClick() {
-    this.handleBtnClick.emit();
+    if (!this.isDisabled()) {
+      this.handleBtnClick.emit();
+    }
   }
 }

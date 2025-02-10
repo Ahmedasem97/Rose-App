@@ -7,6 +7,7 @@ import { ModalComponent } from "./shared/components/ui/modal/modal.component";
 
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
