@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CustomInputComponent } from '../../../shared/components/business/custom-input/custom-input.component';
-
 import {
   FormControl,
   FormGroup,
@@ -9,6 +8,8 @@ import {
 } from '@angular/forms';
 import { PrimaryBtnComponent } from '../../../shared/components/ui/primary-btn/primary-btn.component';
 import { TokenManagerService } from '../../../shared/services/token-manager.service';
+import { AuthLibService } from 'auth-lib';
+import { baseUrl } from '../../environment/environment';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
   private readonly _tokenManagerService = inject(TokenManagerService);
+  private readonly _authLibService = inject(AuthLibService);
 
   initLoginForm() {
     this.loginForm = new FormGroup({
@@ -33,6 +35,7 @@ export class LoginComponent implements OnInit {
           `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$`
         ),
       ]),
+      rememberMe: new FormControl(''),
     });
   }
 
@@ -42,29 +45,38 @@ export class LoginComponent implements OnInit {
 
   submit() {
     this.isSubmitted = true;
-    // this._AuthApiManagerService.login(baseUrl, data).subscribe({
-    //   next: (res) => {
-    //     this.isSubmitted = false;
-    //     let severity = '';
-    //     let title = '';
-    //     let message = '';
-    //     if (res.message == 'success') {
-    //       severity = 'success';
-    //       title = 'Welcome!';
-    //       message = 'You have logged-in successfully';
-    //       // this._TokenManagerService.setToken(res.token);
-    //       this.canNavigate = true;
-    //     } else {
-    //       let errorMsg = res.error.message;
-    //       severity = 'error';
-    //       title = 'Error!';
-    //       message = errorMsg;
-    //     }
+    let formData = this.loginForm.value;
 
-    //     // this._Toaster.showToaster(severity, title, message);
-    //     // this.canNavigate && this._Router.navigate(['/main/dashboard']);
-    //   },
-    // });
+    let rememberMeOption = formData.rememberMe;
+
+    let data = {
+      email: formData.email,
+      password: formData.password,
+    };
+
+    this._authLibService.login(baseUrl, data).subscribe({
+      next: (res) => {
+        this.isSubmitted = false;
+        let severity = '';
+        let title = '';
+        let message = '';
+        if (res.message == 'success') {
+          severity = 'success';
+          title = 'Welcome!';
+          message = 'You have logged-in successfully';
+          // this._TokenManagerService.setToken(res.token);
+          this.canNavigate = true;
+        } else {
+          // let errorMsg = res.error.message;
+          // severity = 'error';
+          // title = 'Error!';
+          // message = errorMsg;
+        }
+
+        // this._Toaster.showToaster(severity, title, message);
+        // this.canNavigate && this._Router.navigate(['/main/dashboard']);
+      },
+    });
     console.log(this.loginForm);
   }
 }
