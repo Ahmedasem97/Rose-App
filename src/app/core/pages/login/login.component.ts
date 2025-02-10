@@ -64,7 +64,11 @@ export class LoginComponent implements OnInit {
           severity = 'success';
           title = 'Welcome!';
           message = 'You have logged-in successfully';
-          this._tokenManagerService.setToken(res.token);
+
+          // Save token for 180 days  if remember me option is selected
+          rememberMeOption
+            ? this._tokenManagerService.setToken(res.token, 180)
+            : this._tokenManagerService.setToken(res.token);
           this.canNavigate = true;
         }
         // this._Toaster.showToaster(severity, title, message);
