@@ -27,40 +27,40 @@ export class AuthLibService implements AuthApi {
     private _AuthAPIAdapter: AuthAPIAdapter
   ) { }
 
-  login(data: LoginUserData): Observable<LoginResponse> {
-    return this._httpClient.post(ApiEndpoint.LOGIN, data).pipe(
+  login(baseUrl: string, data: LoginUserData): Observable<LoginResponse> {
+    return this._httpClient.post(baseUrl + ApiEndpoint.LOGIN, data).pipe(
       map((res: any) => this._AuthAPIAdapter.loginAdapter(res)),
     )
   }
 
-  register(data: RegisterUserData): Observable<RegisterResponse> {
-    return this._httpClient.post(ApiEndpoint.REGISTER, data).pipe(
+  register(baseUrl: string, data: RegisterUserData): Observable<RegisterResponse> {
+    return this._httpClient.post(baseUrl + ApiEndpoint.REGISTER, data).pipe(
       map((res: any) => this._AuthAPIAdapter.registerAdapter(res))
     )
   }
 
 
-  forgetPassword(data: ForgetPasswordUserData): Observable<ForgetPasswordApiRes> {
-    return this._httpClient.post(ApiEndpoint.FORGET_PASSWORD, data).pipe(
+  forgetPassword(baseUrl: string, data: ForgetPasswordUserData): Observable<ForgetPasswordApiRes> {
+    return this._httpClient.post(baseUrl + ApiEndpoint.FORGET_PASSWORD, data).pipe(
       map((res: any) => this._AuthAPIAdapter.forgetPassword(res))
     )
   }
 
-  verifyResetCode(data: VerifyCodeUserData): Observable<VerifyCodeResponse> {
-    return this._httpClient.post(ApiEndpoint.VERIFY_RESET_CODE, data).pipe(
+  verifyResetCode(baseUrl: string, data: VerifyCodeUserData): Observable<VerifyCodeResponse> {
+    return this._httpClient.post(baseUrl + ApiEndpoint.VERIFY_RESET_CODE, data).pipe(
       map((res: any) => this._AuthAPIAdapter.verifyCode(res))
     )
   }
 
-  ResetPassword(data: ResetPasswordUserData): Observable<ResetPasswordResponse> {
-    return this._httpClient.put(ApiEndpoint.RESET_PASSWORD, data).pipe(
-      map((res:any)=>this._AuthAPIAdapter.resetPassword(res) )
+  ResetPassword(baseUrl: string, data: ResetPasswordUserData): Observable<ResetPasswordResponse> {
+    return this._httpClient.put(baseUrl + ApiEndpoint.RESET_PASSWORD, data).pipe(
+      map((res: any) => this._AuthAPIAdapter.resetPassword(res))
     )
   }
 
-  logOut(): Observable<LogoutResponse> {
-    return this._httpClient.get(ApiEndpoint.LOG_OUT ).pipe(
-      map((res:any)=>this._AuthAPIAdapter.logoutPassword(res) )
+  logOut(baseUrl: string): Observable<LogoutResponse> {
+    return this._httpClient.get(baseUrl + ApiEndpoint.LOG_OUT).pipe(
+      map((res: any) => this._AuthAPIAdapter.logoutPassword(res))
     )
   }
 
