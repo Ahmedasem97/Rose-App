@@ -1,0 +1,11 @@
+@switch (currentStep) {
+@case (1) {
+<app-forget-password></app-forget-password>
+}
+@case (2) {
+<app-verify-code></app-verify-code>
+}
+@default {
+<app-reset-password></app-reset-password>
+}
+}

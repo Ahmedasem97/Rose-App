@@ -4,14 +4,17 @@ import { NavbarComponent } from "./core/layout/navbar/navbar.component";
 import { FooterComponent } from "./core/layout/footer/footer.component";
 import { FlowbiteService } from './core/services/flowbite.service';
 import { ModalComponent } from "./shared/components/ui/modal/modal.component";
-import { ForgetPasswordComponent } from "./core/pages/forget-password/forget-password.component";
+import { ForgetPasswordComponent } from "./shared/components/ui/forget-password/forget-password.component";
+import { VerifyCodeComponent } from "./shared/components/ui/verify-code/verify-code.component";
+import { ResetPasswordComponent } from "./shared/components/ui/reset-password/reset-password.component";
+import { ForgetPassLayoutComponent } from "./core/pages/forget-pass-layout/forget-pass-layout.component";
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, ModalComponent, ForgetPasswordComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, ModalComponent, ForgetPassLayoutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
