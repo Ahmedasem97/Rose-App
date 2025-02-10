@@ -64,17 +64,16 @@ export class LoginComponent implements OnInit {
           severity = 'success';
           title = 'Welcome!';
           message = 'You have logged-in successfully';
-          // this._TokenManagerService.setToken(res.token);
+          this._tokenManagerService.setToken(res.token);
           this.canNavigate = true;
-        } else {
-          // let errorMsg = res.error.message;
-          // severity = 'error';
-          // title = 'Error!';
-          // message = errorMsg;
         }
-
         // this._Toaster.showToaster(severity, title, message);
         // this.canNavigate && this._Router.navigate(['/main/dashboard']);
+      },
+
+      error: (errObj) => {
+        this.isSubmitted = false;
+        console.log(errObj);
       },
     });
     console.log(this.loginForm);
