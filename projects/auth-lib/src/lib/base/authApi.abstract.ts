@@ -1,0 +1,26 @@
+import { Observable } from "rxjs";
+import { LoginUserData } from "../interfaces/login-user-data";
+import { LoginResponse } from "../interfaces/login-response";
+import { RegisterUserData } from "../interfaces/register-user-data";
+import { RegisterResponse } from "../interfaces/register-response";
+import { ForgetPasswordApiRes } from "../interfaces/forget-password-response";
+import { ForgetPasswordUserData } from "../interfaces/forget-password-user-data";
+import { VerifyCodeUserData } from "../interfaces/verify-code-user-data";
+import { VerifyCodeResponse } from "../interfaces/verify-code-response";
+import { ResetPasswordUserData } from "../interfaces/reset-password-user-data";
+import { ResetPasswordResponse } from "../interfaces/reset-password-response";
+import { LogoutResponse } from "../interfaces/logout-response";
+
+
+
+export abstract class AuthApi {
+    abstract login(baseUrl: string, data: LoginUserData): Observable<LoginResponse>;
+    abstract register(baseUrl: string, data: RegisterUserData): Observable<RegisterResponse>;
+    abstract forgetPassword(baseUrl: string, data: ForgetPasswordUserData): Observable<ForgetPasswordApiRes>;
+    abstract verifyResetCode(baseUrl: string, data: VerifyCodeUserData): Observable<VerifyCodeResponse>;
+    abstract ResetPassword(baseUrl: string, data: ResetPasswordUserData): Observable<ResetPasswordResponse>;
+    abstract logOut(baseUrl: string): Observable<LogoutResponse>;
+
+
+
+}
