@@ -80,7 +80,7 @@ export class RegisterComponent {
   /**
    * @summary Check if the [ Password ] input entered without validation error, if so then enable the [ Re-Password ] input otherwise disable the [ Re-Password ] input
    */
-  control_RePassword() {
+  controlRePasswordDisplay() {
     if (this.registerForm.get('password')?.valid) {
       this._FormUtilsService.enableField(this.registerForm, 'rePassword');
     } else {
@@ -90,7 +90,6 @@ export class RegisterComponent {
   }
 
   checkPassMisMatch() {
-    console.log(this.registerForm.get('rePassword')?.touched);
     if (
       this.registerForm.get('password') !==
         this.registerForm.get('rePassword') &&
@@ -115,6 +114,18 @@ export class RegisterComponent {
 
   goToLogin() {
     this.runNavigator();
+  }
+
+  trackPasswordChanges() {
+    this.registerForm.get('password')?.valueChanges.subscribe(() => {
+      this.controlRePasswordDisplay();
+    });
+  }
+
+  trackRePasswordChanges() {
+    this.registerForm.get('rePassword')?.valueChanges.subscribe(() => {
+      this.checkPassMisMatch();
+    });
   }
 
   submit() {
@@ -147,11 +158,7 @@ export class RegisterComponent {
   ngOnInit(): void {
     this._isAuthPage = this._router.url.includes('auth');
     this.initRegisterForm();
-    this.registerForm.get('password')?.valueChanges.subscribe(() => {
-      this.control_RePassword();
-    });
-    this.registerForm.get('rePassword')?.valueChanges.subscribe(() => {
-      this.checkPassMisMatch();
-    });
+    this.trackPasswordChanges();
+    this.trackRePasswordChanges();
   }
 }
