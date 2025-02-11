@@ -7,6 +7,8 @@ import { baseUrl } from '../../../../core/environment/environment';
 import { ForgetSignalService } from '../../../services/forget-signal.service';
 import { ResetPasswordUserData } from '../../../../../../dist/auth-lib/lib/interfaces/reset-password-user-data';
 import { Subject, takeUntil } from 'rxjs';
+import { Router } from '@angular/router';
+import { AuthModalService } from '../../../services/auth-modal.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -17,9 +19,12 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class ResetPasswordComponent implements OnDestroy {
   $destroy = new Subject<string>();
+  private _isAuthPage: boolean = false;
 
   private _authLibService = inject(AuthLibService)
   private _forgetSignalService = inject(ForgetSignalService)
+  private _authModalService = inject(AuthModalService)
+  private readonly _router = inject(Router);
 
   resetPasswordForm: FormGroup = new FormGroup({
     newPassword: new FormControl(null, [Validators.required]),
@@ -34,6 +39,13 @@ export class ResetPasswordComponent implements OnDestroy {
     }
   }
 
+  runNavigator() {
+    if (this._isAuthPage) {
+      this._router.navigate(['/auth/login']);
+    } else {
+      this._authModalService.setStep("login")
+    }
+  }
 
   ResendCode(): void {
     const resetPasswordValue: ResetPasswordUserData = {
@@ -47,7 +59,7 @@ export class ResetPasswordComponent implements OnDestroy {
       .subscribe({
         next: res => {
           this._forgetSignalService.setStep(1);
-          // ToDo switch to login
+          this.runNavigator()
         },
         error: err => {
           console.log(err);

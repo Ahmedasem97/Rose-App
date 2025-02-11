@@ -18,6 +18,7 @@ import { CustomInputComponent } from '../../../shared/components/business/custom
 import { PrimaryBtnComponent } from '../../../shared/components/ui/primary-btn/primary-btn.component';
 import { Router } from '@angular/router';
 import { InputValidationFeedbackComponent } from '../../../shared/components/ui/input-validation-feedback/input-validation-feedback.component';
+import { AuthModalService } from '../../../shared/services/auth-modal.service';
 
 @Component({
   selector: 'app-register',
@@ -44,6 +45,7 @@ export class RegisterComponent {
     CustomFormValidatorsService
   );
   private readonly _router = inject(Router);
+  private readonly _authModalService=inject(AuthModalService)
 
   initRegisterForm() {
     this.registerForm = new FormGroup(
@@ -108,7 +110,7 @@ export class RegisterComponent {
     if (this._isAuthPage) {
       this._router.navigate(['/auth/login']);
     } else {
-      //TODO Switch The Component
+      this._authModalService.setStep("login")
     }
   }
 
