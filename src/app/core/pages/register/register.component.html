@@ -1,0 +1,96 @@
+<section>
+  <header class="mb-8">
+    <p class="font-normal text-3xl leading-9">Create account</p>
+  </header>
+  <form class="flex flex-col" [formGroup]="registerForm">
+    <app-custom-input
+      [inputPlaceholder]="'First Name'"
+      [inputType]="'text'"
+      inputName="First Name"
+      formControlName="firstName"
+    />
+
+    <app-custom-input
+      [inputPlaceholder]="'Last Name'"
+      [inputType]="'text'"
+      inputName="Last Name"
+      formControlName="lastName"
+    />
+
+    <app-custom-input
+      [inputPlaceholder]="'Phone Number'"
+      [inputType]="'text'"
+      inputName="Phone Number"
+      formControlName="phone"
+    />
+
+    <div class="flex items-center">
+      <div class="px-2">
+        <app-custom-input
+          label="Male"
+          labelClasses="ml-2"
+          inputGroupClasses="flex flex-row-reverse items-center"
+          [inputPlaceholder]="'Gender'"
+          [inputType]="'radio'"
+          inputName="Gender"
+          inputId="male"
+          inputValue="male"
+          formControlName="gender"
+        />
+      </div>
+
+      <div class="px-2">
+        <app-custom-input
+          label="Female"
+          labelClasses="ml-2"
+          inputGroupClasses="flex flex-row-reverse items-center"
+          [inputPlaceholder]="'Gender'"
+          [inputType]="'radio'"
+          inputName="Gender"
+          inputId="female"
+          inputValue="female"
+          formControlName="gender"
+        />
+      </div>
+    </div>
+
+    <app-custom-input
+      [inputPlaceholder]="'Email'"
+      [inputType]="'email'"
+      inputName="Email"
+      formControlName="email"
+    />
+
+    <app-custom-input
+      [inputPlaceholder]="'Password'"
+      [inputType]="'password'"
+      inputName="Password"
+      formControlName="password"
+    />
+    <app-custom-input
+      [inputPlaceholder]="'Re-Password'"
+      [inputType]="'password'"
+      inputName="Re-Password"
+      formControlName="rePassword"
+    />
+
+    @if(passNotMatched){
+    <app-input-validation-feedback [errorMessage]="'Password Mismatch'" />
+    }
+
+    <span class="font-normal text-sm leading-5 mb-8 text-center"
+      >Already have an account?
+      <a (click)="goToLogin()" class="text-primary cursor-pointer"
+        >Login</a
+      ></span
+    >
+
+    <app-primary-btn
+      btnText="Create Account"
+      (handleBtnClick)="submit()"
+      [isDisabled]="!registerForm.valid || isSubmitted"
+      [isLoading]="isSubmitted"
+      loadingMsg="Creating Account"
+    />
+  </form>
+</section>

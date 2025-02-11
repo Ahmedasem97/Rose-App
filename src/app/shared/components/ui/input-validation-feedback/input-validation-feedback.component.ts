@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input-validation-feedback',
@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
   styleUrl: './input-validation-feedback.component.scss',
 })
 export class InputValidationFeedbackComponent {
-  fieldObj = input<FormControl>();
+  fieldObj = input<FormControl | AbstractControl | null>();
   fieldName = input<string>();
 
   // This [errorMessage] to receiev errors like Password & Re-Password mismatch error [Errors related to 2 or more fields]
