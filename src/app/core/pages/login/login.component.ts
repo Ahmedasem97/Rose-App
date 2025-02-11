@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, inject, input, OnDestroy, OnInit } from '@angular/core';
 import { CustomInputComponent } from '../../../shared/components/business/custom-input/custom-input.component';
 import {
   FormControl,
@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   // Initialize the variables
   isAuthPage: boolean = false;
   isSubmitted: boolean = false;
@@ -99,5 +99,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.isAuthPage = this._router.url.includes('auth');
     this.initLoginForm();
+  }
+
+  ngOnDestroy(): void {
+    this.loginForm.reset();
   }
 }
