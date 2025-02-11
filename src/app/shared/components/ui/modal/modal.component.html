@@ -1,7 +1,11 @@
 <section class="modal fixed z-50 w-full h-screen top-0 left-0">
-    <div class="modal__container flex justify-center items-center w-full h-full bg-footer-text">
-        <div class="modal bg-white rounded-[var(--cards-border-radius)] p-10">
-            <ng-content></ng-content>
-        </div>
+  <div
+    class="modal__container flex justify-center items-center w-full h-full bg-footer-text"
+  >
+    <div
+      class="modal bg-white rounded-[var(--cards-border-radius)] p-10 max-h-[714px] overflow-auto"
+    >
+      <ng-content></ng-content>
     </div>
+  </div>
 </section>
