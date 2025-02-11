@@ -1,4 +1,4 @@
-import { Component, forwardRef, input, Optional, Self } from '@angular/core';
+import { Component, input, Self } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
