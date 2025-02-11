@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import {
   baseUrl,
   NAME_PATTERN,
@@ -32,7 +32,7 @@ import { AuthModalService } from '../../../shared/services/auth-modal.service';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy {
   // Initialize the variables
   isSubmitted: boolean = false;
   passNotMatched: boolean = false;
@@ -162,5 +162,9 @@ export class RegisterComponent {
     this.initRegisterForm();
     this.trackPasswordChanges();
     this.trackRePasswordChanges();
+  }
+
+  ngOnDestroy(): void {
+    this.registerForm.reset();
   }
 }

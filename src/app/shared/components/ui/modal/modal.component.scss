@@ -1,6 +1,28 @@
 .modal__container {
-    background-color: #000000CC;
+  background-color: #000000cc;
 }
 .modal {
-    min-width: 50%;
+  min-width: 50%;
+}
+
+/* Width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
 }
