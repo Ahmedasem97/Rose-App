@@ -1,0 +1,77 @@
+<section class="about-us flex flex-col xl:flex-row mb-20">
+  <div
+    class="about-us__start-side flex flex-col sm:flex-row justify-center items-center mb-4"
+  >
+    <div class="about-us__start-side__left w-full min-[350px]:w-[302px]">
+      <div
+        class="about-us__start-side__left__figure-container bg-[url('/about_us_1.png')] bg-cover bg-center bg-no-repeat w-full h-[200px] min-[350px]:h-[320px] rounded-tl-[32.16px] rounded-tr-[77.19px] rounded-bl-[77.19px] rounded-br-[77.19px] md:rounded-tl-[50px] md:rounded-tr-[120px] md:rounded-bl-[120px] md:rounded-br-[120px] aspect-[1.5/1]"
+      ></div>
+    </div>
+
+    <div
+      class="about-us__start-side__right w-full flex flex-col items-center sm:items-start sm:ml-[7px] mt-4 md:mt-0"
+    >
+      <div
+        class="about-us__start-side__right__figure-container bg-[url('/about_us_2.png')] bg-cover bg-center bg-no-repeat rounded-[96px] sd:rounded-[150px] mb-[5px] w-full h-full min-[180px]:w-[150px] md:w-[193px] min-[180px]:h-[150px] md:h-[193px] aspect-[1/1]"
+      ></div>
+      <div
+        class="about-us__start-side__right__figure-container bg-[url('/about_us_3.png')] bg-cover bg-center bg-no-repeat rounded-tl-[32px] rounded-tr-[64px] rounded-bl-[32px] rounded-br-[64px] md:rounded-tl-[50px] md:rounded-tr-[100px] md:rounded-bl-[50px] md:rounded-br-[100px] w-full h-full min-[180px]:w-[150px] md:w-[193px] min-[180px]:h-[110px] md:h-[144px] aspect-[1/1.2]"
+      ></div>
+    </div>
+  </div>
+
+  <div class="about-us__end-side sm:ml-20">
+    <div
+      class="about-us__end-side__top max-w-[343px] md:max-w-[657px] mb-4 flex flex-col"
+    >
+      <app-section-tag
+        tagClasses="text-start"
+        tagName="About Us"
+        class="block mb-6"
+      />
+      <div class="about-us__end-side__top__text-container mb-6">
+        <p
+          class="m-0 text-accent leading-10 text-3xl font-bold mb-2 md:w-[603px]"
+        >
+          We Provide Best And Quality
+          <span class="text-primary">Gifts Box</span> Product For You
+        </p>
+        <p class="text-descText font-normal text-base leading-7">
+          Recusandae tempora aut laborum molestias veniam. A commodi sequi
+          accusantium ullam cupiditate. Neque quidem qui et autem dolor dicta
+          necessitatibus ut ad.
+        </p>
+      </div>
+
+      <app-primary-btn
+        class="flex"
+        btnClasses="px-5 py-[10px] rounded-[10px]"
+        btnText="Discover More"
+        btnTextClasses="font-medium text-base leading-7"
+        btnIcon="/arrow.png"
+        btnIconClasses="ml-[5px] h-4 w-[14px]"
+      ></app-primary-btn>
+    </div>
+    <div
+      class="about-us__end-side__bottom max-w-[343px] md:max-w-[657px] flex flex-col"
+    >
+      <ul class="flex flex-wrap">
+        @for (featureText of featuresList; track $index) {
+        <li class="flex flex-wrap items-center mb-2 w-full md:w-1/2">
+          <div
+            class="flex items-center justify-center list-item-icon pt-[11px] px-[13px] pb-3 rounded-[21px] w-[42px] h-[42px] overflow-hidden bg-[var(--secondary-icon-bg-color)]"
+          >
+            <img
+              src="/check-mark.png"
+              class="w-5 rounded-[21px]"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <span class="ml-2">{{ featureText }}</span>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>
