@@ -9,8 +9,7 @@ import {
 import { PrimaryBtnComponent } from '../../../shared/components/ui/primary-btn/primary-btn.component';
 import { TokenManagerService } from '../../../shared/services/token-manager.service';
 import { AuthLibService } from 'auth-lib';
-import { baseUrl } from '../../environment/environment';
-import { NavigationTypes } from '../../interfaces/navigation-types';
+import { baseUrl, PASSWORD_PATTERN } from '../../environment/environment';
 import { Router } from '@angular/router';
 
 @Component({
@@ -36,20 +35,22 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [
         Validators.required,
-        Validators.pattern(
-          `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$`
-        ),
+        Validators.pattern(PASSWORD_PATTERN),
       ]),
       rememberMe: new FormControl(''),
     });
   }
 
-  runNavigator() {
+  goTo(component: string) {
     if (this.isAuthPage) {
-      this._router.navigate(['/auth/register']);
+      this._router.navigate([`/auth/${component}`]);
     } else {
       //TODO Switch The Component
     }
+  }
+
+  goToHome() {
+    this._router.navigate(['/main/home']);
   }
 
   submit() {
@@ -78,9 +79,12 @@ export class LoginComponent implements OnInit {
           rememberMeOption
             ? this._tokenManagerService.setToken(res.token, 180)
             : this._tokenManagerService.setToken(res.token);
+
+          console.log(res);
+
+          this.goToHome();
         }
         // this._Toaster.showToaster(severity, title, message);
-        this.runNavigator();
       },
 
       error: (errObj) => {
