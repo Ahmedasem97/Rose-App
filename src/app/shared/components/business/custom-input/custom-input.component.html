@@ -1,19 +1,55 @@
 <div class="input-container mb-6">
-  @if (label()) {
-  <label>{{ label() }}</label>
-  }
-  <input
-    [type]="inputType()"
-    [placeholder]="inputPlaceholder()"
-    (blur)="onTouched()"
-    (input)="onChange($event)"
-    [disabled]="disabled"
-    class="input-container__custom-input"
-    [class.is-invalid]="formControl.invalid && formControl.touched"
-    [class.is-valid]="formControl.valid && formControl.touched"
-    [class.focused]="formControl.valid && formControl.touched"
-    [class.disabled]="disabled"
-  />
+  <div [class]="'input-container__input-custom-group ' + inputGroupClasses()">
+    @if (label()) {
+    <label [class]="labelClasses()" [for]="inputId() ? inputId() : ''">{{
+      label()
+    }}</label>
+    } @switch (inputType()) { @case ("checkbox") {
+    <input
+      [type]="inputType()"
+      [placeholder]="inputPlaceholder()"
+      (blur)="onTouched()"
+      [checked]="checked"
+      [value]="inputValue()"
+      [id]="inputId() ? inputId() : ''"
+      (change)="toggleCheckbox()"
+      [class]="
+        'input-container__input-custom-group__custom-input-checkbox ' +
+        inputClasses()
+      "
+    />
+    } @case ("radio") {
+    <input
+      [type]="inputType()"
+      [placeholder]="inputPlaceholder()"
+      (blur)="onTouched()"
+      [name]="inputName()"
+      [id]="inputId() ? inputId() : ''"
+      [value]="inputValue()"
+      (change)="switchRadio($event)"
+      [class]="
+        'input-container__input-custom-group__custom-input-radio ' +
+        inputClasses()
+      "
+    />
+    } @default {
+    <input
+      [type]="inputType()"
+      [placeholder]="inputPlaceholder()"
+      (blur)="onTouched()"
+      (input)="onChange($event)"
+      [disabled]="disabled"
+      [class]="
+        'input-container__input-custom-group__custom-input ' + inputClasses()
+      "
+      [class.is-invalid]="formControl.invalid && formControl.touched"
+      [class.is-valid]="formControl.valid && formControl.touched"
+      [class.focused]="formControl.valid && formControl.touched"
+      [class.disabled]="disabled"
+    />
+    } }
+  </div>
+
   <app-input-validation-feedback
     [fieldObj]="formControl"
     fieldName="{{ inputName() }}"
