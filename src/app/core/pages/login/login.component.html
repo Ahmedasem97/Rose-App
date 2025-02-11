@@ -1,15 +1,56 @@
-<form class="row g-3 my-[190px]" [formGroup]="loginForm">
-  <app-custom-input
-    [inputPlaceholder]="'Email'"
-    [inputType]="'email'"
-    inputName="Email"
-    formControlName="email"
-  ></app-custom-input>
-  <app-custom-input
-    [inputPlaceholder]="'Password'"
-    [inputType]="'password'"
-    inputName="Password"
-    formControlName="password"
-  ></app-custom-input>
-  <button (click)="submit()">Submit</button>
-</form>
+<section>
+  <header class="mb-8">
+    <p class="font-normal text-3xl leading-9">Login to your account</p>
+  </header>
+  <form class="flex flex-col" [formGroup]="loginForm">
+    <app-custom-input
+      [inputPlaceholder]="'Email'"
+      [inputType]="'email'"
+      inputName="Email"
+      formControlName="email"
+    />
+
+    <app-custom-input
+      [inputPlaceholder]="'Password'"
+      [inputType]="'password'"
+      inputName="Password"
+      formControlName="password"
+    />
+
+    <div class="flex items-center justify-between">
+      <app-custom-input
+        label="Remember Me"
+        labelClasses="ml-2"
+        inputGroupClasses="flex flex-row-reverse items-center"
+        [inputPlaceholder]="'rembMe'"
+        [inputType]="'checkbox'"
+        inputName="rembMe"
+        inputId="rembMe"
+        inputValue=""
+        formControlName="rememberMe"
+      />
+      <span class="font-normal text-sm leading-5 mb-8 text-center underline">
+        <a (click)="goTo('forget')" class="text-primary cursor-pointer"
+          >Forgot Password</a
+        ></span
+      >
+    </div>
+
+    <span class="font-normal text-sm leading-5 mb-8 text-center"
+      >No account?
+      <a
+        (click)="goTo('register')"
+        class="text-primary cursor-pointer underline"
+        >Create one here</a
+      ></span
+    >
+
+    <app-primary-btn
+      btnText="Login"
+      (handleBtnClick)="submit()"
+      [isDisabled]="!loginForm.valid || isSubmitted"
+      [isLoading]="isSubmitted"
+      loadingMsg="Logging in"
+    />
+  </form>
+</section>
