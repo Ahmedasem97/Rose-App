@@ -18,24 +18,22 @@
     />
 
     <div class="flex items-center justify-between">
-      <div class="px-2">
-        <app-custom-input
-          label="Remember Me"
-          labelClasses="ml-2"
-          inputGroupClasses="flex flex-row-reverse items-center"
-          [inputPlaceholder]="'rembMe'"
-          [inputType]="'checkbox'"
-          inputName="rembMe"
-          inputId="rembMe"
-          inputValue=""
-          formControlName="rememberMe"
-        />
-        <span class="font-normal text-sm leading-5 mb-8 text-center underline">
-          <a (click)="goTo('ForgetPWD')" class="text-primary cursor-pointer"
-            >Forgot Password</a
-          ></span
-        >
-      </div>
+      <app-custom-input
+        label="Remember Me"
+        labelClasses="ml-2"
+        inputGroupClasses="flex flex-row-reverse items-center"
+        [inputPlaceholder]="'rembMe'"
+        [inputType]="'checkbox'"
+        inputName="rembMe"
+        inputId="rembMe"
+        inputValue=""
+        formControlName="rememberMe"
+      />
+      <span class="font-normal text-sm leading-5 mb-8 text-center underline">
+        <a (click)="goTo('ForgetPWD')" class="text-primary cursor-pointer"
+          >Forgot Password</a
+        ></span
+      >
     </div>
 
     <span class="font-normal text-sm leading-5 mb-8 text-center"

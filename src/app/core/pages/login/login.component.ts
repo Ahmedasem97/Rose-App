@@ -64,6 +64,8 @@ export class LoginComponent implements OnInit {
       password: formData.password,
     };
 
+    console.log(rememberMeOption);
+
     this._authLibService.login(baseUrl, data).subscribe({
       next: (res) => {
         this.isSubmitted = false;
@@ -89,7 +91,7 @@ export class LoginComponent implements OnInit {
 
       error: (errObj) => {
         this.isSubmitted = false;
-        console.log(errObj);
+        console.log(errObj.error.error);
       },
     });
   }
