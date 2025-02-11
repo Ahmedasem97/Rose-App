@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validator
 import { PrimaryBtnComponent } from "../primary-btn/primary-btn.component";
 import { CustomInputComponent } from "../../business/custom-input/custom-input.component";
 import { AuthLibService } from 'auth-lib';
-import { baseUrl } from '../../../../core/environment/environment';
+import { baseUrl, PASSWORD_PATTERN } from '../../../../core/environment/environment';
 import { ForgetSignalService } from '../../../services/forget-signal.service';
 import { ResetPasswordUserData } from '../../../../../../dist/auth-lib/lib/interfaces/reset-password-user-data';
 import { Subject, takeUntil } from 'rxjs';
@@ -27,7 +27,7 @@ export class ResetPasswordComponent implements OnDestroy {
   private readonly _router = inject(Router);
 
   resetPasswordForm: FormGroup = new FormGroup({
-    newPassword: new FormControl(null, [Validators.required]),
+    newPassword: new FormControl(null, [Validators.required, Validators.pattern(PASSWORD_PATTERN)]),
     rePassword: new FormControl(null, [Validators.required]),
   }, this.confirmPassword)
 
