@@ -11,6 +11,8 @@ import { TokenManagerService } from '../../../shared/services/token-manager.serv
 import { AuthLibService } from 'auth-lib';
 import { baseUrl, PASSWORD_PATTERN } from '../../environment/environment';
 import { Router } from '@angular/router';
+import { AuthModalService } from '../../../shared/services/auth-modal.service';
+import { ModalControlerService } from '../../../shared/services/modal-controler.service';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +31,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   private readonly _tokenManagerService = inject(TokenManagerService);
   private readonly _authLibService = inject(AuthLibService);
   private readonly _router = inject(Router);
+  private readonly _authModalService = inject(AuthModalService);
+  private readonly _modalControlerService = inject(ModalControlerService);
 
   initLoginForm() {
     this.loginForm = new FormGroup({
@@ -45,7 +49,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.isAuthPage) {
       this._router.navigate([`/auth/${component}`]);
     } else {
-      //TODO Switch The Component
+      this._authModalService.setStep(component)
     }
   }
 
@@ -81,9 +85,10 @@ export class LoginComponent implements OnInit, OnDestroy {
           rememberMeOption
             ? this._tokenManagerService.setToken(res.token, 180)
             : this._tokenManagerService.setToken(res.token);
-
+          this._modalControlerService.setModalStatus(false)
+          this._tokenManagerService.setLoginStatus(true)
           console.log(res);
-
+          
           this.goToHome();
         }
         // this._Toaster.showToaster(severity, title, message);

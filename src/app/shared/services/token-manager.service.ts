@@ -1,14 +1,21 @@
 import { CookieManagerService } from '../../core/services/cookie-manager.service';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
 export class TokenManagerService {
   // Declare Variables
   private _tokenCookieName = 'token';
+  private isLogedIn = signal(false)
   // Inject Services
   private readonly _cookieManagerService = inject(CookieManagerService);
 
+  setLoginStatus(value: boolean) {
+    this.isLogedIn.set(this.isUserLoggedIn())
+  }
+  getLoginStatus() {
+    return this.isLogedIn()
+  }
   /**
    * @summary Check if user already logged in or not
    * @returns true if user already logged in (token already exists) otherwise false
