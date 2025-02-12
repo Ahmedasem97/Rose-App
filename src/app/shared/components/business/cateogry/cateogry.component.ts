@@ -1,65 +1,74 @@
-import { Component, inject, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
-import { sidebarBrands, sidebarCo, sidebarSales, sidebarSizes } from '../../../../mock/sidebar-cat';
-import { PopularProduct, ProductsRes } from '../../../../core/interfaces/products';
+import {
+  Component,
+  inject,
+  OnDestroy,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core';
+import {
+  sidebarBrands,
+  sidebarCo,
+  sidebarSales,
+  sidebarSizes,
+} from '../../../../mock/sidebar-cat';
+import {
+  PopularProduct,
+  ProductsRes,
+} from '../../../../core/interfaces/products';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductsService } from '../../../services/products.service';
-import { ProductCardComponent } from "../product-card/product-card.component";
-import {NgxPaginationModule} from 'ngx-pagination';
-
-
-
+import { ProductCardComponent } from '../product-card/product-card.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchProductsFilterPipe } from '../../../pipes/search-prods-filter.pipe';
 
 @Component({
   selector: 'app-cateogry',
   standalone: true,
-  imports: [ProductCardComponent ,NgxPaginationModule],
+  imports: [
+    ProductCardComponent,
+    NgxPaginationModule,
+    SearchProductsFilterPipe,
+  ],
   templateUrl: './cateogry.component.html',
-  styleUrl: './cateogry.component.scss'
+  styleUrl: './cateogry.component.scss',
 })
-export class CateogryComponent implements OnInit, OnDestroy{
-
-  private _productsService = inject(ProductsService)
+export class CateogryComponent implements OnInit, OnDestroy {
+  private _productsService = inject(ProductsService);
   p: number = 1;
- 
-  
 
-  sidecateo=sidebarCo
-  sidebrand=sidebarBrands
-  sidesales=sidebarSales
-  sidesize=sidebarSizes
+  sidecateo = sidebarCo;
+  sidebrand = sidebarBrands;
+  sidesales = sidebarSales;
+  sidesize = sidebarSizes;
 
+  productsDisplay: WritableSignal<PopularProduct[]> = signal([]);
+  $destroy = new Subject();
+  selectedActiveCategory: WritableSignal<number> = signal(-1);
 
-    
+  searchText: string = '';
 
+  ngOnInit(): void {
+    this.getPopularProductApi();
+  }
 
-
-    productsDisplay:WritableSignal<PopularProduct[]> = signal([])
-    $destroy = new Subject()
-    selectedActiveCategory:WritableSignal<number> = signal(-1)
-  
-    ngOnInit(): void {
-        this.getPopularProductApi()
-    }
-    
-    getPopularProductApi (keyword:string = ""):void {
-      this._productsService.getAllProducts(keyword)
-      .pipe(
-        takeUntil(this.$destroy)
-      )
+  getPopularProductApi(keyword: string = ''): void {
+    this._productsService
+      .getAllProducts(keyword)
+      .pipe(takeUntil(this.$destroy))
       .subscribe({
-        next: (res:ProductsRes) => {        
-          this.productsDisplay.set(res.products)
-        }
-      })
-    }
-  
-    getKeyword (key:string , index:number):void {
-      this.getPopularProductApi(key)
-      this.selectedActiveCategory.set(index)
-    }
-  
-    ngOnDestroy(): void {
-        this.$destroy.next("destroy")
-    }
-  
+        next: (res: ProductsRes) => {
+          this.productsDisplay.set(res.products);
+        },
+      });
+  }
+
+  getKeyword(key: string, index: number): void {
+    this.getPopularProductApi(key);
+    this.selectedActiveCategory.set(index);
+  }
+
+  ngOnDestroy(): void {
+    this.$destroy.next('destroy');
+  }
 }

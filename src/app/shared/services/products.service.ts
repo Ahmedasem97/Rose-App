@@ -7,19 +7,21 @@ import { ProductsAdapter } from '../../core/adapter/products.adapter';
 import { ProductsAbstract } from '../../core/abstract/products.abstract';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ProductsService implements ProductsAbstract{
-
+export class ProductsService implements ProductsAbstract {
   constructor(
-    private _HttpClient:HttpClient,
-    private _ProductsAdapter:ProductsAdapter
-  ) { }
+    private _HttpClient: HttpClient,
+    private _ProductsAdapter: ProductsAdapter
+  ) {}
 
-  getAllProducts (cat:string):Observable<ProductsRes> {
-    return this._HttpClient.get(productsEndPoint.popularItemsProducts + cat).pipe(
-          map((res:any) => this._ProductsAdapter.AllProductsAdapt(res))
-        )
+  getAllProductsByFilter(): Observable<ProductsRes> {
+    throw new Error('Method not implemented.');
   }
 
+  getAllProducts(cat: string): Observable<ProductsRes> {
+    return this._HttpClient
+      .get(productsEndPoint.popularItemsProducts + cat)
+      .pipe(map((res: any) => this._ProductsAdapter.AllProductsAdapt(res)));
+  }
 }
