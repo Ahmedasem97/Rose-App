@@ -5,6 +5,7 @@ import { productsEndPoint } from '../../core/api-end-point/products-end-point';
 import { ProductsRes } from '../../core/interfaces/products';
 import { ProductsAdapter } from '../../core/adapter/products.adapter';
 import { ProductsAbstract } from '../../core/abstract/products.abstract';
+import { baseUrl } from '../../core/environment/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,10 @@ export class ProductsService implements ProductsAbstract {
     private _ProductsAdapter: ProductsAdapter
   ) {}
 
-  getAllProductsByFilter(): Observable<ProductsRes> {
-    throw new Error('Method not implemented.');
+  getAllProductsByFilter(queryParams: string): Observable<ProductsRes> {
+    return this._HttpClient
+      .get(baseUrl + productsEndPoint.getAllProducts_v1 + '?' + queryParams)
+      .pipe(map((res: any) => this._ProductsAdapter.AllProductsAdapt(res)));
   }
 
   getAllProducts(cat: string): Observable<ProductsRes> {

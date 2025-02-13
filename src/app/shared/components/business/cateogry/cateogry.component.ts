@@ -20,16 +20,11 @@ import { Subject, takeUntil } from 'rxjs';
 import { ProductsService } from '../../../services/products.service';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { SearchProductsFilterPipe } from '../../../pipes/search-prods-filter.pipe';
 
 @Component({
   selector: 'app-cateogry',
   standalone: true,
-  imports: [
-    ProductCardComponent,
-    NgxPaginationModule,
-    SearchProductsFilterPipe,
-  ],
+  imports: [ProductCardComponent, NgxPaginationModule],
   templateUrl: './cateogry.component.html',
   styleUrl: './cateogry.component.scss',
 })

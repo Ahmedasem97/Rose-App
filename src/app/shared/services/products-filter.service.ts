@@ -7,24 +7,21 @@ import {
   SortOrder,
   ValueCondition,
 } from '../../core/interfaces/products-query-param.interface';
+import { ProductsService } from './products.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsFilterService {
-  // variables
-  private readonly productsAPI = productsEndPoint.allProducts;
-  //inject Services
-
   //? ------------ Utilities  ----------
 
   // Public Methods
-  getProductsByFilter(filterParamsObj: ProductsQueryParams) {
+  getProductsByFilter(filterParamsObj: ProductsQueryParams): string {
     const queryParams = this.getFilterParamsForAPI(
       this.getFilterList(filterParamsObj)
     );
 
-    //TODO Call The API
+    return queryParams;
   }
 
   // Private Methods
@@ -105,9 +102,7 @@ export class ProductsFilterService {
     let paramFilterStr = '';
 
     for (let i = 0; i < paramsList.length; i++) {
-      if (i === 0) {
-        paramFilterStr += '?';
-      } else {
+      if (i !== 0) {
         paramFilterStr += '&';
       }
       const param = paramsList[i];
