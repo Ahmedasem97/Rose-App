@@ -16,7 +16,7 @@ export class ProductsFilterService {
   //? ------------ Utilities  ----------
 
   // Public Methods
-  getProductsByFilter(filterParamsObj: ProductsQueryParams): string {
+  getQueryParamsAsStr(filterParamsObj: ProductsQueryParams): string {
     const queryParams = this.getFilterParamsForAPI(
       this.getFilterList(filterParamsObj)
     );
