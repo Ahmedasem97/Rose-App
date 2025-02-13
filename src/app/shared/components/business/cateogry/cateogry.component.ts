@@ -81,23 +81,23 @@ export class CateogryComponent implements OnInit, OnDestroy {
     this.productsFilterParamsObj.keyword = value;
   }
 
-  setSortOrder(sortOrder: SortOrder) {
+  setSortOrderFilter(sortOrder: SortOrder) {
     this.productsFilterParamsObj.sort = sortOrder;
   }
 
-  setSortBy(attr: SortAttributes) {
+  setSortByFilter(attr: SortAttributes) {
     this.productsFilterParamsObj.sortBy = attr;
   }
 
-  setLimit(num: number) {
+  setLimitFilter(num: number) {
     this.productsFilterParamsObj.limit = num;
   }
 
-  setCategory(id: string) {
+  setCategoryFilter(id: string) {
     this.productsFilterParamsObj.category = id;
   }
 
-  setPriceCondition(num: number) {
+  setPriceConditionFilter(num: number) {
     if (!this.productsFilterParamsObj.price) {
       // By default the slider will start from 0 & the price should be greater than Or equal to 0
       this.productsFilterParamsObj.price = [
@@ -120,33 +120,33 @@ export class CateogryComponent implements OnInit, OnDestroy {
     delete this.productsFilterParamsObj.keyword;
   }
 
-  clearSortOrder() {
+  clearSortOrderFilter() {
     delete this.productsFilterParamsObj.sort;
   }
 
-  clearSortBy() {
+  clearSortByFilter() {
     delete this.productsFilterParamsObj.sortBy;
   }
 
-  clearLimit() {
+  clearLimitFilter() {
     delete this.productsFilterParamsObj.limit;
   }
 
-  clearPriceCondition() {
+  clearPriceConditionFilter() {
     delete this.productsFilterParamsObj.price;
   }
 
-  clearCategory() {
+  clearCategoryFilter() {
     delete this.productsFilterParamsObj.category;
   }
 
   clearAllFilters() {
     this.clearKeywordFilter();
-    this.clearLimit();
-    this.clearPriceCondition();
-    this.clearSortBy();
-    this.clearSortOrder();
-    this.clearCategory();
+    this.clearLimitFilter();
+    this.clearPriceConditionFilter();
+    this.clearSortByFilter();
+    this.clearSortOrderFilter();
+    this.clearCategoryFilter();
   }
 
   // Check Object
