@@ -24,6 +24,13 @@ export const routes: Routes = [
               (c) => c.CateogryComponent
             ),
         },
+        {
+          path: 'about-us',
+          loadComponent: () =>
+            import('./core/pages/about-us-page/about-us-page.component').then(
+              (c) => c.AboutUsPageComponent
+            ),
+        },
       
     ],
   },
