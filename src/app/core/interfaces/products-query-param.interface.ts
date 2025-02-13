@@ -1,28 +1,26 @@
-export interface ProductFields {
-  _id?: string;
-  title?: string;
-  slug?: string;
-  description?: string;
-  imgCover?: string;
-  images?: string[];
-  price?: number;
-  priceAfterDiscount?: number;
-  quantity?: number;
-  category?: string;
-  occasion?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  __v?: number;
-  discount?: number;
-  sold?: number;
-  id?: string;
-}
+export type Conditions = 'gt' | 'gte' | 'lt' | 'lte';
+export type SortOrder = 'asc' | 'desc';
+export type SortAttributes =
+  | 'price'
+  | 'id'
+  | '_id'
+  | 'title'
+  | 'quantity'
+  | 'category'
+  | 'createdAt'
+  | 'discount';
 
-export interface PriceConditions {}
+export interface ValueCondition {
+  value?: number | Date;
+  condition: Conditions;
+}
 
 export interface ProductsQueryParams {
   keyword?: string;
-  price?: string;
+  price?: ValueCondition[];
   category?: string;
-  fields?: ProductFields;
+  fields?: string[];
+  limit?: number;
+  sort?: SortOrder;
+  sortBy?: SortAttributes;
 }

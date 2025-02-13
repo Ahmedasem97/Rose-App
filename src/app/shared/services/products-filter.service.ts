@@ -1,8 +1,12 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { productsEndPoint } from '../../core/api-end-point/products-end-point';
-import { ProductsAbstract } from '../../core/abstract/products.abstract';
-import { Observable } from 'rxjs';
-import { ProductsRes } from '../../core/interfaces/products';
+import { HttpClient } from '@angular/common/http';
+import {
+  ProductsQueryParams,
+  SortAttributes,
+  SortOrder,
+  ValueCondition,
+} from '../../core/interfaces/products-query-param.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +14,106 @@ import { ProductsRes } from '../../core/interfaces/products';
 export class ProductsFilterService {
   // variables
   private readonly productsAPI = productsEndPoint.allProducts;
-
   //inject Services
-  filterBy() {}
+
+  //? ------------ Utilities  ----------
+
+  // Public Methods
+  getProductsByFilter(filterParamsObj: ProductsQueryParams) {
+    const queryParams = this.getFilterParamsForAPI(
+      this.getFilterList(filterParamsObj)
+    );
+
+    //TODO Call The API
+  }
+
+  // Private Methods
+  private getFilterList(filterObj: ProductsQueryParams): string[] {
+    const queryParamsList = [];
+
+    if (filterObj.price) {
+      let priceConditions = filterObj.price.map((obj) =>
+        this.getConditionFilter('price', obj)
+      );
+      queryParamsList.push(...priceConditions);
+    }
+
+    if (filterObj.sort && filterObj.sortBy) {
+      queryParamsList.push(
+        this.getSortFilter(filterObj.sortBy, filterObj.sort)
+      );
+    }
+
+    if (filterObj.limit) {
+      queryParamsList.push(`limit=${filterObj.limit}`);
+    }
+
+    if (filterObj.category) {
+      queryParamsList.push(`category=${filterObj.category}`);
+    }
+
+    if (filterObj.keyword) {
+      queryParamsList.push(`keyword=${filterObj.keyword}`);
+    }
+
+    return queryParamsList;
+  }
+
+  private getConditionFilter(
+    attr: string,
+    conditionObj: ValueCondition
+  ): string {
+    const val = conditionObj.value;
+    const condition = conditionObj.condition;
+    let filterStr = '';
+    switch (condition) {
+      case 'gt':
+        filterStr = `${attr}[gt]=${val}`;
+        break;
+      case 'gte':
+        filterStr = `${attr}[gte]=${val}`;
+        break;
+      case 'lt':
+        filterStr = `${attr}[lt]=${val}`;
+        break;
+      case 'lte':
+        filterStr = `${attr}[lt]=${val}`;
+        break;
+    }
+
+    return filterStr;
+  }
+
+  private getIncludedFields(fieldsList: string[]): string {
+    return fieldsList.join(',');
+  }
+
+  private getSortFilter(attr: SortAttributes, order: SortOrder): string {
+    let sortFilter = '';
+    switch (order) {
+      case 'asc':
+        sortFilter = `sort=${attr}`;
+        break;
+      case 'desc':
+        sortFilter = `sort=-${attr}`;
+        break;
+    }
+    return sortFilter;
+  }
+
+  private getFilterParamsForAPI(paramsList: string[]) {
+    let paramFilterStr = '';
+
+    for (let i = 0; i < paramsList.length; i++) {
+      if (i === 0) {
+        paramFilterStr += '?';
+      } else {
+        paramFilterStr += '&';
+      }
+      const param = paramsList[i];
+      paramFilterStr += param;
+    }
+
+    return paramFilterStr;
+  }
 }
