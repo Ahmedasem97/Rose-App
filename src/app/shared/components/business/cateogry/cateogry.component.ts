@@ -113,6 +113,14 @@ export class CateogryComponent implements OnInit, OnDestroy {
 
   // Events
 
+  onClickSearch(value: string) {
+    if (value) {
+      this.setKeywordFilter(value);
+      // console.log(`The Keyword`);
+      // console.log(this.productsFilterParamsObj);
+    }
+  }
+
   onChangeCategory(event: Event) {
     const element = event.target as HTMLInputElement;
     const id = element.value;
@@ -157,8 +165,6 @@ export class CateogryComponent implements OnInit, OnDestroy {
   //  Set Methods
   setKeywordFilter(value: string) {
     this.productsFilterParamsObj.keyword = value;
-    console.log(`The Keyword`);
-    console.log(this.productsFilterParamsObj);
   }
 
   setSortOrderFilter(sortOrder: SortOrder) {
