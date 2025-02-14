@@ -35,6 +35,8 @@ import {
 import { CustomRadioDropdownComponent } from '../custom-dropdown/custom-radio-dropdown.component';
 import { sortOrder } from '../../../../mock/sort-order.mock';
 import { sortAttributes } from '../../../../mock/sort-attributes.mock';
+import { PrimaryBtnComponent } from '../../ui/primary-btn/primary-btn.component';
+import { CustomSearchComponent } from '../custom-search/custom-search.component';
 
 @Component({
   selector: 'app-cateogry',
@@ -43,6 +45,7 @@ import { sortAttributes } from '../../../../mock/sort-attributes.mock';
     ProductCardComponent,
     NgxPaginationModule,
     CustomRadioDropdownComponent,
+    CustomSearchComponent,
   ],
   templateUrl: './cateogry.component.html',
   styleUrl: './cateogry.component.scss',
@@ -154,6 +157,8 @@ export class CateogryComponent implements OnInit, OnDestroy {
   //  Set Methods
   setKeywordFilter(value: string) {
     this.productsFilterParamsObj.keyword = value;
+    console.log(`The Keyword`);
+    console.log(this.productsFilterParamsObj);
   }
 
   setSortOrderFilter(sortOrder: SortOrder) {

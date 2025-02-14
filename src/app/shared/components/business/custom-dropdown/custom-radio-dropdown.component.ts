@@ -1,4 +1,13 @@
-import { Component, input, output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  input,
+  OnChanges,
+  output,
+  QueryList,
+  SimpleChanges,
+  ViewChildren,
+} from '@angular/core';
 
 @Component({
   selector: 'app-custom-radio-dropdown',
@@ -14,7 +23,15 @@ export class CustomRadioDropdownComponent {
   dropdownId = input.required<string>();
   defaultValue = input<string>();
   handlChangeValue = output<Event>();
+  resetTrigger = input<boolean>();
 
+  @ViewChildren('radio') radios!: QueryList<ElementRef>;
+
+  uncheckRadios() {
+    this.radios.forEach(
+      (radio: ElementRef) => (radio.nativeElement.checked = false)
+    );
+  }
   onChangeValue(event: Event) {
     this.handlChangeValue.emit(event);
   }
