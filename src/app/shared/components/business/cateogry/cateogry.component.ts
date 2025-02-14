@@ -35,7 +35,6 @@ import {
 import { CustomRadioDropdownComponent } from '../custom-dropdown/custom-radio-dropdown.component';
 import { sortOrder } from '../../../../mock/sort-order.mock';
 import { sortAttributes } from '../../../../mock/sort-attributes.mock';
-import { PrimaryBtnComponent } from '../../ui/primary-btn/primary-btn.component';
 import { CustomSearchComponent } from '../custom-search/custom-search.component';
 
 @Component({
@@ -111,13 +110,24 @@ export class CateogryComponent implements OnInit, OnDestroy {
     this.sortByOptionsList = sortAttributes;
   }
 
+  setDefaultSortOrder() {
+    this.setSortOrderFilter('asc');
+  }
+
   // Events
+
+  onClickResetFilter() {
+    this.clearAllFilters();
+    // TODO : Call the API getPopularProductApi
+  }
 
   onClickSearch(value: string) {
     if (value) {
       this.setKeywordFilter(value);
       // console.log(`The Keyword`);
       // console.log(this.productsFilterParamsObj);
+      // TODO : Call the API
+      this.filterProducts();
     }
   }
 
@@ -127,6 +137,7 @@ export class CateogryComponent implements OnInit, OnDestroy {
     console.log(`The category = ${id}`);
     this.setCategoryFilter(id);
     // TODO : Call the API
+    this.filterProducts();
   }
 
   onChangePrice(event: Event) {
@@ -135,6 +146,7 @@ export class CateogryComponent implements OnInit, OnDestroy {
     console.log(`The price = ${num}`);
     this.setPriceConditionFilter(num);
     // TODO : Call the API
+    this.filterProducts();
   }
 
   onChangeSearch(event: Event) {
@@ -142,6 +154,7 @@ export class CateogryComponent implements OnInit, OnDestroy {
     const value = element.value;
     this.setKeywordFilter(value);
     // TODO : Call the API
+    this.filterProducts();
   }
 
   onChangeSortOrder(event: Event) {
@@ -151,6 +164,7 @@ export class CateogryComponent implements OnInit, OnDestroy {
     // console.log('------ Sort Order ------------');
     // console.log(this.productsFilterParamsObj);
     // TODO : Call the API
+    this.filterProducts();
   }
 
   onChangeSortBy(event: Event) {
@@ -160,6 +174,7 @@ export class CateogryComponent implements OnInit, OnDestroy {
     // console.log('------ Sort By ------------');
     // console.log(this.productsFilterParamsObj);
     // TODO : Call the API
+    this.filterProducts();
   }
 
   //  Set Methods
@@ -245,19 +260,23 @@ export class CateogryComponent implements OnInit, OnDestroy {
 
   // Call API
   filterProducts() {
-    if (!this.isFilterObjectEmpty()) {
+    const isFilterObjEmpty = this.isFilterObjectEmpty();
+    if (!isFilterObjEmpty) {
       const queryParams = this._productsFilterService.getQueryParamsAsStr(
         this.productsFilterParamsObj
       );
 
-      this._productsService
-        .getAllProductsByFilter(queryParams)
-        .pipe(takeUntil(this.$destroy))
-        .subscribe({
-          next: (res: ProductsRes) => {
-            console.log(res);
-          },
-        });
+      console.log('~~~~~~~~~~ Final Params ~~~~~~~~~~ ');
+      console.log(queryParams);
+      console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ');
+      // this._productsService
+      //   .getAllProductsByFilter(queryParams)
+      //   .pipe(takeUntil(this.$destroy))
+      //   .subscribe({
+      //     next: (res: ProductsRes) => {
+      //       console.log(res);
+      //     },
+      //   });
     }
   }
   // --------------------------------------------------
@@ -265,6 +284,7 @@ export class CateogryComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initSortByList();
     this.initSortOrderList();
+    this.setDefaultSortOrder();
     this.getPopularProductApi();
     this.getCategories();
   }
