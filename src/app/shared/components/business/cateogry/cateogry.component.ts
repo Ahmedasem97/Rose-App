@@ -152,9 +152,24 @@ export class CateogryComponent implements OnInit, OnDestroy {
   onChangeSearch(event: Event) {
     const element = event.target as HTMLInputElement;
     const value = element.value;
-    this.setKeywordFilter(value);
-    // TODO : Call the API
-    this.filterProducts();
+
+    if (value) {
+      this.setKeywordFilter(value);
+      // TODO : Call the API
+      this.filterProducts();
+    } else {
+      this.clearKeywordFilter();
+    }
+  }
+
+  onInputSearch(event: Event) {
+    const element = event.target as HTMLInputElement;
+    const value = element.value;
+    if (value) {
+      this.setKeywordFilter(value);
+    } else {
+      this.clearKeywordFilter();
+    }
   }
 
   onChangeSortOrder(event: Event) {

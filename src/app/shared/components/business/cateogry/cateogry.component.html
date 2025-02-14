@@ -12,6 +12,8 @@
 
       <app-custom-search
         placeholder="Search product name..."
+        (handlChange)="onChangeSearch($event)"
+        (handlInput)="onInputSearch($event)"
         (handlClick)="onClickSearch($event)"
       />
 

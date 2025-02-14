@@ -11,11 +11,21 @@ export class CustomSearchComponent {
   placeholder = input.required<string>();
   resetTrigger = input<boolean>();
   handlClick = output<string>();
+  handlInput = output<Event>();
+  handlChange = output<Event>();
 
   @ViewChild('searchInput') searchInput!: ElementRef;
 
   resetValue() {
     this.searchInput.nativeElement.value = '';
+  }
+
+  onValueInput(event: Event) {
+    this.handlInput.emit(event);
+  }
+
+  onValueChange(event: Event) {
+    this.handlChange.emit(event);
   }
 
   onClick() {
