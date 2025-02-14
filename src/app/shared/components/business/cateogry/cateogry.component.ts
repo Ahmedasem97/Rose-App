@@ -27,23 +27,38 @@ import {
   SortOrder,
 } from '../../../../core/interfaces/products-query-param.interface';
 import { ProductsFilterService } from '../../../services/products-filter.service';
+import { CategoriesService } from '../../../services/categories.service';
+import {
+  CategoriesRes,
+  Category,
+} from '../../../../core/interfaces/categories';
+import { CustomRadioDropdownComponent } from '../custom-dropdown/custom-radio-dropdown.component';
+import { sortOrder } from '../../../../mock/sort-order.mock';
+import { sortAttributes } from '../../../../mock/sort-attributes.mock';
 
 @Component({
   selector: 'app-cateogry',
   standalone: true,
-  imports: [ProductCardComponent, NgxPaginationModule],
+  imports: [
+    ProductCardComponent,
+    NgxPaginationModule,
+    CustomRadioDropdownComponent,
+  ],
   templateUrl: './cateogry.component.html',
   styleUrl: './cateogry.component.scss',
 })
 export class CateogryComponent implements OnInit, OnDestroy {
   private _productsService = inject(ProductsService);
   private _productsFilterService = inject(ProductsFilterService);
+  private _categoriesService = inject(CategoriesService);
   p: number = 1;
 
-  sidecateo = sidebarCo;
+  sidecateo: Category[] = [] as Category[];
   sidebrand = sidebarBrands;
   sidesales = sidebarSales;
   sidesize = sidebarSizes;
+  sortByOptionsList: SortAttributes[] = [];
+  sortOrderOptionsList: SortOrder[] = [];
 
   productsDisplay: WritableSignal<PopularProduct[]> = signal([]);
   $destroy = new Subject();
@@ -54,8 +69,15 @@ export class CateogryComponent implements OnInit, OnDestroy {
   //FEATURE : Filter Products Service
   productsFilterParamsObj: ProductsQueryParams = {};
 
-  ngOnInit(): void {
-    this.getPopularProductApi();
+  getCategories() {
+    this._categoriesService
+      .getAllCategories()
+      .pipe(takeUntil(this.$destroy))
+      .subscribe({
+        next: (res: CategoriesRes) => {
+          this.sidecateo = res.categories;
+        },
+      });
   }
 
   getPopularProductApi(keyword: string = ''): void {
@@ -75,6 +97,59 @@ export class CateogryComponent implements OnInit, OnDestroy {
   }
 
   //FEATURE : ------------------------[Filter Products Service ]--------------------------
+
+  // init
+
+  initSortOrderList() {
+    this.sortOrderOptionsList = sortOrder;
+  }
+
+  initSortByList() {
+    this.sortByOptionsList = sortAttributes;
+  }
+
+  // Events
+
+  onChangeCategory(event: Event) {
+    const element = event.target as HTMLInputElement;
+    const id = element.value;
+    console.log(`The category = ${id}`);
+    this.setCategoryFilter(id);
+    // TODO : Call the API
+  }
+
+  onChangePrice(event: Event) {
+    const element = event.target as HTMLInputElement;
+    const num = Number(element.value);
+    console.log(`The price = ${num}`);
+    this.setPriceConditionFilter(num);
+    // TODO : Call the API
+  }
+
+  onChangeSearch(event: Event) {
+    const element = event.target as HTMLInputElement;
+    const value = element.value;
+    this.setKeywordFilter(value);
+    // TODO : Call the API
+  }
+
+  onChangeSortOrder(event: Event) {
+    const element = event.target as HTMLInputElement;
+    const value = element.value as SortOrder;
+    this.setSortOrderFilter(value);
+    // console.log('------ Sort Order ------------');
+    // console.log(this.productsFilterParamsObj);
+    // TODO : Call the API
+  }
+
+  onChangeSortBy(event: Event) {
+    const element = event.target as HTMLInputElement;
+    const value = element.value as SortAttributes;
+    this.setSortByFilter(value);
+    // console.log('------ Sort By ------------');
+    // console.log(this.productsFilterParamsObj);
+    // TODO : Call the API
+  }
 
   //  Set Methods
   setKeywordFilter(value: string) {
@@ -112,6 +187,9 @@ export class CateogryComponent implements OnInit, OnDestroy {
       value: num,
       condition: 'lte',
     };
+
+    // console.log('The price');
+    // console.log(this.productsFilterParamsObj);
   }
 
   //  Clear Methods
@@ -172,6 +250,14 @@ export class CateogryComponent implements OnInit, OnDestroy {
     }
   }
   // --------------------------------------------------
+
+  ngOnInit(): void {
+    this.initSortByList();
+    this.initSortOrderList();
+    this.getPopularProductApi();
+    this.getCategories();
+  }
+
   ngOnDestroy(): void {
     this.$destroy.next('destroy');
   }

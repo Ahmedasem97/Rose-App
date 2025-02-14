@@ -7,7 +7,6 @@ import {
   SortOrder,
   ValueCondition,
 } from '../../core/interfaces/products-query-param.interface';
-import { ProductsService } from './products.service';
 
 @Injectable({
   providedIn: 'root',
