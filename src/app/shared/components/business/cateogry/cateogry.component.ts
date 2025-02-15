@@ -178,14 +178,25 @@ export class CateogryComponent implements OnInit, OnDestroy {
     const element = event.target as HTMLInputElement;
     const value = element.value as SortOrder;
     this.setSortOrderFilter(value);
-    this.filterProducts();
+
+    if (
+      this.productsFilterParamsObj.sort &&
+      this.productsFilterParamsObj.sortBy
+    ) {
+      this.filterProducts();
+    }
   }
 
   onChangeSortBy(event: Event) {
     const element = event.target as HTMLInputElement;
     const value = element.value as SortAttributes;
     this.setSortByFilter(value);
-    this.filterProducts();
+    if (
+      this.productsFilterParamsObj.sort &&
+      this.productsFilterParamsObj.sortBy
+    ) {
+      this.filterProducts();
+    }
   }
 
   //  Set Methods
