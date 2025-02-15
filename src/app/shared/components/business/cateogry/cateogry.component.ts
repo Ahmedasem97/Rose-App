@@ -125,15 +125,11 @@ export class CateogryComponent implements OnInit, OnDestroy {
   onClickResetFilter() {
     this._productsFilterService.setResetFilterStatus(true);
     this.clearAllFilters();
-    // TODO : Call the API getPopularProductApi
+    this.getPopularProductApi();
   }
 
   onClickSearch(value: string) {
     if (value) {
-      this.setKeywordFilter(value);
-      // console.log(`The Keyword`);
-      // console.log(this.productsFilterParamsObj);
-      // TODO : Call the API
       this.filterProducts();
     }
   }
@@ -141,18 +137,14 @@ export class CateogryComponent implements OnInit, OnDestroy {
   onChangeCategory(event: Event) {
     const element = event.target as HTMLInputElement;
     const id = element.value;
-    console.log(`The category = ${id}`);
     this.setCategoryFilter(id);
-    // TODO : Call the API
     this.filterProducts();
   }
 
   onChangePrice(event: Event) {
     const element = event.target as HTMLInputElement;
     const num = Number(element.value);
-    console.log(`The price = ${num}`);
     this.setPriceConditionFilter(num);
-    // TODO : Call the API
     this.filterProducts();
   }
 
@@ -162,7 +154,6 @@ export class CateogryComponent implements OnInit, OnDestroy {
 
     if (value) {
       this.setKeywordFilter(value);
-      // TODO : Call the API
       this.filterProducts();
     } else {
       this.clearKeywordFilter();
@@ -170,6 +161,7 @@ export class CateogryComponent implements OnInit, OnDestroy {
   }
 
   onInputSearch(event: Event) {
+    //! Don't call the API on input, this will affect the performance and not best practice
     const element = event.target as HTMLInputElement;
     const value = element.value;
     if (value) {
@@ -183,9 +175,6 @@ export class CateogryComponent implements OnInit, OnDestroy {
     const element = event.target as HTMLInputElement;
     const value = element.value as SortOrder;
     this.setSortOrderFilter(value);
-    // console.log('------ Sort Order ------------');
-    // console.log(this.productsFilterParamsObj);
-    // TODO : Call the API
     this.filterProducts();
   }
 
@@ -193,9 +182,6 @@ export class CateogryComponent implements OnInit, OnDestroy {
     const element = event.target as HTMLInputElement;
     const value = element.value as SortAttributes;
     this.setSortByFilter(value);
-    // console.log('------ Sort By ------------');
-    // console.log(this.productsFilterParamsObj);
-    // TODO : Call the API
     this.filterProducts();
   }
 
@@ -235,9 +221,6 @@ export class CateogryComponent implements OnInit, OnDestroy {
       value: num,
       condition: 'lte',
     };
-
-    // console.log('The price');
-    // console.log(this.productsFilterParamsObj);
   }
 
   //  Clear Methods
@@ -292,17 +275,14 @@ export class CateogryComponent implements OnInit, OnDestroy {
         this.productsFilterParamsObj
       );
 
-      console.log('~~~~~~~~~~ Final Params ~~~~~~~~~~ ');
-      console.log(queryParams);
-      console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ');
-      // this._productsService
-      //   .getAllProductsByFilter(queryParams)
-      //   .pipe(takeUntil(this.$destroy))
-      //   .subscribe({
-      //     next: (res: ProductsRes) => {
-      //       console.log(res);
-      //     },
-      //   });
+      this._productsService
+        .getAllProductsByFilter(queryParams)
+        .pipe(takeUntil(this.$destroy))
+        .subscribe({
+          next: (res: ProductsRes) => {
+            this.productsDisplay.set(res.products);
+          },
+        });
     }
   }
   // --------------------------------------------------

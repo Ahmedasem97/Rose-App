@@ -38,31 +38,28 @@ export class ProductsFilterService {
   private getFilterList(filterObj: ProductsQueryParams): string[] {
     const queryParamsList = [];
 
-    if (filterObj.price) {
-      let priceConditions = filterObj.price.map((obj) =>
-        this.getConditionFilter('price', obj)
-      );
-      queryParamsList.push(...priceConditions);
-    }
-
     if (filterObj.sort && filterObj.sortBy) {
       queryParamsList.push(
         this.getSortFilter(filterObj.sortBy, filterObj.sort)
       );
     }
 
-    if (filterObj.limit) {
-      queryParamsList.push(`limit=${filterObj.limit}`);
+    for (const [key, value] of Object.entries(filterObj)) {
+      switch (key) {
+        case 'price':
+          let priceConditions = value.map((obj: ValueCondition) =>
+            this.getConditionFilter('price', obj)
+          );
+          queryParamsList.push(...priceConditions);
+          break;
+        case 'sort': // sort will be set only if sortby available & defined [Handle it befor for loop to avoid added twice]
+          break;
+        case 'sortBy': // sortBy will be set only if sort available & defined  [Handle it befor for loop to avoid added twice]
+          break;
+        default:
+          queryParamsList.push(`${key}=${value}`);
+      }
     }
-
-    if (filterObj.category) {
-      queryParamsList.push(`category=${filterObj.category}`);
-    }
-
-    if (filterObj.keyword) {
-      queryParamsList.push(`keyword=${filterObj.keyword}`);
-    }
-
     return queryParamsList;
   }
 
