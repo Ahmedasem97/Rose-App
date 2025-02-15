@@ -1,6 +1,8 @@
 import {
   Component,
+  effect,
   ElementRef,
+  inject,
   input,
   OnChanges,
   output,
@@ -8,6 +10,7 @@ import {
   SimpleChanges,
   ViewChildren,
 } from '@angular/core';
+import { ProductsFilterService } from '../../../services/products-filter.service';
 
 @Component({
   selector: 'app-custom-radio-dropdown',
@@ -27,6 +30,16 @@ export class CustomRadioDropdownComponent {
 
   @ViewChildren('radio') radios!: QueryList<ElementRef>;
 
+  private readonly _productsFilterService = inject(ProductsFilterService);
+  constructor() {
+    effect(() => {
+      const status = this._productsFilterService.getResetFilterStatus();
+      if (status) {
+        this.uncheckRadios();
+      }
+    });
+  }
+
   uncheckRadios() {
     this.radios.forEach(
       (radio: ElementRef) => (radio.nativeElement.checked = false)
@@ -34,5 +47,6 @@ export class CustomRadioDropdownComponent {
   }
   onChangeValue(event: Event) {
     this.handlChangeValue.emit(event);
+    this._productsFilterService.setResetFilterStatus(false);
   }
 }

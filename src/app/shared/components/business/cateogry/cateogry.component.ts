@@ -1,9 +1,13 @@
 import {
   Component,
+  ElementRef,
   inject,
   OnDestroy,
   OnInit,
+  QueryList,
   signal,
+  ViewChild,
+  ViewChildren,
   WritableSignal,
 } from '@angular/core';
 import {
@@ -61,6 +65,8 @@ export class CateogryComponent implements OnInit, OnDestroy {
   sidesize = sidebarSizes;
   sortByOptionsList: SortAttributes[] = [];
   sortOrderOptionsList: SortOrder[] = [];
+  @ViewChildren('categoryRadios') categoryRadios!: QueryList<ElementRef>;
+  @ViewChild('priceRange') priceRange!: ElementRef;
 
   productsDisplay: WritableSignal<PopularProduct[]> = signal([]);
   $destroy = new Subject();
@@ -117,6 +123,7 @@ export class CateogryComponent implements OnInit, OnDestroy {
   // Events
 
   onClickResetFilter() {
+    this._productsFilterService.setResetFilterStatus(true);
     this.clearAllFilters();
     // TODO : Call the API getPopularProductApi
   }
@@ -252,10 +259,14 @@ export class CateogryComponent implements OnInit, OnDestroy {
   }
 
   clearPriceConditionFilter() {
+    this.priceRange.nativeElement.value = 100;
     delete this.productsFilterParamsObj.price;
   }
 
   clearCategoryFilter() {
+    this.categoryRadios.forEach(
+      (radio: ElementRef) => (radio.nativeElement.checked = false)
+    );
     delete this.productsFilterParamsObj.category;
   }
 

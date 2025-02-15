@@ -1,6 +1,4 @@
-import { inject, Injectable } from '@angular/core';
-import { productsEndPoint } from '../../core/api-end-point/products-end-point';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, signal } from '@angular/core';
 import {
   ProductsQueryParams,
   SortAttributes,
@@ -12,7 +10,20 @@ import {
   providedIn: 'root',
 })
 export class ProductsFilterService {
+  // variables
+  private readonly resetFilterSignal = signal<boolean>(false);
+
   //? ------------ Utilities  ----------
+
+  // Signal Methods
+
+  getResetFilterStatus() {
+    return this.resetFilterSignal();
+  }
+
+  setResetFilterStatus(status: boolean) {
+    this.resetFilterSignal.set(status);
+  }
 
   // Public Methods
   getQueryParamsAsStr(filterParamsObj: ProductsQueryParams): string {
@@ -73,7 +84,7 @@ export class ProductsFilterService {
         filterStr = `${attr}[lt]=${val}`;
         break;
       case 'lte':
-        filterStr = `${attr}[lt]=${val}`;
+        filterStr = `${attr}[lte]=${val}`;
         break;
     }
 
