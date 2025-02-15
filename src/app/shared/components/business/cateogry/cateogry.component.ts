@@ -131,6 +131,32 @@ export class CateogryComponent implements OnInit, OnDestroy {
   onClickSearch(value: string) {
     if (value) {
       this.filterProducts();
+    } else {
+      this.getPopularProductApi();
+    }
+  }
+
+  onChangeSearch(event: Event) {
+    const element = event.target as HTMLInputElement;
+    const value = element.value;
+
+    if (value) {
+      this.setKeywordFilter(value);
+      this.filterProducts();
+    } else {
+      this.clearKeywordFilter();
+      this.getPopularProductApi();
+    }
+  }
+
+  onInputSearch(event: Event) {
+    //! Don't call the API on input, this will affect the performance and not best practice
+    const element = event.target as HTMLInputElement;
+    const value = element.value;
+    if (value) {
+      this.setKeywordFilter(value);
+    } else {
+      this.clearKeywordFilter();
     }
   }
 
@@ -146,29 +172,6 @@ export class CateogryComponent implements OnInit, OnDestroy {
     const num = Number(element.value);
     this.setPriceConditionFilter(num);
     this.filterProducts();
-  }
-
-  onChangeSearch(event: Event) {
-    const element = event.target as HTMLInputElement;
-    const value = element.value;
-
-    if (value) {
-      this.setKeywordFilter(value);
-      this.filterProducts();
-    } else {
-      this.clearKeywordFilter();
-    }
-  }
-
-  onInputSearch(event: Event) {
-    //! Don't call the API on input, this will affect the performance and not best practice
-    const element = event.target as HTMLInputElement;
-    const value = element.value;
-    if (value) {
-      this.setKeywordFilter(value);
-    } else {
-      this.clearKeywordFilter();
-    }
   }
 
   onChangeSortOrder(event: Event) {
