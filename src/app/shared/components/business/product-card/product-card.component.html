@@ -3,7 +3,7 @@
         <div class="item__img h-full mb-4 bg-light-prim-background rounded-[var(--cards-border-radius)] relative overflow-hidden">
             <img class="w-full h-[272px] object-cover" [src]="productApi().imgCover" alt="">
             <div class="svg__container opacity-0 transition-opacity duration-500 layout absolute w-full h-full top-0 bg-primary-color-alpha flex justify-center items-center gap-11">
-                <div routerLink="/produt-details" class="w-10 h-10 cursor-pointer rounded-full bg-primary flex items-center justify-center">
+                <div [routerLink]="['/details',productApi()._id]" class="w-10 h-10 cursor-pointer rounded-full bg-primary flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 30 24"
                         fill="none">
                         <path
