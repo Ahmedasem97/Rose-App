@@ -11,7 +11,7 @@ import { Relatedproduct } from '../../../../core/interfaces/relatedproduct';
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [DetailsSliderComponent,RouterLink ],
+  imports: [DetailsSliderComponent,RouterLink],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
@@ -23,7 +23,7 @@ private readonly _RelatedProductService=inject(RelatedProductService)
 
 
 specificProduct:Product = {} as Product;
-relatedProducts:Relatedproduct[] | null=null
+relatedProducts:Relatedproduct[]=[]
 
 
 
