@@ -1,0 +1,23 @@
+.our-us {
+
+    h2::before {
+        content: "";
+        background-color: #FEEDF7;
+        width: 338px;
+        height: 17px;
+        top: 22px;
+        border-radius: 0px 20px 20px 0px;
+        position: absolute;
+        z-index: -1;
+    }
+    
+    h2::after {
+        content: "";
+        width: 161px;
+        height: 2px;
+        top: 37px;
+        left: 0;
+        background-color: #F82BA9;
+        position: absolute;
+    }
+}
