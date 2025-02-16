@@ -4,55 +4,83 @@ import { SpecificPrService } from '../../../services/specific-pr.service';
 import { Product } from '../../../../core/interfaces/products';
 import { DetailsSliderComponent } from "../details-slider/details-slider.component";
 import { RelatedProductService } from '../../../services/related-product.service';
-import { RelatedProductComponent } from "../related-product/related-product.component";
-import { Relatedproduct } from '../../../../core/interfaces/relatedproduct';
-
-
+import { PercentPipe } from '@angular/common';
+import { Relatedproducts } from '../../../../core/interfaces/relatedproduct';
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [DetailsSliderComponent,RouterLink],
+  imports: [DetailsSliderComponent,RouterLink ,PercentPipe],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent implements OnInit {
+private readonly _activatedRoute=inject(ActivatedRoute)
+private readonly _specificPrService=inject(SpecificPrService)
+private readonly _relatedProductService=inject(RelatedProductService)
+add:number=0
+plus(){
 
-private readonly _ActivatedRoute=inject(ActivatedRoute)
-private readonly _SpecificPrService=inject(SpecificPrService)
-private readonly _RelatedProductService=inject(RelatedProductService)
+  this.add=this.add+1
 
-
-specificProduct:Product = {} as Product;
-relatedProducts:Relatedproduct[]=[]
-
-
-
-  ngOnInit(): void {
-    this._ActivatedRoute.paramMap.subscribe({
-      next: (params) => {
-        let id=params.get('id')
-        
-        this._SpecificPrService.getspecificpro(id).subscribe({
-          next: (res) => {this.specificProduct = res.product
-            console.log(this.specificProduct);}})
-      },
-     })
-
-     this.getrelated()
-     
- 
-  }
+}
 
 
-  getrelated(){
-    if (this.specificProduct.category!=undefined) {
-      this._RelatedProductService.getsrelatedProduct(this.specificProduct.category).subscribe({
-        next: (res) => {console.log(res.products)
-        this.relatedProducts=res.products
-        }
-      })
-    }
+  
 
+
+minus(){
+
+  if(this.add>0){
+
+    this.add=this.add-1
+  }else{
+    this.add=0
   }
 
 }
+
+
+id:any
+specificProduct:Product = {} as Product;
+relatedProducts:Relatedproducts[]=[]
+
+  ngOnInit(): void {
+    this._activatedRoute.paramMap.subscribe({
+      next: (params) => {
+        this.id=params.get('id')
+      },
+    })
+    this.getProducts()
+  }
+  getProducts(){
+    this._specificPrService.getspecificpro(this.id).subscribe({
+      next: (res) => {
+        this.specificProduct = res.product
+        console.log(this.specificProduct);
+        this.getrelated()
+      }})
+  }
+  getrelated(){
+    if(this.specificProduct.category!=undefined){
+      this._relatedProductService.getsrelatedProduct(this.specificProduct.category).subscribe({
+        next: (res) => {console.log(res.products)
+        this.relatedProducts=res.products||[]
+        }
+      })
+      
+    }
+    
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

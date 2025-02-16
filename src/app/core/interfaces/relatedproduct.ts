@@ -1,4 +1,4 @@
-export interface Relatedproduct {
+export interface Relatedproducts {
         products: any
         _id: string
         title: string

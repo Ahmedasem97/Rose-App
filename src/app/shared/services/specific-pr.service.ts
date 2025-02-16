@@ -11,13 +11,13 @@ import { productsEndPoint } from '../../core/api-end-point/products-end-point';
 export class SpecificPrService {
 
   constructor(
-      private _HttpClient:HttpClient,
+      private _httpClient:HttpClient,
       private _SpecificAdapter:SpecificAdapter
     ) { }
 
 
     getspecificpro(id :string|null):Observable<any>{
-      return this._HttpClient.get(`https://flower.elevateegy.com/api/v1/products/${id}`)
+      return this._httpClient.get(`https://flower.elevateegy.com/api/v1/products/${id}`)
       // return this._HttpClient.get(productsEndPoint.specificProduct+id).pipe(map((res:any) =>this._SpecificAdapter.specificProductAdapt(res)))
     }
 }
