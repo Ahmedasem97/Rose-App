@@ -1,29 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
 
-.instgram {
-
-    h1::before {
-        content: "";
-        background-color: #FEEDF7;
-        width: 232px;
-        height: 17px;
-        top: 22px;
-        border-radius: 0px 20px 20px 0px;
-        position: absolute;
-        z-index: -1;
-    }
-    
-    h1::after {
-        content: "";
-        width: 161px;
-        height: 2px;
-        top: 37px;
-        left: 0;
-        background-color: #F82BA9;
-        position: absolute;
-    }
-}
-
 .rose {
     font-family: "Alex Brush", serif;
     font-size: 40px;
