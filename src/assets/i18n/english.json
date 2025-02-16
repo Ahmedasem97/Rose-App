@@ -3,6 +3,7 @@
         "home": "Home",
         "category": "All Category",
         "about": "About",
-        "contact": "Contact"
+        "contact": "Contact",
+        "lang": "language"
     }
 }

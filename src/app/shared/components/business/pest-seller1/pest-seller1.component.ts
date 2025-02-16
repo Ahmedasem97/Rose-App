@@ -25,6 +25,7 @@ export class BestSeller1Component  {
       pullDrag: true,
       dots: false,
       navSpeed: 700,
+      rtl: true,
       navText: ['<i class="fa-solid fa-chevron-left"></i>', '<i class="fa-solid fa-chevron-right"></i>'],
       responsive: {
       

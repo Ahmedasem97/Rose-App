@@ -21,6 +21,7 @@ export class ReviewComponent implements OnInit {
     pullDrag: false,
     dots: true,
     navSpeed: 700,
+    rtl: true,
     navText: ['<i class="fa-solid fa-chevron-left"></i>', '<i class="fa-solid fa-chevron-right"></i>'],
     responsive: {
       0: {
