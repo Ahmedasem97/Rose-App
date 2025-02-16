@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { features } from '../../../../core/interfaces/categories copy';
+import { features } from '../../../../core/interfaces/feature.interface';
 import { CategoryCardComponent } from "../../business/category-card/category-card.component";
 
 @Component({
