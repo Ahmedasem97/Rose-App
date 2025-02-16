@@ -2,8 +2,7 @@ export type Conditions = 'gt' | 'gte' | 'lt' | 'lte';
 export type SortOrder = 'asc' | 'desc';
 export type SortAttributes =
   | 'price'
-  | 'id'
-  | '_id'
+  | 'rateAvg'
   | 'title'
   | 'quantity'
   | 'category'
