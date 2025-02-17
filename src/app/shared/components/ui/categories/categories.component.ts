@@ -1,4 +1,4 @@
-import { Component, input, InputSignal, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, computed, input, InputSignal, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { CategoriesRes, Category } from '../../../../core/interfaces/categories';
 import { CategoryCardComponent } from "../../business/category-card/category-card.component";
 
@@ -13,10 +13,12 @@ export class CategoriesComponent implements OnInit{
 
   categoryApiFromHome: InputSignal<CategoriesRes> = input.required()
 
-  categoryDisplay:WritableSignal<Category[]> = signal([])
-
+  // categoryDisplay:WritableSignal<Category[]> = signal([])
+  categoryDisplay!:Signal<Category[]>
+  
   ngOnInit(): void {
-    this.categoryDisplay.set(this.categoryApiFromHome().categories || []);
+    this.categoryDisplay = computed(()=> this.categoryApiFromHome().categories || [])
+    // this.categoryDisplay.set(this.categoryApiFromHome().categories || []);
       
   }
 
