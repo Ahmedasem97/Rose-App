@@ -17,15 +17,12 @@ export class ProductDetailsComponent implements OnInit {
 private readonly _activatedRoute=inject(ActivatedRoute)
 private readonly _specificPrService=inject(SpecificPrService)
 private readonly _relatedProductService=inject(RelatedProductService)
+
+
 add:number=0
 plus(){
-
   this.add=this.add+1
-
 }
-
-
-  
 
 
 minus(){
@@ -44,13 +41,24 @@ id:any
 specificProduct:Product = {} as Product;
 relatedProducts:Relatedproducts[]=[]
 
+
+stock:string=''
+
+stockAvailable(){
+  if(this.specificProduct.quantity>0){
+    this.stock='available'
+  }else{
+    this.stock='not available'
+  }
+}
+
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe({
       next: (params) => {
         this.id=params.get('id')
+        this.getProducts()
       },
     })
-    this.getProducts()
   }
   getProducts(){
     this._specificPrService.getspecificpro(this.id).subscribe({
@@ -65,6 +73,7 @@ relatedProducts:Relatedproducts[]=[]
       this._relatedProductService.getsrelatedProduct(this.specificProduct.category).subscribe({
         next: (res) => {console.log(res.products)
         this.relatedProducts=res.products||[]
+        this.stockAvailable()
         }
       })
       

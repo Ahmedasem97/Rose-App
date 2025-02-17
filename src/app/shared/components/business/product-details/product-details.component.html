@@ -1,24 +1,23 @@
 <div class="container mt-4 ">
     @if (specificProduct) {
-        <div class="w-4/5 h-[647px] flex mt-40 ">
+        <div class="md:w-4/5 px-6 h-full md:h-[647px] md:flex  mt-40 ">
             <div class="w-full md:w-[526px]">
                 <app-details-slider [imgData]="specificProduct"></app-details-slider>
             </div>
-            <div class="w-full md:w-1/2 ps-5">
+            <div class="w-full md:w-1/2 md:ps-5">
                 <div class="ps-7">
-
                     <h3 class="text-2xl text-accent mb-6">{{specificProduct.title}}</h3>
                     <div class="">
                         <span class="mony-color text-2xl line-through">$ {{specificProduct.price}}</span>
                         <span class="text-primary font-medium text-2xl mx-3">$ {{specificProduct.priceAfterDiscount}}</span>
-                        <span class="text-geen text-lg font-medium"> {{(specificProduct.priceAfterDiscount/specificProduct.price) | percent }}  off</span>
+                        <span class="text-geen text-lg font-medium"> {{((specificProduct.price-specificProduct.priceAfterDiscount)/specificProduct.price) | percent }}  off</span>
                         
                     </div>
                     <p class="text-activelink text-base font-normal my-6">There are many variations of passages of Lorem Ipsum available, but the majority have
                         suffered alteration in some form, by injected humour, or randomised words which don't
                         look even slightly believable.</p>
                     <div>
-                        <div class="flex gap-3 mb-7 justify-between">
+                        <div class="md:flex gap-3 mb-7 justify-between">
                             <div>
                                 <p class="mb-4 text-color-text font-medium">Quantity</p>
                                 <div class="flex gap-3 items-center ">
@@ -58,7 +57,7 @@
                             </div>
                             <div>
                                 <p class="text-color-text text-base font-medium">color</p>
-                                <div class="flex justify-center gap-1 mt-3">
+                                <div class="flex md:justify-center gap-1 mt-3">
                                     <span class="flex w-7 h-7 me-3 rate-blue rounded-full"></span>
                                     <span class="flex w-7 h-7 me-3 rate-green rounded-full"></span>
                                     <span class="flex w-7 h-7 me-3 rate-magenta rounded-full"></span>
@@ -69,13 +68,13 @@
                         </div>
                         <div>
                             <ul class="text-activelink text-base font-normal">
-                                <li class="mb-3 flex items-center"><i class="fa-solid fa-circle text-[7px] pe-3"></i><span>stock:</span>   available</li>
-                                <li class="mb-3 flex items-center"><i class="fa-solid fa-circle text-[7px]  pe-3"></i><span> SKU:</span>  266TYFD</li>
-                                <li class="mb-3 flex items-center"><i class="fa-solid fa-circle text-[7px]  pe-3"></i><span> Brand:</span>  Novak</li>
-                                <li class="mb-3 flex items-center"><i class="fa-solid fa-circle text-[7px]  pe-3"></i><span>Tags:</span>  Gifts , Watch , Modern</li>
+                                <li class="mb-3 flex items-center"><i class="fa-solid fa-circle text-[7px] pe-3"></i><span class="pe-2 font-medium">stock:</span>   {{stock}}</li>
+                                <li class="mb-3 flex items-center"><i class="fa-solid fa-circle text-[7px]  pe-3"></i><span class="pe-2 font-medium"> SKU:</span>  266TYFD</li>
+                                <li class="mb-3 flex items-center"><i class="fa-solid fa-circle text-[7px]  pe-3"></i><span class="pe-2 font-medium"> Brand:</span>  Novak</li>
+                                <li class="mb-3 flex items-center"><i class="fa-solid fa-circle text-[7px]  pe-3"></i><span class="pe-2 font-medium">Tags:</span>  Gifts , Watch , Modern</li>
                             </ul>
                         </div>
-                        <div class="mt-7">
+                        <div class="mt-7 mb-4">
                             <button class="py-2 px-5 bg-primary text-white rounded-lg"><i class="fa-solid fa-cart-shopping"></i>ADD To Cart</button>
                             <button class="w-11 h-11 bg-primary text-white rounded-full ms-[14px]"><i class="fa-regular fa-heart"></i></button>
                         </div>
