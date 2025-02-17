@@ -13,12 +13,10 @@ export class CategoriesComponent implements OnInit{
 
   categoryApiFromHome: InputSignal<CategoriesRes> = input.required()
 
-  // categoryDisplay:WritableSignal<Category[]> = signal([])
   categoryDisplay!:Signal<Category[]>
   
   ngOnInit(): void {
     this.categoryDisplay = computed(()=> this.categoryApiFromHome().categories || [])
-    // this.categoryDisplay.set(this.categoryApiFromHome().categories || []);
       
   }
 
