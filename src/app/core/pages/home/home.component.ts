@@ -16,6 +16,7 @@ import { BestSeller1Component } from '../../../shared/components/business/pest-s
 import { ReviewComponent } from '../../../shared/components/ui/review/review.component';
 import { FeaturesComponent } from '../../../shared/components/ui/features/features.component';
 import { AboutUsComponent } from '../../../shared/components/ui/about-us/about-us.component';
+import { OurTeamComponent } from "../../../shared/components/ui/our-team/our-team.component";
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,8 @@ import { AboutUsComponent } from '../../../shared/components/ui/about-us/about-u
     BestSeller1Component,
     ReviewComponent,
     FeaturesComponent,
-  ],
+    OurTeamComponent
+],
 
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
