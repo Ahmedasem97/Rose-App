@@ -4,6 +4,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
+      
       "auth-lib": [
         "./dist/auth-lib"
       ]

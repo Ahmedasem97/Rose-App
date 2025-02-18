@@ -1,0 +1,32 @@
+
+.item__img:hover {
+    .svg__container {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+.popular__active {
+    color: var(--active-color);
+    text-decoration-line: underline;
+    text-underline-offset: 15%;
+    text-decoration-thickness: 13.5%;
+    text-underline-position: from-font;
+}
+
+
+
+.mony-color{
+    color: #757F95;
+}
+
+
+
+.popular__active {
+    color: var(--active-color);
+    text-decoration-line: underline;
+    text-underline-offset: 15%;
+    text-decoration-thickness: 13.5%;
+    text-underline-position: from-font;
+}
+
+
