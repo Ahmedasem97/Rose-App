@@ -5,11 +5,12 @@ import { AuthModalComponent } from "../../../shared/components/ui/auth-modal/aut
 import { ModalComponent } from "../../../shared/components/ui/modal/modal.component";
 import { ModalControlerService } from '../../../shared/services/modal-controler.service';
 import { LangButtomComponent } from "../../../shared/components/business/lang-buttom/lang-buttom.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar-auth',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, AuthModalComponent, ModalComponent, LangButtomComponent],
+  imports: [RouterLink, RouterLinkActive, AuthModalComponent, ModalComponent, LangButtomComponent, TranslateModule],
   templateUrl: './navbar-auth.component.html',
   styleUrl: './navbar-auth.component.scss'
 })
