@@ -23,7 +23,18 @@ export const routes: Routes = [
             import('./shared/components/business/cateogry/cateogry.component').then(
               (c) => c.CateogryComponent
             ),
+
         }
+=======
+        },
+        {
+          path: 'about-us',
+          loadComponent: () =>
+            import('./core/pages/about-us-page/about-us-page.component').then(
+              (c) => c.AboutUsPageComponent
+            ),
+        },
+
       
     ],
   },
