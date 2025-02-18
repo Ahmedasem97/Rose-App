@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="max-sm:w-full w-3/4  ">
-            <owl-carousel-o [options]="customOptions">
+            <owl-carousel-o [options]="isRtl? customOptionsAR : customOptionsEN">
           
               @for (product of productsDisplay(); track $index) {
 

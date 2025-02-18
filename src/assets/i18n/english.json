@@ -1,0 +1,9 @@
+{
+    "navbar": {
+        "home": "Home",
+        "category": "All Category",
+        "about": "About",
+        "contact": "Contact",
+        "lang": "language"
+    }
+}

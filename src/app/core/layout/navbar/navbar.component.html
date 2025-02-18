@@ -10,6 +10,7 @@
         
         
             <div  class="flex gap-4 items-center">
+              <app-lang-buttom></app-lang-buttom>
                 <span data-modal-target="progress-modal" data-modal-toggle="progress-modal" class="cursor-pointer" ><img src="Vector (1).png" alt="search"></span> 
                 <span class="h-[21px] w-[20px] relative after:w-[18px] after:h-[18px] after:absolute after:bg-primary after:content-['2'] after:-top-5 after:-right-2 after:rounded-full after:text-white after:text-xs after:text-center"><img src="Icon.png" class="h-[21px] w-[20px] cursor-pointer" alt="wishes"></span>
                 <span class="h-[21px] w-[20px] relative after:w-[18px] after:h-[18px] after:absolute after:bg-primary after:content-['2'] after:-top-5 after:-right-2 after:rounded-full after:text-white after:text-xs after:text-center"><img src="Vector.png" class="h-[21px] w-[20px] cursor-pointer" alt="cart"></span>
@@ -25,16 +26,16 @@
     <div class="items-center justify-between hidden w-full max-sm:h-full md:flex md:w-auto md:order-1 max-sm:bg-transparent " id="navbar-sticky">
       <ul class="flex items-center flex-col p-4 md:p-0 mt-4 max-sm:w-72  max-sm:items-start font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
         <li>
-          <a routerLink="/main/home" routerLinkActive="text-activelink" class="block text-base py-2 px-3  text-descText  rounded md:bg-transparent" >Home</a>
+          <a routerLink="/main/home" routerLinkActive="text-activelink" class="block text-base py-2 px-3  text-descText  rounded md:bg-transparent" >{{"navbar.home" | translate}}</a>
         </li>
         <li>
-          <a routerLink="/main/allcateogry" routerLinkActive="text-activelink" class="block text-base py-2 px-3">All Cateogry</a>
+          <a routerLink="/main/allcateogry" routerLinkActive="text-activelink" class="block text-base py-2 px-3">{{"navbar.category" | translate}}</a>
         </li>
         <li>
-          <a routerLink="/main/about-us" routerLinkActive="text-activelink" class="block text-base py-2 px-3">About</a>
+          <a routerLink="/main/about-us" routerLinkActive="text-activelink" class="block text-base py-2 px-3">{{"navbar.about" | translate}}</a>
         </li>
         <li>
-          <a routerLink=" " routerLinkActive="text-activelink" class="block text-base py-2 px-3">Contact</a>
+          <a routerLink=" " routerLinkActive="text-activelink" class="block text-base py-2 px-3">{{"navbar.contact" | translate}}</a>
         </li>
       </ul>
     </div>
