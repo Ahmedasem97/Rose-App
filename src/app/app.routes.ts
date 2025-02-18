@@ -23,7 +23,16 @@ export const routes: Routes = [
             import('./shared/components/business/cateogry/cateogry.component').then(
               (c) => c.CateogryComponent
             ),
+
         },
+        {
+          path: 'about-us',
+          loadComponent: () =>
+            import('./core/pages/about-us-page/about-us-page.component').then(
+              (c) => c.AboutUsPageComponent
+            ),
+        },
+
       
     ],
   },
@@ -47,5 +56,13 @@ export const routes: Routes = [
       import('./shared/components/ui/faqs/faqs.component').then(
         (c) => c.FAQSComponent
       ),
+  }
+  ,
+  {
+          path: 'details/:id',
+          loadComponent: () =>
+            import('./shared/components/business/product-details/product-details.component').then(
+              (c) => c.ProductDetailsComponent
+            ),
   }
 ];

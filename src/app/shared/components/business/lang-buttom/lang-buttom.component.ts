@@ -3,6 +3,7 @@ import { LangDropDown } from '../../../../core/interfaces/lang-drop-down.interfa
 import { TranslationService } from '../../../../core/services/translation.service';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { Lang } from '../../../../core/enums/lang.enum';
 
 @Component({
   selector: 'app-lang-buttom',
@@ -19,13 +20,11 @@ export class LangButtomComponent implements OnInit {
   private readonly _translationService = inject(TranslationService)
   private readonly _PLATFORM_ID = inject(PLATFORM_ID)
 
-  dropDownList: LangDropDown[] = [
-    {
-      lang: "English"
-    },
-    {
-      lang: "Arabic"
-    },
+  
+
+  dropDownList: Lang[] = [
+    Lang.en,
+    Lang.ar
   ]
 
   ngOnInit(): void {

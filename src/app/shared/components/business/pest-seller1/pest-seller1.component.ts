@@ -1,4 +1,4 @@
-import { Component, inject, input, InputSignal, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, effect, inject, input, InputSignal, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { PopularProduct, ProductsRes } from '../../../../core/interfaces/products';
 import { ProductCardComponent } from "../product-card/product-card.component";
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
@@ -6,6 +6,7 @@ import { CategoriesRes, Category } from '../../../../core/interfaces/categories'
 import { ProductsService } from '../../../services/products.service';
 import { Subject, takeUntil } from 'rxjs';
 import { PopularItemComponent } from '../popular-item/popular-item.component';
+import { TranslationService } from '../../../../core/services/translation.service';
 
 @Component({
   selector: 'app-Best-seller1',
@@ -16,9 +17,22 @@ import { PopularItemComponent } from '../popular-item/popular-item.component';
 })
 export class BestSeller1Component  {
 
-  private _ProductsService = inject(ProductsService)
+  isRtl = false
 
-   customOptions: OwlOptions = {
+  private _ProductsService = inject(ProductsService)
+  private _translationService = inject(TranslationService)
+
+  constructor(){
+    effect(()=> {
+      if (this._translationService.isRtl()) {
+        this.isRtl = true
+      }else {
+        this.isRtl = false
+      }
+    })
+  }
+
+  customOptionsAR: OwlOptions = {
       loop: true,
       mouseDrag: false,
       touchDrag: true,
@@ -26,6 +40,30 @@ export class BestSeller1Component  {
       dots: false,
       navSpeed: 700,
       rtl: true,
+      navText: ['<i class="fa-solid fa-chevron-left"></i>', '<i class="fa-solid fa-chevron-right"></i>'],
+      responsive: {
+      
+        0: {
+          items: 1
+        },
+        765: {
+          items: 3
+        },
+        940: {
+          items: 3
+        }
+      },
+      nav: true
+    }
+
+    customOptionsEN: OwlOptions = {
+      loop: true,
+      mouseDrag: false,
+      touchDrag: true,
+      pullDrag: true,
+      dots: false,
+      navSpeed: 700,
+      rtl: false,
       navText: ['<i class="fa-solid fa-chevron-left"></i>', '<i class="fa-solid fa-chevron-right"></i>'],
       responsive: {
       

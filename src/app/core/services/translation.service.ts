@@ -1,4 +1,4 @@
-import { Injectable, Inject, PLATFORM_ID, inject, Renderer2, RendererFactory2 } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID, inject, Renderer2, RendererFactory2, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -8,7 +8,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 export class TranslationService {
   defaultLang = 'english';
-  
+  isRtl = signal(false)
   private renderer: Renderer2;
 
   constructor(
@@ -35,6 +35,12 @@ export class TranslationService {
       localStorage.setItem('lang', lang);
     }
     this.changeDirection()
+    if (lang == "english") {
+      this.isRtl.set(false)
+    }else {
+      this.isRtl.set(true)
+
+    }
   }
 
   changeDirection() {

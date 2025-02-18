@@ -8,26 +8,11 @@
             <span class="text-primary font-bold">{{getApi.jobTitle}}</span>
         </div>
         <div class="our-team-social flex mt-4">
-            <div class="w-1/4 flex justify-center items-center">
-                <span class="w-[36px] h-[36px] rounded-full bg-primary flex justify-center items-center">
-                    <i class="text-white fab fa-facebook"></i>
-                </span>
-            </div>
-            <div class="w-1/4 flex justify-center items-center">
-                <span class="w-[36px] h-[36px] rounded-full bg-primary flex justify-center items-center">
-                    <i class="text-white fab fa-instagram"></i>
-                </span>
-            </div>
-            <div class="w-1/4 flex justify-center items-center">
-                <span class="w-[36px] h-[36px] rounded-full bg-primary flex justify-center items-center">
-                    <i class="text-white fab fa-twitter"></i>
-                </span>
-            </div>
-            <div class="w-1/4 flex justify-center items-center">
-                <span class="w-[36px] h-[36px] rounded-full bg-primary flex justify-center items-center">
-                    <i class="text-white fab fa-youtube"></i>
-                </span>
-            </div>
+            @for (icon of displayIcons; track $index) {
+                <div class="w-1/4 flex justify-center items-center">
+                    <app-icons-section [getApi]="icon"></app-icons-section>
+                </div>
+            }
         </div>
     </div>
 </section>

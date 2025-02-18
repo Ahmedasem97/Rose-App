@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit ,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './core/layout/navbar/navbar.component';
 import { FooterComponent } from './core/layout/footer/footer.component';
@@ -12,6 +12,7 @@ import { NavbarAuthComponent } from "./core/layout/navbar-auth/navbar-auth.compo
   imports: [RouterOutlet, NavbarComponent, FooterComponent, NavbarAuthComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  schemas : [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppComponent implements OnInit {
   title = 'rose';

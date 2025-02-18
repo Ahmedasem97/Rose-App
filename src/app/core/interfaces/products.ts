@@ -4,6 +4,7 @@ export interface AllProductsRes {
 }
 
 export interface Product {
+    products: any
     _id: string
     title: string
     slug: string

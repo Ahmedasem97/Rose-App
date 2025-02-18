@@ -30,7 +30,7 @@ import { AboutUsComponent } from '../../../shared/components/ui/about-us/about-u
     BestSeller1Component,
     ReviewComponent,
     FeaturesComponent,
-  ],
+],
 
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
