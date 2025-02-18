@@ -24,9 +24,8 @@ export const routes: Routes = [
               (c) => c.CateogryComponent
             ),
 
-        }
-=======
         },
+
         {
           path: 'about-us',
           loadComponent: () =>
