@@ -1,13 +1,14 @@
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { loadingInterceptor } from './core/interceptor/loading.interceptor';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -17,9 +18,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes), 
+    provideRouter(routes, withViewTransitions(), withInMemoryScrolling({scrollPositionRestoration: "top"}) ), 
     provideClientHydration(),
-    provideHttpClient(withFetch()),
+    provideHttpClient(withFetch(), withInterceptors([loadingInterceptor])),
     importProvidersFrom(
       BrowserAnimationsModule,
       TranslateModule.forRoot({
