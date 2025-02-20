@@ -1,11 +1,13 @@
-<div class="item"> 
+<div class="item">
     <div class="inner__item  bg-slate-500 ">
-        <div class="item__img h-full mb-4 bg-light-prim-background rounded-[var(--cards-border-radius)] relative overflow-hidden">
+        <div
+            class="item__img h-full mb-4 bg-light-prim-background rounded-[var(--cards-border-radius)] relative overflow-hidden">
             <img class="w-full h-[272px] object-cover" [src]="productApi().imgCover" alt="">
-            <div class="svg__container opacity-0 transition-opacity duration-500 layout absolute w-full h-full top-0 bg-primary-color-alpha flex justify-center items-center gap-11">
-                <div [routerLink]="['/details',productApi()._id]" class="w-10 h-10 cursor-pointer rounded-full bg-primary flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 30 24"
-                        fill="none">
+            <div
+                class="svg__container opacity-0 transition-opacity duration-500 layout absolute w-full h-full top-0 bg-primary-color-alpha flex justify-center items-center gap-11">
+                <div [routerLink]="['/details',productApi()._id]"
+                    class="w-10 h-10 cursor-pointer rounded-full bg-primary flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 30 24" fill="none">
                         <path
                             d="M11.0001 2.04676C12.2935 1.63583 13.643 1.42891 15.0001 1.43342C20.5761 1.43342 24.3707 4.76676 26.6334 7.70542C27.7667 9.18009 28.3334 9.91476 28.3334 12.1001C28.3334 14.2868 27.7667 15.0214 26.6334 16.4948C24.3707 19.4334 20.5761 22.7668 15.0001 22.7668C9.42408 22.7668 5.62941 19.4334 3.36675 16.4948C2.23341 15.0228 1.66675 14.2854 1.66675 12.1001C1.66675 9.91342 2.23341 9.17876 3.36675 7.70542C4.05808 6.80252 4.82774 5.96237 5.66675 5.19476"
                             stroke="white" stroke-width="2" stroke-linecap="round" />
@@ -15,8 +17,7 @@
                     </svg>
                 </div>
                 <div class="w-10 h-10 cursor-pointer rounded-full bg-primary flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="22" viewBox="0 0 26 22"
-                        fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="22" viewBox="0 0 26 22" fill="none">
                         <path
                             d="M22.4682 12.6378L14.9256 20.1818C14.4255 20.6817 13.7473 20.9625 13.0402 20.9625C12.3331 20.9625 11.655 20.6817 11.1549 20.1818L3.61223 12.6391C2.98872 12.021 2.49343 11.2859 2.1548 10.4759C1.81617 9.6659 1.64085 8.79699 1.63893 7.91906C1.63701 7.04112 1.80851 6.17146 2.1436 5.35998C2.47868 4.54851 2.97074 3.81121 3.59154 3.19041C4.21233 2.56962 4.94963 2.07756 5.76111 1.74247C6.57258 1.40739 7.44225 1.23589 8.32018 1.23781C9.19811 1.23973 10.067 1.41504 10.877 1.75368C11.687 2.09231 12.4222 2.5876 13.0402 3.2111C14.2957 1.98693 15.9828 1.30666 17.7363 1.31764C19.4897 1.32863 21.1682 2.02999 22.4082 3.2698C23.6482 4.50961 24.3498 6.18803 24.361 7.94147C24.3723 9.69491 23.6922 11.3822 22.4682 12.6378Z"
                             stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -26,8 +27,12 @@
         </div>
         <div class="item__content relative px-4 h-[83px] flex flex-col justify-around">
             <h2 class="item__title font-semibold text-accent">{{productApi().title}}</h2>
-            <span class="item__price text-price">${{productApi().price}}</span>
-            <span class="add__cart__icon bg-secondary-icon-bg rounded-full w-[42px] h-[42px] cursor-pointer flex justify-center items-center absolute top-8 right-4">
+            <div class="flex items-center gap-2">
+                <span class="item__price text-price">${{productApi().priceAfterDiscount}}</span>
+                <span class="item__price text-price text-price-after-discount line-through">${{productApi().price}}</span>
+            </div>
+            <span
+                class="add__cart__icon bg-secondary-icon-bg rounded-full w-[42px] h-[42px] cursor-pointer flex justify-center items-center absolute top-8 right-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18" fill="none">
                     <path
                         d="M6.125 3.9375V5.625H10.625V3.9375C10.6016 3.30469 10.3789 2.77734 9.95703 2.35547C9.53516 1.93359 9.00781 1.71094 8.375 1.6875C7.74219 1.71094 7.21484 1.93359 6.79297 2.35547C6.37109 2.77734 6.14844 3.30469 6.125 3.9375ZM4.4375 7.3125H2.1875V14.625C2.21094 15.0938 2.375 15.4922 2.67969 15.8203C3.00781 16.125 3.40625 16.2891 3.875 16.3125H12.875C13.3438 16.2891 13.7422 16.125 14.0703 15.8203C14.375 15.4922 14.5391 15.0938 14.5625 14.625V7.3125H12.3125V9.28125C12.2656 9.79688 11.9844 10.0781 11.4688 10.125C10.9531 10.0781 10.6719 9.79688 10.625 9.28125V7.3125H6.125V9.28125C6.07812 9.79688 5.79688 10.0781 5.28125 10.125C4.76562 10.0781 4.48438 9.79688 4.4375 9.28125V7.3125ZM4.4375 5.625V3.9375C4.46094 2.8125 4.84766 1.88672 5.59766 1.16016C6.32422 0.410156 7.25 0.0234375 8.375 0C9.5 0.0234375 10.4258 0.410156 11.1523 1.16016C11.9023 1.88672 12.2891 2.8125 12.3125 3.9375V5.625H14.5625C15.0312 5.64844 15.4297 5.8125 15.7578 6.11719C16.0625 6.44531 16.2266 6.84375 16.25 7.3125V14.625C16.2266 15.5859 15.8984 16.3828 15.2656 17.0156C14.6328 17.6484 13.8359 17.9766 12.875 18H3.875C2.91406 17.9766 2.11719 17.6484 1.48438 17.0156C0.851562 16.3828 0.523438 15.5859 0.5 14.625V7.3125C0.523438 6.84375 0.6875 6.44531 0.992188 6.11719C1.32031 5.8125 1.71875 5.64844 2.1875 5.625H4.4375Z"
