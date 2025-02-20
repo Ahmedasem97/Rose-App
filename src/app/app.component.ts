@@ -5,11 +5,12 @@ import { FooterComponent } from './core/layout/footer/footer.component';
 import { FlowbiteService } from './core/services/flowbite.service';
 import { TokenManagerService } from './shared/services/token-manager.service';
 import { NavbarAuthComponent } from "./core/layout/navbar-auth/navbar-auth.component";
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, NavbarAuthComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, NavbarAuthComponent, NgxSpinnerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   schemas : [CUSTOM_ELEMENTS_SCHEMA],
