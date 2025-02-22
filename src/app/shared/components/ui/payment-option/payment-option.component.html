@@ -1,8 +1,24 @@
-<div class="payment-opt cursor-pointer" (click)="onOptionClick()">
-  <div class="payment-opt__icon">
-    <img [src]="optionIcon()" alt="icon" />
+<div
+  [class]="
+    'payment-opt cursor-pointer py-4 px-2 flex flex-col justify-center items-center ' +
+    classes() +
+    (isChecked ? ' active' : '')
+  "
+  (click)="onOptionClick()"
+>
+  <input
+    #optionInput
+    class="payment-opt__input"
+    type="radio"
+    [id]="optionId()"
+    [value]="optionName()"
+    [name]="formOptionName()"
+    (change)="onChange($event)"
+  />
+  <div class="payment-opt__icon mb-1">
+    <img class="w-12 h-12" [src]="optionIcon()" alt="icon" />
   </div>
-  <div class="payment-opt__text">
+  <div class="payment-opt__text text-sm leading-[41px] font-light text-center">
     <p>{{ optionText() }}</p>
   </div>
 </div>

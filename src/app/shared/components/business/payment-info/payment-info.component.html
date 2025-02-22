@@ -1,1 +1,18 @@
-<iframe src="https://cross-origin.example" allow="payment"> </iframe>
+<section>
+  <ul class="payment-options-list flex flex-wrap">
+    @for (payOpt of paymentMethodsList; track $index) {
+
+    <app-payment-option
+      [optionId]="'radio-' + $index"
+      [optionName]="payOpt.name"
+      [optionText]="payOpt.description"
+      [formOptionName]="'paymentMethod'"
+      [name]="'paymentMethod'"
+      [ngModel]="selectedPaymentMethod"
+      (ngModelChange)="onOptionChange($event)"
+      [classes]="$last ? 'mr-0' : 'mr-[17px]'"
+      [optionIcon]="payOpt.icon"
+    ></app-payment-option>
+    }
+  </ul>
+</section>
