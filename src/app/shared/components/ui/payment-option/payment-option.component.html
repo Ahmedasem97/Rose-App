@@ -1,0 +1,8 @@
+<div class="payment-opt cursor-pointer" (click)="onOptionClick()">
+  <div class="payment-opt__icon">
+    <img [src]="optionIcon()" alt="icon" />
+  </div>
+  <div class="payment-opt__text">
+    <p>{{ optionText() }}</p>
+  </div>
+</div>
