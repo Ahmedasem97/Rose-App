@@ -1,0 +1,35 @@
+<section>
+  <app-payment-section-title title="Your Shipping Address" />
+
+  <form class="flex flex-col" [formGroup]="shippingForm">
+    <app-custom-input
+      [inputPlaceholder]="'Street'"
+      [inputType]="'text'"
+      inputName="Street"
+      formControlName="street"
+    />
+
+    <app-custom-input
+      [inputPlaceholder]="'Phone Number'"
+      [inputType]="'text'"
+      inputName="Phone Number"
+      formControlName="phone"
+      inputClasses="border-#DEE2E6 border-solid border-[1px] rounded-md rounded-lg"
+    />
+
+    <app-custom-input
+      [inputPlaceholder]="'City'"
+      [inputType]="'text'"
+      inputName="City"
+      formControlName="city"
+    />
+
+    <!-- <app-primary-btn
+        btnText="Create Account"
+        (handleBtnClick)="submit()"
+        [isDisabled]="!registerForm.valid || isSubmitted"
+        [isLoading]="isSubmitted"
+        loadingMsg="Creating Account"
+      /> -->
+  </form>
+</section>
