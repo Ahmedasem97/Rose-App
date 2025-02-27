@@ -9,6 +9,8 @@ import { HttpClient, provideHttpClient, withFetch, withInterceptors } from '@ang
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { loadingInterceptor } from './core/interceptor/loading.interceptor';
+import { headersInterceptor } from './core/interceptor/headers.interceptor';
+import { catchErrorInterceptor } from './core/interceptor/catch-error.interceptor';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -20,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withViewTransitions(), withInMemoryScrolling({scrollPositionRestoration: "top"}) ), 
     provideClientHydration(),
-    provideHttpClient(withFetch(), withInterceptors([loadingInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([headersInterceptor, loadingInterceptor, catchErrorInterceptor])),
     importProvidersFrom(
       BrowserAnimationsModule,
       TranslateModule.forRoot({

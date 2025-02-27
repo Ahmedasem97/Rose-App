@@ -31,7 +31,7 @@
                 <span class="item__price text-price">${{productApi().priceAfterDiscount}}</span>
                 <span class="item__price text-price-after-discount line-through">${{productApi().price}}</span>
             </div>
-            <span
+            <span (click)="addToCart(productApi()._id)"
                 class="add__cart__icon bg-secondary-icon-bg rounded-full w-[42px] h-[42px] cursor-pointer flex justify-center items-center absolute top-8 right-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18" viewBox="0 0 17 18" fill="none">
                     <path
