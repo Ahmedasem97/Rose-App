@@ -1,0 +1,9 @@
+<button [class]="btnClass()">
+    @if (iconDirection() === "left") {
+        <i [class]="iconName()"></i>
+    }
+    <span class="mx-2">{{text()}}</span>
+    @if (iconDirection() === "right") {
+        <i [class]="iconName()"></i>
+    }
+</button>

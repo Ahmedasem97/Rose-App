@@ -1,0 +1,26 @@
+<section>
+    <div class="flex flex-wrap flex-col lg:flex-row items-center gap-y-3">
+        <div class="lg:w-1/6 flex items-center px-1">
+            <img class="h-[100px] w-[100px] object-cover" [src]="cartProduct().product.imgCover" [alt]="cartProduct().product.title">
+        </div>
+        <div class="lg:w-1/6 justify-center flex flex-col items-center lg:items-start">
+            <h1 class="font-semibold">{{cartProduct().product.title}}</h1>
+            <span class="text-[#757F95] text-sm">{{cartProduct().product.slug}}</span>
+            <span class="text-[#757F95] text-sm"></span>
+        </div>
+        <div class="lg:w-1/6 flex justify-center items-center">
+            <span>${{cartProduct().product.priceAfterDiscount}}</span>
+        </div>
+        <div class="lg:w-1/6 flex items-center">
+            <i (click)="UpdateQuantity( cartProduct().product._id, cartProduct().quantity - 1)" class="fa-solid fa-minus text-primary h-[30px] w-[30px] text-center content-center bg-light-prim-background rounded-full text-xs cursor-pointer"></i>
+            <span class="relative text-center mx-3">{{cartProduct().quantity}}</span>
+            <i (click)="UpdateQuantity( cartProduct().product._id, cartProduct().quantity + 1)" class="fa-solid fa-plus text-primary h-[30px] w-[30px] text-center content-center bg-light-prim-background rounded-full text-xs cursor-pointer"></i>
+        </div>
+        <div class="lg:w-1/6 flex items-center">
+            <span class="lg:ml-5">${{cartProduct().product.priceAfterDiscount * cartProduct().quantity}}</span>
+        </div>
+        <div class="lg:w-1/6 flex items-center" (click)="removeProduct(cartProduct().product._id)">
+            <i class="fas fa-xmark w-9 h-9 rounded-full border text-center content-center lg:ml-4 cursor-pointer"></i>
+        </div>
+    </div>
+</section>
