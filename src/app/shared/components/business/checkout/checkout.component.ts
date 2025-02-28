@@ -28,7 +28,7 @@ import { PHONE_PATTERN } from '../../../../core/environment/environment';
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss',
 })
-export class CheckoutComponent implements OnInit, AfterViewInit {
+export class CheckoutComponent implements OnInit {
   shippingForm!: FormGroup;
 
   // Setup the map
@@ -49,8 +49,6 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
       animation: google.maps.Animation,
     },
   };
-
-  mapInit() {}
 
   initShippingForm() {
     this.shippingForm = new FormGroup({
@@ -87,9 +85,6 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit() {
-    this.mapInit();
-  }
   ngOnInit(): void {
     this.initShippingForm();
   }
