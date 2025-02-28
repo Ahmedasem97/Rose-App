@@ -34,11 +34,8 @@ export class CheckoutComponent implements OnInit {
   // Setup the map
 
   map!: google.maps.Map;
-  center = new google.maps.LatLng(31.214639, 29.945708); // Smouha, Alexandria as default
-  mapOptions: google.maps.MapOptions = {
-    center: this.center,
-    zoom: 15,
-  };
+  center!: google.maps.LatLng;
+  mapOptions!: google.maps.MapOptions;
 
   marker = {
     position: {
@@ -53,7 +50,6 @@ export class CheckoutComponent implements OnInit {
   initShippingForm() {
     this.shippingForm = new FormGroup({
       street: new FormControl('', [Validators.required]),
-
       phone: new FormControl('', [
         Validators.required,
         Validators.pattern(PHONE_PATTERN),
@@ -66,6 +62,37 @@ export class CheckoutComponent implements OnInit {
 
   get markerOptions() {
     return this.marker;
+  }
+
+  setUpMap() {
+    const location = this.getUserLocation();
+    this.center = new google.maps.LatLng(location.lat, location.lng);
+    this.setMarker(location.lat, location.lng);
+    this.setMapOptions(this.center);
+  }
+
+  setMarker(lat: number, lng: number) {
+    this.marker.position = { lat, lng };
+    this.mapOptions.center = this.center;
+  }
+
+  setMapOptions(center: google.maps.LatLng, zoom?: number) {
+    this.mapOptions = {
+      center: center,
+      zoom: 15,
+    };
+  }
+
+  getUserLocation(): { lat: number; lng: number } {
+    let lat = 31.214639; // Default Lat
+    let lng = 29.945708; // Default Lng
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+      });
+    }
+    return { lat, lng };
   }
 
   mapClick(event: google.maps.MapMouseEvent) {
@@ -87,5 +114,6 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.initShippingForm();
+    this.setUpMap();
   }
 }
