@@ -2,7 +2,9 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  inject,
   OnInit,
+  PLATFORM_ID,
   viewChild,
 } from '@angular/core';
 import { PaymentSectionTitleComponent } from '../../ui/payment-section-title/payment-section-title.component';
@@ -15,6 +17,8 @@ import {
 import { GoogleMapsModule } from '@angular/google-maps';
 import { CustomInputComponent } from '../custom-input/custom-input.component';
 import { PHONE_PATTERN } from '../../../../core/environment/environment';
+import { isPlatformBrowser } from '@angular/common';
+import GoogleMapsMarker from '../../../../core/interfaces/google-map-marker.interface';
 
 @Component({
   selector: 'app-checkout',
@@ -28,24 +32,17 @@ import { PHONE_PATTERN } from '../../../../core/environment/environment';
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss',
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent implements OnInit, AfterViewInit {
   shippingForm!: FormGroup;
-
   // Setup the map
-
-  map!: google.maps.Map;
   center!: google.maps.LatLng;
   mapOptions!: google.maps.MapOptions;
+  marker!: GoogleMapsMarker;
 
-  marker = {
-    position: {
-      lat: 31.214639,
-      lng: 29.945708,
-    },
-    options: {
-      animation: google.maps.Animation,
-    },
-  };
+  private _defaultLat = 31.214639; // Default Lat
+  private _defaultLng = 29.945708; // Default Lng
+  // inject services
+  private readonly _platform = inject(PLATFORM_ID);
 
   initShippingForm() {
     this.shippingForm = new FormGroup({
@@ -61,6 +58,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   get markerOptions() {
+    if (!this.marker) {
+      this.setMarker(this._defaultLat, this._defaultLng);
+    }
     return this.marker;
   }
 
@@ -71,21 +71,28 @@ export class CheckoutComponent implements OnInit {
     this.setMapOptions(this.center);
   }
 
-  setMarker(lat: number, lng: number) {
-    this.marker.position = { lat, lng };
-    this.mapOptions.center = this.center;
+  setMarker(lat: number, lng: number, applyAnimation: boolean = false) {
+    this.marker = {
+      position: { lat, lng },
+    };
+
+    if (applyAnimation) {
+      this.marker.options = {
+        animation: google.maps.Animation,
+      };
+    }
   }
 
-  setMapOptions(center: google.maps.LatLng, zoom?: number) {
+  setMapOptions(center: google.maps.LatLng, zoom: number = 15) {
     this.mapOptions = {
       center: center,
-      zoom: 15,
+      zoom: zoom,
     };
   }
 
   getUserLocation(): { lat: number; lng: number } {
-    let lat = 31.214639; // Default Lat
-    let lng = 29.945708; // Default Lng
+    let lat = this._defaultLat;
+    let lng = this._defaultLng;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         lat = position.coords.latitude;
@@ -100,9 +107,6 @@ export class CheckoutComponent implements OnInit {
       const lat = event.latLng.lat();
       const lng = event.latLng.lng();
       this.marker.position = { lat, lng };
-      console.log('Latitude:', lat);
-      console.log('Longitude:', lng);
-
       this.shippingForm.patchValue({
         lat: lat,
         lng: lng,
@@ -111,9 +115,20 @@ export class CheckoutComponent implements OnInit {
       console.log(this.shippingForm.value);
     }
   }
+  //
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this._platform)) {
+      if (window.google) {
+        setTimeout(() => {
+          this.setUpMap();
+        }, 100);
+      } else {
+        console.log('Google API not loaded yet');
+      }
+    }
+  }
 
   ngOnInit(): void {
     this.initShippingForm();
-    this.setUpMap();
   }
 }
