@@ -40,7 +40,9 @@
       (input)="onChange($event)"
       [disabled]="disabled"
       [class]="
-        'input-container__input-custom-group__custom-input ' + inputClasses()
+        'input-container__input-custom-group__custom-input ' +
+        inputClasses() +
+        ' rounded-[20px] border-0 shadow-[0px_1px_10px_0px_#0000001a]'
       "
       [class.is-invalid]="formControl.invalid && formControl.touched"
       [class.is-valid]="formControl.valid && formControl.touched"
