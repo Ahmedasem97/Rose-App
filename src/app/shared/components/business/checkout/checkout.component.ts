@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   inject,
+  OnDestroy,
   OnInit,
   PLATFORM_ID,
   viewChild,
@@ -32,15 +33,15 @@ import GoogleMapsMarker from '../../../../core/interfaces/google-map-marker.inte
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss',
 })
-export class CheckoutComponent implements OnInit, AfterViewInit {
+export class CheckoutComponent implements OnInit, AfterViewInit, OnDestroy {
   shippingForm!: FormGroup;
   // Setup the map
   center!: google.maps.LatLng;
   mapOptions!: google.maps.MapOptions;
   marker!: GoogleMapsMarker;
 
-  private _defaultLat = 31.214639; // Default Lat
-  private _defaultLng = 29.945708; // Default Lng
+  private readonly _defaultLat = 31.214639; // Default Lat
+  private readonly _defaultLng = 29.945708; // Default Lng
   // inject services
   private readonly _platform = inject(PLATFORM_ID);
 
@@ -93,12 +94,16 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
   getUserLocation(): { lat: number; lng: number } {
     let lat = this._defaultLat;
     let lng = this._defaultLng;
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        lat = position.coords.latitude;
-        lng = position.coords.longitude;
-      });
+
+    if (isPlatformBrowser(this._platform)) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          lat = position.coords.latitude;
+          lng = position.coords.longitude;
+        });
+      }
     }
+
     return { lat, lng };
   }
 
@@ -130,5 +135,9 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.initShippingForm();
+  }
+
+  ngOnDestroy(): void {
+    this.shippingForm.reset();
   }
 }
