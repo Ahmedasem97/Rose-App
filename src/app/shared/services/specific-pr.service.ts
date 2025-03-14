@@ -18,6 +18,6 @@ export class SpecificPrService {
 
     getspecificpro(id :string|null):Observable<any>{
       return this._httpClient.get(`https://flower.elevateegy.com/api/v1/products/${id}`)
-      // return this._HttpClient.get(productsEndPoint.specificProduct+id).pipe(map((res:any) =>this._SpecificAdapter.specificProductAdapt(res)))
+      // return this._httpClient.get(productsEndPoint.specificProduct+id)
     }
 }
