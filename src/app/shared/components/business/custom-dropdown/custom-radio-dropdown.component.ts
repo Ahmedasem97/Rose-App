@@ -5,12 +5,14 @@ import {
   inject,
   input,
   OnChanges,
+  OnInit,
   output,
   QueryList,
   SimpleChanges,
   ViewChildren,
 } from '@angular/core';
 import { ProductsFilterService } from '../../../services/products-filter.service';
+import { FlowbiteService } from '../../../../core/services/flowbite.service';
 
 @Component({
   selector: 'app-custom-radio-dropdown',
@@ -31,6 +33,7 @@ export class CustomRadioDropdownComponent {
   @ViewChildren('radio') radios!: QueryList<ElementRef>;
 
   private readonly _productsFilterService = inject(ProductsFilterService);
+  private readonly _flowbiteService = inject(FlowbiteService);
   constructor() {
     effect(() => {
       const status = this._productsFilterService.getResetFilterStatus();

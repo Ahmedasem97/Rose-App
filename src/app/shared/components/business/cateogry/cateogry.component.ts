@@ -40,6 +40,8 @@ import { CustomRadioDropdownComponent } from '../custom-dropdown/custom-radio-dr
 import { sortOrder } from '../../../../mock/sort-order.mock';
 import { sortAttributes } from '../../../../mock/sort-attributes.mock';
 import { CustomSearchComponent } from '../custom-search/custom-search.component';
+import { FlowbiteService } from '../../../../core/services/flowbite.service';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-cateogry',
@@ -57,6 +59,7 @@ export class CateogryComponent implements OnInit, OnDestroy {
   private _productsService = inject(ProductsService);
   private _productsFilterService = inject(ProductsFilterService);
   private _categoriesService = inject(CategoriesService);
+  private readonly _flowbiteService = inject(FlowbiteService);
   p: number = 1;
 
   sidecateo: Category[] = [] as Category[];
@@ -302,6 +305,9 @@ export class CateogryComponent implements OnInit, OnDestroy {
   // --------------------------------------------------
 
   ngOnInit(): void {
+    this._flowbiteService.loadFlowbite((flowbite) => {
+      initFlowbite();
+    });
     this.initSortByList();
     this.initSortOrderList();
     this.setDefaultSortOrder();
