@@ -49,13 +49,17 @@ import {
         query(
           'li',
           [
-            style({ opacity: 0, transform: 'translateY(20px) scale(0.8)' }),
+            style({ opacity: 0, transform: 'translateY(20px) scale(0.8)' }), // Initial state
+            // Run the animation for each item with delay
             stagger(100, [
               sequence([
+                // run animation in sequence for each item
+                // First animation: Fade in
                 animate(
                   '0.3s ease-out',
                   style({ opacity: 1, transform: 'translateY(0) scale(0.8)' })
                 ),
+                // Second animation: Scale up
                 animate(
                   '0.2s ease-out',
                   style({ transform: 'translateY(0) scale(1)' })
@@ -109,6 +113,6 @@ export class AboutUsComponent implements AfterViewInit {
   }
 
   ngOnDestroy() {
-    clearTimeout(this.timeOut);
+    clearTimeout(this.timeOut); // clear timer
   }
 }
