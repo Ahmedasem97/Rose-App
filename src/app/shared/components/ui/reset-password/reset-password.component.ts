@@ -25,8 +25,11 @@ import {
   style,
   animate,
   useAnimation,
+  query,
 } from '@angular/animations';
 import { authAnimation } from '../../../../animation/auth-animation';
+import { CustomFormValidatorsService } from '../../../services/custom-form-validators.service';
+import { FormUtilsService } from '../../../services/form-utils.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -37,24 +40,36 @@ import { authAnimation } from '../../../../animation/auth-animation';
   animations: [
     trigger('toggleWidget', [
       transition(':enter', [
-        useAnimation(authAnimation, {
-          params: {
-            transformFrom: AnimationConfig.scale.hide,
-            transformTo: AnimationConfig.scale.show,
-            time: AnimationConfig.animationTime.normal,
-            effect: AnimationConfig.transitionEffect.easeIn,
-          },
-        }),
+        query(
+          ':self',
+          [
+            useAnimation(authAnimation, {
+              params: {
+                transformFrom: 'scale(0.8) translateY(20px)',
+                transformTo: 'scale(1) translateY(0)',
+                time: AnimationConfig.animationTime.speed,
+                effect: AnimationConfig.transitionEffect.easeOut,
+              },
+            }),
+          ],
+          { optional: true }
+        ),
       ]),
       transition(':leave', [
-        useAnimation(authAnimation, {
-          params: {
-            transformFrom: AnimationConfig.scale.show,
-            transformTo: AnimationConfig.scale.hide,
-            time: AnimationConfig.animationTime.normal,
-            effect: AnimationConfig.transitionEffect.easeIn,
-          },
-        }),
+        query(
+          ':self',
+          [
+            useAnimation(authAnimation, {
+              params: {
+                transformFrom: 'scale(1) translateY(0)',
+                transformTo: 'scale(0.8) translateY(-20px)',
+                time: AnimationConfig.animationTime.speed,
+                effect: AnimationConfig.transitionEffect.easeIn,
+              },
+            }),
+          ],
+          { optional: true }
+        ),
       ]),
     ]),
   ],
