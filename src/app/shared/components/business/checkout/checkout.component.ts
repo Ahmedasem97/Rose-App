@@ -42,6 +42,7 @@ export class CheckoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private readonly _defaultLat = 31.214639; // Default Lat
   private readonly _defaultLng = 29.945708; // Default Lng
+  private timeoutId!: ReturnType<typeof setTimeout>;
   // inject services
   private readonly _platform = inject(PLATFORM_ID);
 
@@ -124,7 +125,7 @@ export class CheckoutComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this._platform)) {
       if (window.google) {
-        setTimeout(() => {
+        this.timeoutId = setTimeout(() => {
           this.setUpMap();
         }, 100);
       } else {
@@ -139,5 +140,8 @@ export class CheckoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.shippingForm.reset();
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+    }
   }
 }
