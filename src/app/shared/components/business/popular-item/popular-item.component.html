@@ -29,8 +29,10 @@
       [productApi]="product"
     ></app-product-card>
     } @empty {
-    <div>
-      <p class="text-4xl">No Products in this category :(</p>
+    <div class="w-full flex justify-center items-center">
+      <p class="text-4xl w-80 m-auto">
+        <img src="/no-product.png" class="w-full" alt="" srcset="" />
+      </p>
     </div>
     }
   </div>
