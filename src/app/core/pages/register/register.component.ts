@@ -1,5 +1,6 @@
 import { Component, inject, OnDestroy } from '@angular/core';
 import {
+  AnimationConfig,
   baseUrl,
   NAME_PATTERN,
   PASSWORD_PATTERN,
@@ -35,12 +36,18 @@ import { trigger, transition, style, animate } from '@angular/animations';
   animations: [
     trigger('toggleWidget', [
       transition(':enter', [
-        style({ transform: 'scale(0)' }),
-        animate('0.4s ease-in', style({ transform: 'scale(1)' })),
+        style({ transform: `${AnimationConfig.scale.hide}` }),
+        animate(
+          `${AnimationConfig.animationTime.normal} ${AnimationConfig.transitionMode.easeIn}`,
+          style({ transform: `${AnimationConfig.scale.show}` })
+        ),
       ]),
       transition(':leave', [
-        style({ transform: 'scale(1)' }),
-        animate('0.4s ease-in', style({ transform: 'scale(0)' })),
+        style({ transform: `${AnimationConfig.scale.show}` }),
+        animate(
+          `${AnimationConfig.animationTime.normal} ${AnimationConfig.transitionMode.easeIn}`,
+          style({ transform: `${AnimationConfig.scale.hide}` })
+        ),
       ]),
     ]),
   ],

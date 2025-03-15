@@ -9,3 +9,21 @@ export const PHONE_PATTERN = '^\\+20(1[0-9]{9})$';
 // Default Values
 export const Default_Pass = 'P@ssw0rd';
 export const Default_Phone = '01272040125';
+
+// Animation
+
+export const AnimationConfig = {
+  scale: {
+    hide: 'scale(0)',
+    show: 'scale(1)',
+  },
+  animationTime: {
+    speed: '0.3s',
+    normal: '0.5s',
+    slow: '1s',
+  },
+  transitionMode: {
+    easeIn: 'ease-in',
+    easeOut: 'ease-out',
+  },
+};

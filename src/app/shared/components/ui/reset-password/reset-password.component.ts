@@ -10,6 +10,7 @@ import { PrimaryBtnComponent } from '../primary-btn/primary-btn.component';
 import { CustomInputComponent } from '../../business/custom-input/custom-input.component';
 import { AuthLibService } from 'auth-lib';
 import {
+  AnimationConfig,
   baseUrl,
   PASSWORD_PATTERN,
 } from '../../../../core/environment/environment';
@@ -29,12 +30,18 @@ import { trigger, transition, style, animate } from '@angular/animations';
   animations: [
     trigger('toggleWidget', [
       transition(':enter', [
-        style({ transform: 'scale(0)' }),
-        animate('0.4s ease-in', style({ transform: 'scale(1)' })),
+        style({ transform: `${AnimationConfig.scale.hide}` }),
+        animate(
+          `${AnimationConfig.animationTime.normal} ${AnimationConfig.transitionMode.easeIn} `,
+          style({ transform: `${AnimationConfig.scale.show}` })
+        ),
       ]),
       transition(':leave', [
-        style({ transform: 'scale(1)' }),
-        animate('0.4s ease-in', style({ transform: 'scale(0)' })),
+        style({ transform: `${AnimationConfig.scale.show}` }),
+        animate(
+          `${AnimationConfig.animationTime.normal} ${AnimationConfig.transitionMode.easeIn} `,
+          style({ transform: `${AnimationConfig.scale.hide}` })
+        ),
       ]),
     ]),
   ],

@@ -9,7 +9,11 @@ import {
 import { PrimaryBtnComponent } from '../../../shared/components/ui/primary-btn/primary-btn.component';
 import { TokenManagerService } from '../../../shared/services/token-manager.service';
 import { AuthLibService } from 'auth-lib';
-import { baseUrl, PASSWORD_PATTERN } from '../../environment/environment';
+import {
+  AnimationConfig,
+  baseUrl,
+  PASSWORD_PATTERN,
+} from '../../environment/environment';
 import { Router } from '@angular/router';
 import { AuthModalService } from '../../../shared/services/auth-modal.service';
 import { ModalControlerService } from '../../../shared/services/modal-controler.service';
@@ -24,12 +28,18 @@ import { trigger, transition, style, animate } from '@angular/animations';
   animations: [
     trigger('toggleWidget', [
       transition(':enter', [
-        style({ transform: 'scale(0)' }),
-        animate('0.4s ease-in', style({ transform: 'scale(1)' })),
+        style({ transform: `${AnimationConfig.scale.hide}` }),
+        animate(
+          `${AnimationConfig.animationTime.normal} ${AnimationConfig.transitionMode.easeIn}`,
+          style({ transform: `${AnimationConfig.scale.show}` })
+        ),
       ]),
       transition(':leave', [
-        style({ transform: 'scale(1)' }),
-        animate('0.4s ease-in', style({ transform: 'scale(0)' })),
+        style({ transform: `${AnimationConfig.scale.show}` }),
+        animate(
+          `${AnimationConfig.animationTime.normal} ${AnimationConfig.transitionMode.easeIn}`,
+          style({ transform: `${AnimationConfig.scale.hide}` })
+        ),
       ]),
     ]),
   ],
