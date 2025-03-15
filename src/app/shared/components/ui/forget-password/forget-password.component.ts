@@ -14,7 +14,14 @@ import {
 } from '../../../../core/environment/environment';
 import { ForgetSignalService } from '../../../services/forget-signal.service';
 import { Subject, takeUntil } from 'rxjs';
-import { trigger, transition, style, animate } from '@angular/animations';
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  useAnimation,
+} from '@angular/animations';
+import { authAnimation } from '../../../../animation/auth-animation';
 
 @Component({
   selector: 'app-forget-password',
@@ -25,18 +32,24 @@ import { trigger, transition, style, animate } from '@angular/animations';
   animations: [
     trigger('toggleWidget', [
       transition(':enter', [
-        style({ transform: `${AnimationConfig.scale.hide}` }),
-        animate(
-          `${AnimationConfig.animationTime.normal} ${AnimationConfig.transitionMode.easeIn}`,
-          style({ transform: `${AnimationConfig.scale.show}` })
-        ),
+        useAnimation(authAnimation, {
+          params: {
+            transformFrom: AnimationConfig.scale.hide,
+            transformTo: AnimationConfig.scale.show,
+            time: AnimationConfig.animationTime.normal,
+            effect: AnimationConfig.transitionEffect.easeIn,
+          },
+        }),
       ]),
       transition(':leave', [
-        style({ transform: `${AnimationConfig.scale.show}` }),
-        animate(
-          `${AnimationConfig.animationTime.normal} ${AnimationConfig.transitionMode.easeIn}`,
-          style({ transform: `${AnimationConfig.scale.hide}` })
-        ),
+        useAnimation(authAnimation, {
+          params: {
+            transformFrom: AnimationConfig.scale.show,
+            transformTo: AnimationConfig.scale.hide,
+            time: AnimationConfig.animationTime.normal,
+            effect: AnimationConfig.transitionEffect.easeIn,
+          },
+        }),
       ]),
     ]),
   ],

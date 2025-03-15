@@ -22,7 +22,7 @@ export const AnimationConfig = {
     normal: '0.5s',
     slow: '1s',
   },
-  transitionMode: {
+  transitionEffect: {
     easeIn: 'ease-in',
     easeOut: 'ease-out',
   },

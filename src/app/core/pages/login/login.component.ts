@@ -17,7 +17,14 @@ import {
 import { Router } from '@angular/router';
 import { AuthModalService } from '../../../shared/services/auth-modal.service';
 import { ModalControlerService } from '../../../shared/services/modal-controler.service';
-import { trigger, transition, style, animate } from '@angular/animations';
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  useAnimation,
+} from '@angular/animations';
+import { authAnimation } from '../../../animation/auth-animation';
 
 @Component({
   selector: 'app-login',
@@ -28,18 +35,24 @@ import { trigger, transition, style, animate } from '@angular/animations';
   animations: [
     trigger('toggleWidget', [
       transition(':enter', [
-        style({ transform: `${AnimationConfig.scale.hide}` }),
-        animate(
-          `${AnimationConfig.animationTime.normal} ${AnimationConfig.transitionMode.easeIn}`,
-          style({ transform: `${AnimationConfig.scale.show}` })
-        ),
+        useAnimation(authAnimation, {
+          params: {
+            transformFrom: AnimationConfig.scale.hide,
+            transformTo: AnimationConfig.scale.show,
+            time: AnimationConfig.animationTime.normal,
+            effect: AnimationConfig.transitionEffect.easeIn,
+          },
+        }),
       ]),
       transition(':leave', [
-        style({ transform: `${AnimationConfig.scale.show}` }),
-        animate(
-          `${AnimationConfig.animationTime.normal} ${AnimationConfig.transitionMode.easeIn}`,
-          style({ transform: `${AnimationConfig.scale.hide}` })
-        ),
+        useAnimation(authAnimation, {
+          params: {
+            transformFrom: AnimationConfig.scale.show,
+            transformTo: AnimationConfig.scale.hide,
+            time: AnimationConfig.animationTime.normal,
+            effect: AnimationConfig.transitionEffect.easeIn,
+          },
+        }),
       ]),
     ]),
   ],

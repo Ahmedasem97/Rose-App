@@ -11,11 +11,11 @@ import { Component } from '@angular/core';
     trigger('toggleModals', [
       transition(':enter', [
         style({ transform: 'scale(0)' }),
-        animate('0.5s ease-in', style({ transform: 'scale(1)' })),
+        animate('0.5s ease-in', style({ transform: 'scale(1)', height: '*' })),
       ]),
       transition(':leave', [
         style({ transform: 'scale(1)' }),
-        animate('0.5s ease-in', style({ transform: 'scale(0)' })),
+        animate('0.5s ease-in', style({ transform: 'scale(0)', height: '*' })),
       ]),
     ]),
   ],
