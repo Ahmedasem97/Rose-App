@@ -19,6 +19,7 @@ import { PrimaryBtnComponent } from '../../../shared/components/ui/primary-btn/p
 import { Router } from '@angular/router';
 import { InputValidationFeedbackComponent } from '../../../shared/components/ui/input-validation-feedback/input-validation-feedback.component';
 import { AuthModalService } from '../../../shared/services/auth-modal.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-register',
@@ -31,6 +32,18 @@ import { AuthModalService } from '../../../shared/services/auth-modal.service';
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
+  animations: [
+    trigger('toggleWidget', [
+      transition(':enter', [
+        style({ transform: 'scale(0)' }),
+        animate('0.4s ease-in', style({ transform: 'scale(1)' })),
+      ]),
+      transition(':leave', [
+        style({ transform: 'scale(1)' }),
+        animate('0.4s ease-in', style({ transform: 'scale(0)' })),
+      ]),
+    ]),
+  ],
 })
 export class RegisterComponent implements OnDestroy {
   // Initialize the variables
@@ -45,7 +58,7 @@ export class RegisterComponent implements OnDestroy {
     CustomFormValidatorsService
   );
   private readonly _router = inject(Router);
-  private readonly _authModalService=inject(AuthModalService)
+  private readonly _authModalService = inject(AuthModalService);
 
   initRegisterForm() {
     this.registerForm = new FormGroup(
@@ -110,7 +123,7 @@ export class RegisterComponent implements OnDestroy {
     if (this._isAuthPage) {
       this._router.navigate(['/auth/login']);
     } else {
-      this._authModalService.setStep("login")
+      this._authModalService.setStep('login');
     }
   }
 

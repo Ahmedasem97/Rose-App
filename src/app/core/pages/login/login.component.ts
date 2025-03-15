@@ -13,6 +13,7 @@ import { baseUrl, PASSWORD_PATTERN } from '../../environment/environment';
 import { Router } from '@angular/router';
 import { AuthModalService } from '../../../shared/services/auth-modal.service';
 import { ModalControlerService } from '../../../shared/services/modal-controler.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,18 @@ import { ModalControlerService } from '../../../shared/services/modal-controler.
   imports: [CustomInputComponent, ReactiveFormsModule, PrimaryBtnComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
+  animations: [
+    trigger('toggleWidget', [
+      transition(':enter', [
+        style({ transform: 'scale(0)' }),
+        animate('0.4s ease-in', style({ transform: 'scale(1)' })),
+      ]),
+      transition(':leave', [
+        style({ transform: 'scale(1)' }),
+        animate('0.4s ease-in', style({ transform: 'scale(0)' })),
+      ]),
+    ]),
+  ],
 })
 export class LoginComponent implements OnInit, OnDestroy {
   // Initialize the variables
@@ -49,7 +62,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.isAuthPage) {
       this._router.navigate([`/auth/${component}`]);
     } else {
-      this._authModalService.setStep(component)
+      this._authModalService.setStep(component);
     }
   }
 
@@ -85,10 +98,10 @@ export class LoginComponent implements OnInit, OnDestroy {
           rememberMeOption
             ? this._tokenManagerService.setToken(res.token, 180)
             : this._tokenManagerService.setToken(res.token);
-          this._modalControlerService.setModalStatus(false)
-          this._tokenManagerService.setLoginStatus(true)
+          this._modalControlerService.setModalStatus(false);
+          this._tokenManagerService.setLoginStatus(true);
           console.log(res);
-          
+
           this.goToHome();
         }
         // this._Toaster.showToaster(severity, title, message);
