@@ -35,13 +35,7 @@ import {
   sequence,
 } from '@angular/animations';
 import { isPlatformBrowser } from '@angular/common';
-
-enum AnimationState {
-  Hidden = 'hidden',
-  Visible = 'visible',
-  NotLoaded = 'notLoaded',
-  Loaded = 'loaded',
-}
+import { AnimationState } from '../../../../core/enums/animation.enum';
 
 @Component({
   selector: 'app-popular-item',
