@@ -19,7 +19,7 @@ import {
   state,
   sequence,
 } from '@angular/animations';
-
+import { AnimationState } from '../../../../core/enums/animation.enum';
 @Component({
   selector: 'app-about-us',
   standalone: true,
@@ -75,8 +75,8 @@ import {
 })
 export class AboutUsComponent implements AfterViewInit {
   featuresList: string[] = appFeaturesMockData;
-  animationState = 'hidden';
-  listAnimationState = 'hidden';
+  animationState = AnimationState.Hidden;
+  listAnimationState = AnimationState.Hidden;
   private readonly platformId = inject(PLATFORM_ID);
   private readonly elementRef = inject(ElementRef);
   private timeOut!: NodeJS.Timeout;
@@ -93,10 +93,10 @@ export class AboutUsComponent implements AfterViewInit {
       const observer = new IntersectionObserver((entries) => {
         const [entry] = entries;
         if (entry.isIntersecting) {
-          this.animationState = 'visible';
+          this.animationState = AnimationState.Visible;
           this.timeOut = setTimeout(() => {
             //  Run the list animation after the 100ms from fade animation
-            this.listAnimationState = 'visible';
+            this.listAnimationState = AnimationState.Visible;
           }, 100);
 
           observer.unobserve(entry.target);
@@ -106,8 +106,8 @@ export class AboutUsComponent implements AfterViewInit {
       observer.observe(this.elementRef.nativeElement);
     } else {
       this.timeOut = setTimeout(() => {
-        this.animationState = 'visible';
-        this.listAnimationState = 'visible';
+        this.animationState = AnimationState.Visible;
+        this.listAnimationState = AnimationState.Visible;
       }, 200);
     }
   }
