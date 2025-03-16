@@ -67,28 +67,31 @@ import { productsAnimation } from '../../../../animation/products-animation';
   styleUrl: './cateogry.component.scss',
   animations: [
     trigger('productsAnimation', [
-      transition('hidden => visible , notLoaded => loaded', [
-        query(
-          '.popular__items__products .item',
-          [
-            useAnimation(productsAnimation, {
-              params: {
-                baseOpacity: 0,
-                baseTransform: 'translateY(20px) scale(0.8)',
-                firstOpacity: 1,
-                firstTransform: 'translateY(0) scale(0.8)',
-                secondOpacity: 1,
-                secondTransform: 'translateY(0) scale(1)',
-                firstTime: '0.3s',
-                firstEffect: 'ease-out',
-                secondTime: '0.2s',
-                secondEffect: 'ease-out',
-              },
-            }),
-          ],
-          { optional: true }
-        ),
-      ]),
+      transition(
+        `${AnimationState.Hidden} => ${AnimationState.Visible} , ${AnimationState.NotLoaded} => ${AnimationState.Loaded}`,
+        [
+          query(
+            '.popular__items__products .item',
+            [
+              useAnimation(productsAnimation, {
+                params: {
+                  baseOpacity: 0,
+                  baseTransform: 'translateY(20px) scale(0.8)',
+                  firstOpacity: 1,
+                  firstTransform: 'translateY(0) scale(0.8)',
+                  secondOpacity: 1,
+                  secondTransform: 'translateY(0) scale(1)',
+                  firstTime: '0.3s',
+                  firstEffect: 'ease-out',
+                  secondTime: '0.2s',
+                  secondEffect: 'ease-out',
+                },
+              }),
+            ],
+            { optional: true }
+          ),
+        ]
+      ),
     ]),
   ],
 })

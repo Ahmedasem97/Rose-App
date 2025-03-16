@@ -29,23 +29,25 @@ import { AnimationState } from '../../../../core/enums/animation.enum';
   animations: [
     trigger('fadeInUp', [
       state(
-        'hidden',
+        `${AnimationState.Hidden}`,
         style({
           opacity: 0,
           transform: 'translateY(20px)',
         })
       ),
       state(
-        'visible',
+        `${AnimationState.Visible}`,
         style({
           opacity: 1,
           transform: 'translateY(0)',
         })
       ),
-      transition('hidden => visible', [animate('0.5s ease-out')]),
+      transition(`${AnimationState.Hidden} => ${AnimationState.Visible}`, [
+        animate('0.5s ease-out'),
+      ]),
     ]),
     trigger('animationList', [
-      transition('hidden => visible', [
+      transition(`${AnimationState.Hidden} => ${AnimationState.Visible}`, [
         query(
           'li',
           [
