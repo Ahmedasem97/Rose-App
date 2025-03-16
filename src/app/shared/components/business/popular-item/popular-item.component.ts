@@ -24,17 +24,10 @@ import {
 import { ProductsService } from '../../../services/products.service';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductCardComponent } from '../product-card/product-card.component';
-import {
-  trigger,
-  transition,
-  style,
-  animate,
-  stagger,
-  query,
-  sequence,
-} from '@angular/animations';
+import { trigger, transition, query, useAnimation } from '@angular/animations';
 import { isPlatformBrowser } from '@angular/common';
 import { AnimationState } from '../../../../core/enums/animation.enum';
+import { productsAnimation } from '../../../../animation/products-animation';
 
 @Component({
   selector: 'app-popular-item',
@@ -48,19 +41,20 @@ import { AnimationState } from '../../../../core/enums/animation.enum';
         query(
           '.popular__items__products .item',
           [
-            style({ opacity: 0, transform: 'translateY(20px) scale(0.8)' }),
-            stagger(100, [
-              sequence([
-                animate(
-                  '0.3s ease-out',
-                  style({ opacity: 1, transform: 'translateY(0) scale(0.8)' })
-                ),
-                animate(
-                  '0.2s ease-out',
-                  style({ opacity: 1, transform: 'translateY(0) scale(1)' })
-                ),
-              ]),
-            ]),
+            useAnimation(productsAnimation, {
+              params: {
+                baseOpacity: 0,
+                baseTransform: 'translateY(20px) scale(0.8)',
+                firstOpacity: 1,
+                firstTransform: 'translateY(0) scale(0.8)',
+                secondOpacity: 1,
+                secondTransform: 'translateY(0) scale(1)',
+                firstTime: '0.3s',
+                firstEffect: 'ease-out',
+                secondTime: '0.2s',
+                secondEffect: 'ease-out',
+              },
+            }),
           ],
           { optional: true }
         ),
@@ -178,6 +172,5 @@ export class PopularItemComponent implements OnInit, OnDestroy, AfterViewInit {
     this.$destroy.next('destroy');
     // Clean up all timeouts
     this.timeouts.forEach((timeout) => clearTimeout(timeout));
-    this.timeouts.clear();
   }
 }

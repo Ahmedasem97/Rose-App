@@ -4,7 +4,6 @@ import {
   inject,
   OnDestroy,
   OnInit,
-  PLATFORM_ID,
   QueryList,
   signal,
   ViewChild,
@@ -13,7 +12,6 @@ import {
 } from '@angular/core';
 import {
   sidebarBrands,
-  sidebarCo,
   sidebarSales,
   sidebarSizes,
 } from '../../../../mock/sidebar-cat';
@@ -50,10 +48,11 @@ import {
   style,
   transition,
   trigger,
+  useAnimation,
 } from '@angular/animations';
 import { animate } from '@angular/animations';
 import { AnimationState } from '../../../../core/enums/animation.enum';
-import { isPlatformBrowser } from '@angular/common';
+import { productsAnimation } from '../../../../animation/products-animation';
 
 @Component({
   selector: 'app-cateogry',
@@ -72,19 +71,20 @@ import { isPlatformBrowser } from '@angular/common';
         query(
           '.popular__items__products .item',
           [
-            style({ opacity: 0, transform: 'translateY(20px) scale(0.8)' }),
-            stagger(100, [
-              sequence([
-                animate(
-                  '0.3s ease-out',
-                  style({ opacity: 1, transform: 'translateY(0) scale(0.8)' })
-                ),
-                animate(
-                  '0.2s ease-out',
-                  style({ opacity: 1, transform: 'translateY(0) scale(1)' })
-                ),
-              ]),
-            ]),
+            useAnimation(productsAnimation, {
+              params: {
+                baseOpacity: 0,
+                baseTransform: 'translateY(20px) scale(0.8)',
+                firstOpacity: 1,
+                firstTransform: 'translateY(0) scale(0.8)',
+                secondOpacity: 1,
+                secondTransform: 'translateY(0) scale(1)',
+                firstTime: '0.3s',
+                firstEffect: 'ease-out',
+                secondTime: '0.2s',
+                secondEffect: 'ease-out',
+              },
+            }),
           ],
           { optional: true }
         ),
@@ -97,8 +97,6 @@ export class CateogryComponent implements OnInit, OnDestroy {
   private _productsFilterService = inject(ProductsFilterService);
   private _categoriesService = inject(CategoriesService);
   private readonly _flowbiteService = inject(FlowbiteService);
-  private readonly platformId = inject(PLATFORM_ID);
-  private readonly elementRef = inject(ElementRef);
   private timeouts: Set<NodeJS.Timeout> = new Set();
   p: number = 1;
 
@@ -381,6 +379,5 @@ export class CateogryComponent implements OnInit, OnDestroy {
     this.listAnimationState = AnimationState.NotLoaded;
     this.isReloadAnimationEnabled = false;
     this.timeouts.forEach((timeout) => clearTimeout(timeout));
-    this.timeouts.clear();
   }
 }
