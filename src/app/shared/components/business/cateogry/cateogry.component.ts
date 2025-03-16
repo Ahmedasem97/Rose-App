@@ -4,6 +4,7 @@ import {
   inject,
   OnDestroy,
   OnInit,
+  PLATFORM_ID,
   QueryList,
   signal,
   ViewChild,
@@ -42,6 +43,17 @@ import { sortAttributes } from '../../../../mock/sort-attributes.mock';
 import { CustomSearchComponent } from '../custom-search/custom-search.component';
 import { FlowbiteService } from '../../../../core/services/flowbite.service';
 import { initFlowbite } from 'flowbite';
+import {
+  query,
+  sequence,
+  stagger,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import { animate } from '@angular/animations';
+import { AnimationState } from '../../../../core/enums/animation.enum';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-cateogry',
@@ -54,12 +66,40 @@ import { initFlowbite } from 'flowbite';
   ],
   templateUrl: './cateogry.component.html',
   styleUrl: './cateogry.component.scss',
+  animations: [
+    trigger('productsAnimation', [
+      transition('hidden => visible , notLoaded => loaded', [
+        query(
+          '.popular__items__products .item',
+          [
+            style({ opacity: 0, transform: 'translateY(20px) scale(0.8)' }),
+            stagger(100, [
+              sequence([
+                animate(
+                  '0.3s ease-out',
+                  style({ opacity: 1, transform: 'translateY(0) scale(0.8)' })
+                ),
+                animate(
+                  '0.2s ease-out',
+                  style({ opacity: 1, transform: 'translateY(0) scale(1)' })
+                ),
+              ]),
+            ]),
+          ],
+          { optional: true }
+        ),
+      ]),
+    ]),
+  ],
 })
 export class CateogryComponent implements OnInit, OnDestroy {
   private _productsService = inject(ProductsService);
   private _productsFilterService = inject(ProductsFilterService);
   private _categoriesService = inject(CategoriesService);
   private readonly _flowbiteService = inject(FlowbiteService);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly elementRef = inject(ElementRef);
+  private timeouts: Set<NodeJS.Timeout> = new Set();
   p: number = 1;
 
   sidecateo: Category[] = [] as Category[];
@@ -68,6 +108,8 @@ export class CateogryComponent implements OnInit, OnDestroy {
   sidesize = sidebarSizes;
   sortByOptionsList: SortAttributes[] = [];
   sortOrderOptionsList: SortOrder[] = [];
+  listAnimationState = AnimationState.Hidden;
+  isReloadAnimationEnabled = true;
   @ViewChildren('categoryRadios') categoryRadios!: QueryList<ElementRef>;
   @ViewChild('priceRange') priceRange!: ElementRef;
 
@@ -92,12 +134,21 @@ export class CateogryComponent implements OnInit, OnDestroy {
   }
 
   getPopularProductApi(keyword: string = ''): void {
+    if (this.isReloadAnimationEnabled) {
+      this.listAnimationState = AnimationState.NotLoaded;
+    }
     this._productsService
       .getAllProducts(keyword)
       .pipe(takeUntil(this.$destroy))
       .subscribe({
         next: (res: ProductsRes) => {
           this.productsDisplay.set(res.products);
+          const timeOut = setTimeout(() => {
+            if (this.isReloadAnimationEnabled) {
+              this.listAnimationState = AnimationState.Loaded;
+            }
+          }, 60);
+          this.timeouts.add(timeOut);
         },
       });
   }
@@ -292,12 +343,19 @@ export class CateogryComponent implements OnInit, OnDestroy {
         this.productsFilterParamsObj
       );
 
+      this.listAnimationState = AnimationState.NotLoaded;
       this._productsService
         .getAllProductsByFilter(queryParams)
         .pipe(takeUntil(this.$destroy))
         .subscribe({
           next: (res: ProductsRes) => {
             this.productsDisplay.set(res.products);
+            const timeOut = setTimeout(() => {
+              if (this.isReloadAnimationEnabled) {
+                this.listAnimationState = AnimationState.Loaded;
+              }
+            }, 60);
+            this.timeouts.add(timeOut);
           },
         });
     }
@@ -311,11 +369,18 @@ export class CateogryComponent implements OnInit, OnDestroy {
     this.initSortByList();
     this.initSortOrderList();
     this.setDefaultSortOrder();
-    this.getPopularProductApi();
     this.getCategories();
+    this.getPopularProductApi();
+    // this.listAnimationState = AnimationState.Visible;
+    // this.isReloadAnimationEnabled = true;
   }
 
   ngOnDestroy(): void {
     this.$destroy.next('destroy');
+    // Clean up all timeouts
+    this.listAnimationState = AnimationState.NotLoaded;
+    this.isReloadAnimationEnabled = false;
+    this.timeouts.forEach((timeout) => clearTimeout(timeout));
+    this.timeouts.clear();
   }
 }
