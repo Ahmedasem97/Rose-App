@@ -1,5 +1,6 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { Component, computed, effect, input, InputSignal, signal, Signal, WritableSignal } from '@angular/core';
 import { MainButtomComponent } from "../main-buttom/main-buttom.component";
+import { CartSummary } from '../../../../core/interfaces/cart.interface';
 
 @Component({
   selector: 'app-cart-summary',
@@ -10,5 +11,32 @@ import { MainButtomComponent } from "../main-buttom/main-buttom.component";
 })
 export class CartSummaryComponent {
   totalPrice: InputSignal<number> = input.required()
+  
+  price: WritableSignal<number> = signal(0)
+  priceComputed: Signal<number> = computed(()=> this.price() + this.totalPrice())
 
+  constructor() {
+    effect(() => {
+      this.cartSummary[0].price = this.priceComputed()
+    })
+  }
+
+  cartSummary: CartSummary[] = [
+    {
+      title: "Sub Total:",
+      price: 0
+    },
+    {
+      title: "Discount:",
+      price: "$" + 5.00
+    },
+    {
+      title: "Shipping:",
+      price: "Free"
+    },
+    {
+      title: "Taxes:",
+      price: "$" + 25.00
+    },
+  ]
 }

@@ -2,22 +2,12 @@
     <div class="p-10 bg-light-prim-background rounded-[var(--cards-border-radius)]">
         <div>
             <h1 class="mb-10 font-semibold text-lg">Cart Summary</h1>
-            <div class="flex justify-between items-center mb-3">
-                <h3 class="font-bold">Sub Total:</h3>
-                <span class="text-[#757F95]">${{totalPrice()}}.00</span>
-            </div>
-            <div class="flex justify-between mb-3">
-                <h3 class="font-bold">Discount:</h3>
-                <span class="text-[#757F95]">$5.00</span>
-            </div>
-            <div class="flex justify-between mb-3">
-                <h3 class="font-bold">Shipping:</h3>
-                <span class="text-[#757F95]">Free</span>
-            </div>
-            <div class="flex justify-between mb-3">
-                <h3 class="font-bold">Taxes:</h3>
-                <span class="text-[#757F95]">$25.00</span>
-            </div>
+            @for (item of cartSummary ; track $index) {
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-bold">{{item.title}}</h3>
+                    <span class="text-[#757F95]">{{item.price}}</span>
+                </div>
+            }
             <div class="flex justify-between mt-5">
                 <h3 class="font-bold">Total:</h3>
                 <span class="text-primary font-bold">${{ (totalPrice() - 5) + 25 }}.00</span>

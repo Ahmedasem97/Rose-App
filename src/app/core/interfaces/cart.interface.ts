@@ -93,3 +93,8 @@ export interface ProductQuantity {
   "quantity": number
 }
 
+
+export interface CartSummary {
+  "title": string
+  "price": number | string
+}
