@@ -1,13 +1,16 @@
 
 
-<nav class="bg-white dark:bg-gray-900 fixed w-full  top-0 start-0 z-50">
-    <div class="container flex flex-wrap items-center justify-between mx-auto p-4">
-    <a  class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="Group3.png" class="h-[86px]" alt="Flowbite Logo">
+<nav class="bg-white dark:bg-gray-900 fixed w-full  top-0 start-0 z-50 pt-3">
+    <div class="container flex flex-wrap items-center justify-between mx-auto p-2">
+    <a  class="flex items-center space-x-3 rtl:space-x-reverse ">
+        <img src="Group3.png" class="md:h-[86px] md:w-[86px] h-[54px] w-[54px]" alt="Flowbite Logo">
         
     </a>
     <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <div class="invisible md:visible">
         <app-lang-buttom></app-lang-buttom>
+
+      </div>
         
             <div  class="flex gap-4 items-center">
               <span data-modal-target="progress-modal" data-modal-toggle="progress-modal"><img src="Vector (1).png" class="h-[21px] w-[20px] cursor-pointer" alt=""></span> 
@@ -21,7 +24,7 @@
       </button>
     </div>
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-      <ul class="flex items-center flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+      <ul class="flex items-center flex-col p-4 md:p-0 mt-4 font-medium border max-sm:items-start border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
         <li>
           <a routerLink="/main/home" routerLinkActive="text-activelink" class="block text-base py-2 px-3  rounded md:bg-transparent" >{{"navbar.home" | translate}}</a>
         </li>
@@ -32,10 +35,16 @@
           <a routerLink="/main/about-us" routerLinkActive="text-activelink" class="block text-base py-2 px-3">{{"navbar.about" | translate}}</a>
         </li>
         <li>
-          <a routerLink=" " routerLinkActive="text-activelink" class="block text-base py-2 px-3">{{"navbar.contact" | translate}}</a>
+          <a routerLink="/main/contact" routerLinkActive="text-activelink" class="block text-base py-2 px-3">{{"navbar.contact" | translate}}</a>
+        </li>
+        <li>
+          
         </li>
       </ul>
+
     </div>
+
+    
 
     </div>
   </nav>
@@ -66,11 +75,13 @@
   </div>
 </div> 
 
+<div class="invisible md:visible">
 
-@if (isOpen) {
-  <app-modal>
-    <app-auth-modal></app-auth-modal>
-  </app-modal>
-}
-  
+  @if (isOpen) {
+    <app-modal>
+      <app-auth-modal></app-auth-modal>
+    </app-modal>
+  }
+    
+</div>
 
