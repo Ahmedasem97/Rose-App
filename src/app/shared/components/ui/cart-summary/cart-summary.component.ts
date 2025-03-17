@@ -11,13 +11,10 @@ import { CartSummary } from '../../../../core/interfaces/cart.interface';
 })
 export class CartSummaryComponent {
   totalPrice: InputSignal<number> = input.required()
-  
-  price: WritableSignal<number> = signal(0)
-  priceComputed: Signal<number> = computed(()=> this.price() + this.totalPrice())
 
   constructor() {
     effect(() => {
-      this.cartSummary[0].price = this.priceComputed()
+      this.cartSummary[0].price = this.totalPrice()
     })
   }
 
