@@ -634,8 +634,8 @@
         class="popular__items__products flex flex-wrap mx-auto"
         [@productsAnimation]="listAnimationState"
       >
-        @for (product of productsDisplay() | paginate: { itemsPerPage: 12,
-        currentPage: p }; track $index) {
+        @for (product of productsDisplay() | paginate: { itemsPerPage:
+        productsDisplay().length-2, currentPage: p }; track $index) {
         <app-product-card
           class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-3 mb-6"
           [productApi]="product"
