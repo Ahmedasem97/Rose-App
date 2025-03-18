@@ -3,7 +3,8 @@
     class="modal__container flex justify-center items-center w-full h-full bg-footer-text"
   >
     <div
-      class="modal bg-white rounded-[var(--cards-border-radius)] p-10 max-h-[800px] overflow-auto"
+      @toggleModals
+      class="modal bg-white rounded-[var(--cards-border-radius)] p-10 max-h-[550px] overflow-auto"
     >
       <ng-content></ng-content>
     </div>

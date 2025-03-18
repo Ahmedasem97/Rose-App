@@ -1,5 +1,6 @@
 import { Component, inject, OnDestroy } from '@angular/core';
 import {
+  AnimationConfig,
   baseUrl,
   NAME_PATTERN,
   PASSWORD_PATTERN,
@@ -19,6 +20,16 @@ import { PrimaryBtnComponent } from '../../../shared/components/ui/primary-btn/p
 import { Router } from '@angular/router';
 import { InputValidationFeedbackComponent } from '../../../shared/components/ui/input-validation-feedback/input-validation-feedback.component';
 import { AuthModalService } from '../../../shared/services/auth-modal.service';
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  query,
+  group,
+  useAnimation,
+} from '@angular/animations';
+import { authAnimation } from '../../../animation/auth-animation';
 
 @Component({
   selector: 'app-register',
@@ -31,6 +42,42 @@ import { AuthModalService } from '../../../shared/services/auth-modal.service';
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
+  animations: [
+    trigger('toggleWidget', [
+      transition(':enter', [
+        query(
+          ':self',
+          [
+            useAnimation(authAnimation, {
+              params: {
+                transformFrom: 'scale(0.8) translateY(20px)',
+                transformTo: 'scale(1) translateY(0)',
+                time: AnimationConfig.animationTime.speed,
+                effect: AnimationConfig.transitionEffect.easeOut,
+              },
+            }),
+          ],
+          { optional: true }
+        ),
+      ]),
+      transition(':leave', [
+        query(
+          ':self',
+          [
+            useAnimation(authAnimation, {
+              params: {
+                transformFrom: 'scale(1) translateY(0)',
+                transformTo: 'scale(0.8) translateY(-20px)',
+                time: AnimationConfig.animationTime.speed,
+                effect: AnimationConfig.transitionEffect.easeIn,
+              },
+            }),
+          ],
+          { optional: true }
+        ),
+      ]),
+    ]),
+  ],
 })
 export class RegisterComponent implements OnDestroy {
   // Initialize the variables
@@ -45,7 +92,7 @@ export class RegisterComponent implements OnDestroy {
     CustomFormValidatorsService
   );
   private readonly _router = inject(Router);
-  private readonly _authModalService=inject(AuthModalService)
+  private readonly _authModalService = inject(AuthModalService);
 
   initRegisterForm() {
     this.registerForm = new FormGroup(
@@ -110,7 +157,7 @@ export class RegisterComponent implements OnDestroy {
     if (this._isAuthPage) {
       this._router.navigate(['/auth/login']);
     } else {
-      this._authModalService.setStep("login")
+      this._authModalService.setStep('login');
     }
   }
 

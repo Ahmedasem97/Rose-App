@@ -9,10 +9,23 @@ import {
 import { PrimaryBtnComponent } from '../../../shared/components/ui/primary-btn/primary-btn.component';
 import { TokenManagerService } from '../../../shared/services/token-manager.service';
 import { AuthLibService } from 'auth-lib';
-import { baseUrl, PASSWORD_PATTERN } from '../../environment/environment';
+import {
+  AnimationConfig,
+  baseUrl,
+  PASSWORD_PATTERN,
+} from '../../environment/environment';
 import { Router } from '@angular/router';
 import { AuthModalService } from '../../../shared/services/auth-modal.service';
 import { ModalControlerService } from '../../../shared/services/modal-controler.service';
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  useAnimation,
+  query,
+} from '@angular/animations';
+import { authAnimation } from '../../../animation/auth-animation';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +33,42 @@ import { ModalControlerService } from '../../../shared/services/modal-controler.
   imports: [CustomInputComponent, ReactiveFormsModule, PrimaryBtnComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
+  animations: [
+    trigger('toggleWidget', [
+      transition(':enter', [
+        query(
+          ':self',
+          [
+            useAnimation(authAnimation, {
+              params: {
+                transformFrom: 'scale(0.8) translateY(20px)',
+                transformTo: 'scale(1) translateY(0)',
+                time: AnimationConfig.animationTime.speed,
+                effect: AnimationConfig.transitionEffect.easeOut,
+              },
+            }),
+          ],
+          { optional: true }
+        ),
+      ]),
+      transition(':leave', [
+        query(
+          ':self',
+          [
+            useAnimation(authAnimation, {
+              params: {
+                transformFrom: 'scale(1) translateY(0)',
+                transformTo: 'scale(0.8) translateY(-20px)',
+                time: AnimationConfig.animationTime.speed,
+                effect: AnimationConfig.transitionEffect.easeIn,
+              },
+            }),
+          ],
+          { optional: true }
+        ),
+      ]),
+    ]),
+  ],
 })
 export class LoginComponent implements OnInit, OnDestroy {
   // Initialize the variables
@@ -49,7 +98,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.isAuthPage) {
       this._router.navigate([`/auth/${component}`]);
     } else {
-      this._authModalService.setStep(component)
+      this._authModalService.setStep(component);
     }
   }
 
@@ -85,10 +134,10 @@ export class LoginComponent implements OnInit, OnDestroy {
           rememberMeOption
             ? this._tokenManagerService.setToken(res.token, 180)
             : this._tokenManagerService.setToken(res.token);
-          this._modalControlerService.setModalStatus(false)
-          this._tokenManagerService.setLoginStatus(true)
+          this._modalControlerService.setModalStatus(false);
+          this._tokenManagerService.setLoginStatus(true);
           console.log(res);
-          
+
           this.goToHome();
         }
         // this._Toaster.showToaster(severity, title, message);

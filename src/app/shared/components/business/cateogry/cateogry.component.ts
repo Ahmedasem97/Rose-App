@@ -12,7 +12,6 @@ import {
 } from '@angular/core';
 import {
   sidebarBrands,
-  sidebarCo,
   sidebarSales,
   sidebarSizes,
 } from '../../../../mock/sidebar-cat';
@@ -40,6 +39,20 @@ import { CustomRadioDropdownComponent } from '../custom-dropdown/custom-radio-dr
 import { sortOrder } from '../../../../mock/sort-order.mock';
 import { sortAttributes } from '../../../../mock/sort-attributes.mock';
 import { CustomSearchComponent } from '../custom-search/custom-search.component';
+import { FlowbiteService } from '../../../../core/services/flowbite.service';
+import { initFlowbite } from 'flowbite';
+import {
+  query,
+  sequence,
+  stagger,
+  style,
+  transition,
+  trigger,
+  useAnimation,
+} from '@angular/animations';
+import { animate } from '@angular/animations';
+import { AnimationState } from '../../../../core/enums/animation.enum';
+import { productsAnimation } from '../../../../animation/products-animation';
 
 @Component({
   selector: 'app-cateogry',
@@ -52,11 +65,42 @@ import { CustomSearchComponent } from '../custom-search/custom-search.component'
   ],
   templateUrl: './cateogry.component.html',
   styleUrl: './cateogry.component.scss',
+  animations: [
+    trigger('productsAnimation', [
+      transition(
+        `${AnimationState.Hidden} => ${AnimationState.Visible} , ${AnimationState.NotLoaded} => ${AnimationState.Loaded}`,
+        [
+          query(
+            '.popular__items__products .item',
+            [
+              useAnimation(productsAnimation, {
+                params: {
+                  baseOpacity: 0,
+                  baseTransform: 'translateY(20px) scale(0.8)',
+                  firstOpacity: 1,
+                  firstTransform: 'translateY(0) scale(0.8)',
+                  secondOpacity: 1,
+                  secondTransform: 'translateY(0) scale(1)',
+                  firstTime: '0.3s',
+                  firstEffect: 'ease-out',
+                  secondTime: '0.2s',
+                  secondEffect: 'ease-out',
+                },
+              }),
+            ],
+            { optional: true }
+          ),
+        ]
+      ),
+    ]),
+  ],
 })
 export class CateogryComponent implements OnInit, OnDestroy {
   private _productsService = inject(ProductsService);
   private _productsFilterService = inject(ProductsFilterService);
   private _categoriesService = inject(CategoriesService);
+  private readonly _flowbiteService = inject(FlowbiteService);
+  private timeouts: Set<NodeJS.Timeout> = new Set();
   p: number = 1;
 
   sidecateo: Category[] = [] as Category[];
@@ -65,6 +109,8 @@ export class CateogryComponent implements OnInit, OnDestroy {
   sidesize = sidebarSizes;
   sortByOptionsList: SortAttributes[] = [];
   sortOrderOptionsList: SortOrder[] = [];
+  listAnimationState = AnimationState.Hidden;
+  isReloadAnimationEnabled = true;
   @ViewChildren('categoryRadios') categoryRadios!: QueryList<ElementRef>;
   @ViewChild('priceRange') priceRange!: ElementRef;
 
@@ -89,12 +135,21 @@ export class CateogryComponent implements OnInit, OnDestroy {
   }
 
   getPopularProductApi(keyword: string = ''): void {
+    if (this.isReloadAnimationEnabled) {
+      this.listAnimationState = AnimationState.NotLoaded;
+    }
     this._productsService
       .getAllProducts(keyword)
       .pipe(takeUntil(this.$destroy))
       .subscribe({
         next: (res: ProductsRes) => {
           this.productsDisplay.set(res.products);
+          const timeOut = setTimeout(() => {
+            if (this.isReloadAnimationEnabled) {
+              this.listAnimationState = AnimationState.Loaded;
+            }
+          }, 60);
+          this.timeouts.add(timeOut);
         },
       });
   }
@@ -289,12 +344,19 @@ export class CateogryComponent implements OnInit, OnDestroy {
         this.productsFilterParamsObj
       );
 
+      this.listAnimationState = AnimationState.NotLoaded;
       this._productsService
         .getAllProductsByFilter(queryParams)
         .pipe(takeUntil(this.$destroy))
         .subscribe({
           next: (res: ProductsRes) => {
             this.productsDisplay.set(res.products);
+            const timeOut = setTimeout(() => {
+              if (this.isReloadAnimationEnabled) {
+                this.listAnimationState = AnimationState.Loaded;
+              }
+            }, 60);
+            this.timeouts.add(timeOut);
           },
         });
     }
@@ -302,14 +364,23 @@ export class CateogryComponent implements OnInit, OnDestroy {
   // --------------------------------------------------
 
   ngOnInit(): void {
+    this._flowbiteService.loadFlowbite((flowbite) => {
+      initFlowbite();
+    });
     this.initSortByList();
     this.initSortOrderList();
     this.setDefaultSortOrder();
-    this.getPopularProductApi();
     this.getCategories();
+    this.getPopularProductApi();
+    // this.listAnimationState = AnimationState.Visible;
+    // this.isReloadAnimationEnabled = true;
   }
 
   ngOnDestroy(): void {
     this.$destroy.next('destroy');
+    // Clean up all timeouts
+    this.listAnimationState = AnimationState.NotLoaded;
+    this.isReloadAnimationEnabled = false;
+    this.timeouts.forEach((timeout) => clearTimeout(timeout));
   }
 }
