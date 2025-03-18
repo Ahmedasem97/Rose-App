@@ -1,14 +1,14 @@
 .input-container {
   &__input-custom-group {
     &__custom-input {
-      box-shadow: 0px 1px 10px 0px #0000001a;
+      // box-shadow: 0px 1px 10px 0px #0000001a;
       padding: 8px;
       padding-left: 16px;
       // margin-bottom: 24px;
       width: 100%;
-      border: 0;
+      // border: 0;
       height: 52px;
-      border-radius: 20px;
+      // border-radius: 20px;
       background-color: var(--white-color);
 
       &:focus {
