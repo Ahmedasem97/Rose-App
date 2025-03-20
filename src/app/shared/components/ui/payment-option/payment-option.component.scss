@@ -1,0 +1,14 @@
+.payment-opt {
+  border: 1px solid #757f95;
+  color: #757f95;
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  &__input {
+    display: none;
+  }
+
+  &.active {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+  }
+}
