@@ -25,6 +25,14 @@ export const routes: Routes = [
             ),
 
         },
+        {
+          path: 'contact',
+          loadComponent: () =>
+            import('./shared/components/business/contact/contact.component').then(
+              (c) => c.ContactComponent
+            ),
+
+        },
 
         {
           path: 'about-us',

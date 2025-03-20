@@ -20,6 +20,7 @@ module.exports = {
     colors: {
       'footer-text': '#160E4B',
       'footer-text1': '#F82BA9',
+      'text-f82ba9': '#F82BA9',
       'footer-text2': '#757F95',
       'color-text': '#757F95',
       primary: "var(--primary-color)",

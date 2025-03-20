@@ -250,6 +250,11 @@ export const popularProductsAdapt: any = {
         }
     ]
 }
+
+
+
+
+
 export const popularProducts: any = {
     "message": "success",
     "products": [

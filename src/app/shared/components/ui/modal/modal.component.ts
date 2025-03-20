@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,8 +6,18 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.scss'
+  styleUrl: './modal.component.scss',
+  animations: [
+    trigger('toggleModals', [
+      transition(':enter', [
+        style({ transform: 'scale(0)' }),
+        animate('0.5s ease-in', style({ transform: 'scale(1)', height: '*' })),
+      ]),
+      transition(':leave', [
+        style({ transform: 'scale(1)' }),
+        animate('0.5s ease-in', style({ transform: 'scale(0)', height: '*' })),
+      ]),
+    ]),
+  ],
 })
-export class ModalComponent {
-
-}
+export class ModalComponent {}

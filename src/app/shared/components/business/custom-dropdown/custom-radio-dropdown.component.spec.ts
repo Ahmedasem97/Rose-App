@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomDropdownComponent } from './custom-radio-dropdown.component';
+import { CustomRadioDropdownComponent } from './custom-radio-dropdown.component';
 
 describe('CustomDropdownComponent', () => {
-  let component: CustomDropdownComponent;
-  let fixture: ComponentFixture<CustomDropdownComponent>;
+  let component: CustomRadioDropdownComponent;
+  let fixture: ComponentFixture<CustomRadioDropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CustomDropdownComponent],
+      imports: [CustomRadioDropdownComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CustomDropdownComponent);
+    fixture = TestBed.createComponent(CustomRadioDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

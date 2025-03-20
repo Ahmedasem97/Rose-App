@@ -1,6 +1,7 @@
 <section class="about-us flex flex-col xl:flex-row mb-20">
   <div
     class="about-us__start-side flex flex-col sm:flex-row justify-center items-center mb-4"
+    [@fadeInUp]="animationState"
   >
     <div class="about-us__start-side__left w-full min-[350px]:w-[302px]">
       <div
@@ -20,7 +21,7 @@
     </div>
   </div>
 
-  <div class="about-us__end-side sm:ml-20">
+  <div class="about-us__end-side sm:ml-20" [@fadeInUp]="animationState">
     <div
       class="about-us__end-side__top max-w-[343px] md:max-w-[657px] mb-4 flex flex-col"
     >
@@ -55,7 +56,7 @@
     <div
       class="about-us__end-side__bottom max-w-[343px] md:max-w-[657px] flex flex-col"
     >
-      <ul class="flex flex-wrap">
+      <ul class="flex flex-wrap" [@animationList]="listAnimationState">
         @for (featureText of featuresList; track $index) {
         <li class="flex flex-wrap items-center mb-2 w-full md:w-1/2">
           <div

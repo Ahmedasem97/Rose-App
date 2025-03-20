@@ -1,13 +1,14 @@
 import { TestBed } from '@angular/core/testing';
+import { SpecificPrService } from '../../shared/services/specific-pr.service';
 
-import { SpecificService } from './specific.adapter';
+
 
 describe('SpecificService', () => {
-  let service: SpecificService;
+  let service: SpecificPrService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SpecificService);
+    service = TestBed.inject(SpecificPrService);
   });
 
   it('should be created', () => {
