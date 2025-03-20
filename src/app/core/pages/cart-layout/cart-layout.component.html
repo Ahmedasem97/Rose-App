@@ -1,0 +1,10 @@
+<section class="container px-4 pt-32">
+    <div class="flex flex-wrap">
+        <div class="w-full lg:w-9/12">
+            <app-cart (totalPriceEmitt)="getTotalPrice.set($event)"></app-cart>
+        </div>
+        <div class="cart-summary w-full lg:w-3/12">
+            <app-cart-summary [totalPrice]="getTotalPrice()"></app-cart-summary>
+        </div>
+    </div>
+</section>

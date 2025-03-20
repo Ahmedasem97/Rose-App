@@ -22,6 +22,8 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { loadingInterceptor } from './core/interceptor/loading.interceptor';
+import { headersInterceptor } from './core/interceptor/headers.interceptor';
+import { catchErrorInterceptor } from './core/interceptor/catch-error.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -37,7 +39,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideClientHydration(),
     provideAnimationsAsync(),
-    provideHttpClient(withFetch(), withInterceptors([loadingInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([headersInterceptor, loadingInterceptor, catchErrorInterceptor])),
     importProvidersFrom(
       BrowserAnimationsModule,
       TranslateModule.forRoot({

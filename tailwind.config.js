@@ -33,6 +33,7 @@ module.exports = {
       activelink: "var(--description-color)",
       white: "var(--white-color)",
       price: "var(--price-color)",
+      "price-after-discount": "var(--price-after-discount-color)",
       geen: "var(--green-color)",
       "primary-icon-bg": "var(--primary-icon-bg-color)",
       "secondary-icon-bg": "var(--secondary-icon-bg-color)",

@@ -15,8 +15,14 @@
 
               </div>
                 <span data-modal-target="progress-modal" data-modal-toggle="progress-modal" class="cursor-pointer" ><img src="Vector (1).png" alt="search"></span> 
-                <span class="h-[21px] w-[20px] relative after:w-[18px] after:h-[18px] after:absolute after:bg-primary after:content-['2'] after:-top-5 after:-right-2 after:rounded-full after:text-white after:text-xs after:text-center"><img src="Icon.png" class="h-[21px] w-[20px] cursor-pointer" alt="wishes"></span>
-                <span class="h-[21px] w-[20px] relative after:w-[18px] after:h-[18px] after:absolute after:bg-primary after:content-['2'] after:-top-5 after:-right-2 after:rounded-full after:text-white after:text-xs after:text-center"><img src="Vector.png" class="h-[21px] w-[20px] cursor-pointer" alt="cart"></span>
+                <span class="h-[21px] w-[20px] relative ">
+                  <img src="Icon.png" class="h-[21px] w-[20px] cursor-pointer" alt="wishes">
+                  <span class="absolute w-[18px] h-[18px] rounded-full bg-primary text-white flex justify-center items-center text-xs top-[-17px] right-[-9px]">0</span>
+                </span>
+                <span routerLink="/main/cart" class="h-[21px] w-[20px] relative ">
+                  <img src="Vector.png" class="h-[21px] w-[20px] cursor-pointer" alt="cart">
+                  <span class="absolute w-[18px] h-[18px] rounded-full bg-primary text-white flex justify-center items-center text-xs top-[-17px] right-[-9px]">{{cartNumber()}}</span>
+                </span>
             </div>
         <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
           <span class="sr-only">Open main menu</span>

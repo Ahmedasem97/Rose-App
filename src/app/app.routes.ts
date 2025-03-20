@@ -40,7 +40,14 @@ export const routes: Routes = [
             import('./core/pages/about-us-page/about-us-page.component').then(
               (c) => c.AboutUsPageComponent
             ),
-        },
+        }, 
+        {
+          path: 'cart',
+          loadComponent: () =>
+            import('./core/pages/cart-layout/cart-layout.component').then(
+              (c) => c.CartLayoutComponent
+            ),
+        }, 
 
       
     ],
